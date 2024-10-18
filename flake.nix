@@ -21,7 +21,7 @@
             # Nix files to a separate directory.
             src = ./.;
             snowfall = {
-                namespace = "boerg.co";
+                namespace = "boerg";
                 meta = {
                         name = "boerg";
                         title = "Boerg";
