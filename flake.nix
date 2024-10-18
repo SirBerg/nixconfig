@@ -27,6 +27,9 @@
                         title = "Boerg";
                 };
             };
+	    channels-config = {
+		allowUnfree = true;
+	    };
         };
 }
 
