@@ -27,6 +27,7 @@ in
 			pciutils
 			clinfo
 			cifs-utils
+			tmux
 		];
 	};
 }
