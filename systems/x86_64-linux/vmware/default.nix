@@ -9,13 +9,34 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  boerg.packages.enable = true;
-  # Bootloader.
+
+  boerg = {
+  	packages.enable = true;
+	packages = {
+		laptop.enable = true;
+	};
+	display = {
+		laptop.enable = true;
+	};
+	users = {
+		berg = {
+			isGuiUser = true;
+			isSudoUser = true;
+			isKvmUser = true;
+			git = {
+				userName = "SirBerg";
+				userEmail = "benno@boerg.co";
+			};
+		};
+	};
+  };
+
+# Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+  fonts.fontconfig.enable = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -131,5 +152,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

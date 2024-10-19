@@ -36,12 +36,25 @@ in
 			liberation_ttf
 			fira-code
 			fira-code-symbols
+			jetbrains-mono
 			mplus-outline-fonts.githubRelease
 			dina-font
 			proggyfonts
 			tailscale
 		];
-
+		fonts.packages = with pkgs; [
+			  noto-fonts
+			  noto-fonts-cjk
+			  noto-fonts-emoji
+			  liberation_ttf
+			  fira-code
+			  fira-code-symbols
+			  mplus-outline-fonts.githubRelease
+			  dina-font
+			  proggyfonts
+			  jetbrains-mono
+			  nerdfonts
+		];
 		programs.neovim = {
 			enable = true;
 			configure.customRC = (builtins.readFile ./init.vim);

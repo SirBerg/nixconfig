@@ -40,6 +40,18 @@ in
 			hyprpanel
 			bun
 			gtop
+			fzf
+			hyprpicker
+			slurp
+			wf-recorder
+			wl-clipboard
+			wayshot
+			swappy
+			supergfxctl
+			fd
+			matugen
+			ags
+			gtk3
 		];
 		programs.hyprland.enable = true;
 		# Enable the xwayland support in hyprland
