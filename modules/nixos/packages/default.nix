@@ -41,5 +41,10 @@ in
 			proggyfonts
 			tailscale
 		];
+
+		programs.neovim = {
+			enable = true;
+			configure.customRC = (builtins.readFile ./init.vim);
+		};
 	};
 }

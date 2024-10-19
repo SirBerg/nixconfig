@@ -15,7 +15,7 @@ in
 		environment.systemPackages = with pkgs;
 		[
 			obsidian
-			anki
+			#anki
 		];
 	};
 }

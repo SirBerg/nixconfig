@@ -10,9 +10,27 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  boerg.packages.enable = true;
-  boerg.packages.laptop.enable = true;
-  boerg.display.laptop.enable = true;
+
+  boerg = {
+  	packages.enable = true;
+	packages = {
+		laptop.enable = true;
+	};
+	display = {
+		laptop.enable = true;
+	};
+	users = {
+		berg = {
+			isGuiUser = true;
+			isSudoUser = true;
+			isKvmUser = true;
+			git = {
+				userName = "SirBerg";
+				userEmail = "benno@boerg.co";
+			};
+		};
+	};
+  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -78,16 +96,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.berg = {
-    isNormalUser = true;
-    description = "berg";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kate
-    #  thunderbird
-    ];
-  };
 
   # Install firefox.
   programs.firefox.enable = true;

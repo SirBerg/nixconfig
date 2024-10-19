@@ -1,5 +1,5 @@
 # Enable Hyprland and enable gpu acceleration
-{ options, config, lib, pkgs, ...}:
+{ options, config, lib, pkgs, inputs, ...}:
 
 with lib;
 with lib.types;
@@ -7,12 +7,12 @@ let
 	cfg = config.boerg.display.laptop;
 in
 {
+
 	options.boerg.display.laptop.enable = mkOption {
 		type = bool;
 		default = false;
 	};
 	config = mkIf cfg.enable {
-
 		# Enables the Hyprland Package
 		environment.systemPackages = with pkgs;
 		[
@@ -23,12 +23,32 @@ in
 			waybar
 			wofi
 			swaylock
+			pipewire
+			libgtop
+			bluez
+			grimblast
+			gpu-screen-recorder
+			hyprpicker
+			btop
+			networkmanager
+			matugen
+			wl-clipboard
+			swww
+			dart-sass
+			brightnessctl
+			gnome-bluetooth
+			hyprpanel
+			bun
+			gtop
 		];
 		programs.hyprland.enable = true;
 		# Enable the xwayland support in hyprland
 		programs.hyprland.xwayland.enable = true;
 		# Enable the additional programs
 		programs.waybar.enable = true;
+		
+
+
 		# Enable the gpu acceleration (Idk why but this wasn't set)
 		hardware.graphics = {
 			enable = true;
