@@ -15,7 +15,12 @@ in
 		environment.systemPackages = with pkgs;
 		[
 			obsidian
-			#anki
+			anki-bin
+			jetbrains.webstorm
+			jetbrains.clion
+			jetbrains.rust-rover
+			jetbrains.jdk
+			jetbrains.datagrip
 		];
 	};
 }

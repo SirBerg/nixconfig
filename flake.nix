@@ -21,8 +21,10 @@
             # You must provide our flake inputs to Snowfall Lib.
             inherit inputs;
 		homes.modules = with inputs; [
-	    		ags.homeManagerModules.default 
+	    		ags.homeManagerModules.default
 		];
+
+	    
             # The `src` must be the root of the flake. See configuration
             # in the next section for information on how you can move your
             # Nix files to a separate directory.

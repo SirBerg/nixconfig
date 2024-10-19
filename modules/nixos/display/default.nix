@@ -18,11 +18,14 @@ in
 		[
 			# Hyprland itself
 			hyprland
-
-			# Install some dependencies to make it look nice
+			
+			# Some stuff to make hyprland look nice and make it usable
 			waybar
 			wofi
 			swaylock
+			hyprpaper
+
+			#... and then Hyprpanel dependencies
 			pipewire
 			libgtop
 			bluez
