@@ -6,6 +6,8 @@
 { config, pkgs, ... }:
 
 {
+
+  system.nixos.label = "Ares";
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
