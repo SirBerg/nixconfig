@@ -41,6 +41,9 @@ in
 			dina-font
 			proggyfonts
 			tailscale
+			kdePackages.dolphin
+			rclone
+			networkmanagerapplet
 		];
 		fonts.packages = with pkgs; [
 			  noto-fonts

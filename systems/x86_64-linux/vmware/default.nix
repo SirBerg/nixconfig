@@ -5,7 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  system.nixos.label = "Ares";
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -31,7 +30,8 @@
 		};
 	};
   };
-
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
