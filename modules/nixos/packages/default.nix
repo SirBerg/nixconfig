@@ -62,5 +62,6 @@ in
 			enable = true;
 			configure.customRC = (builtins.readFile ./init.vim);
 		};
+		services.tailscale.enable = true;
 	};
 }
