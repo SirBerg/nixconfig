@@ -21,6 +21,8 @@ in
 			jetbrains.rust-rover
 			jetbrains.jdk
 			jetbrains.datagrip
+			spotify
+			chromium
 		];
 	};
 }
