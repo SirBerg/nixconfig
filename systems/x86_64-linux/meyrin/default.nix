@@ -3,9 +3,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, self, ... }:
 
 {
+  
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -31,7 +32,11 @@
 		};
 	};
   };
-  # Bootloader.
+
+  system.nixos.label = lib.mkIf (self ? rev) "voyager-${self.rev}";
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+# Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
