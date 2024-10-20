@@ -16,6 +16,8 @@ in
 
 		shellAliases = {
 			update = "sudo nixos-rebuild switch";
+			clean = "sudo nix store gc";
+			clean-build = "sudo nix store gc && sudo nixos-rebuild switch";
 		};
 
 		history = {
