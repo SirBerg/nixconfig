@@ -1,4 +1,4 @@
-name: "Nix packaging test"
+name: "Validate Nixconfig"
 on:
   push:
 
@@ -10,4 +10,4 @@ jobs:
     - uses: cachix/install-nix-action@v27
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix build .#nixosConfigurations.meyrin.system.build.toplevel
+    - run: nix build .#nixosConfigurations.meyrin.config.system.build.toplevel
