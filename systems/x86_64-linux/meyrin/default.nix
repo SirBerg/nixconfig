@@ -33,7 +33,7 @@
 	};
   };
 
-  system.nixos.label = if (self ? rev) then "voyager.${self.rev}" else "voyager-dirty.${self.dirtyShortRev}";
+  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 # Bootloader.
