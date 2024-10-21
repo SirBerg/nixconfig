@@ -13,7 +13,6 @@ in
 	config = mkIf cfg.enable {
 		environment.systemPackages = with pkgs;
 		[
-			neovim
 			git
 			wget
 			tree
@@ -44,6 +43,8 @@ in
 			kdePackages.dolphin
 			rclone
 			networkmanagerapplet
+			kdePackages.kwalletmanager
+			nodejs
 		];
 		fonts.packages = with pkgs; [
 			  noto-fonts
@@ -58,10 +59,32 @@ in
 			  jetbrains-mono
 			  nerdfonts
 		];
+
 		programs.neovim = {
 			enable = true;
-			configure.customRC = (builtins.readFile ./init.vim);
+			defaultEditor = true;
+			viAlias = true;
+			vimAlias = true;
+			withNodeJs = true;
+			configure = {
+				customRC = (builtins.readFile ./init.vim);
+				
+				packages.nix = {
+					start = with pkgs.vimPlugins; [
+						mason-nvim
+						markdown-preview-nvim
+						rainbow
+						auto-pairs
+						vim-gitgutter
+						nvim-tree-lua
+						(nvim-treesitter.withPlugins (p: with p; [ tree-sitter-nix typescript ]))
+					];
+				};
+			};
+			
 		};
 		services.tailscale.enable = true;
+		# To fix dns exit-node issue
+		services.tailscale.interfaceName = "userspace-networking";
 	};
 }

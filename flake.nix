@@ -44,7 +44,6 @@
 	    overlays = with inputs; [
 		hyprpanel.overlay
 	    ];
-	    
         };
 }
 
