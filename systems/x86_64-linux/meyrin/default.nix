@@ -36,7 +36,9 @@
 		};
 	};
   };
-
+  virtualisation.docker.enable = true;
+  
+  services.resolved.enable = true;
   system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

@@ -19,7 +19,9 @@ in
 			unzip
 			killall
 			neofetch
+			nmap
 			btop
+			docker-compose
 			dig
 			rclone
 			xsel
@@ -45,6 +47,7 @@ in
 			networkmanagerapplet
 			kdePackages.kwalletmanager
 			nodejs
+			traceroute
 		];
 		fonts.packages = with pkgs; [
 			  noto-fonts
@@ -85,6 +88,9 @@ in
 		};
 		services.tailscale.enable = true;
 		# To fix dns exit-node issue
-		services.tailscale.interfaceName = "userspace-networking";
+		#services.tailscale.interfaceName = "userspace-networking";
+		services.tailscale.useRoutingFeatures = "both";
+		networking.firewall.trustedInterfaces = [  "tailscale0" ];
+		networking.firewall.checkReversePath = "loose";
 	};
 }
