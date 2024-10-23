@@ -3,6 +3,7 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 	ags.url = "github:Aylur/ags";
 	hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+	Solaar.url = "github:Svenum/Solaar-Flake";
 	home-manager = {
 		url = "github:nix-community/home-manager";
 		inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +31,9 @@
             src = ./.;
 	    systems.hosts.meyrin.specialArgs = {inherit (inputs) self;};
 	    systems.hosts.vmware.specialArgs = {inherit (inputs) self;};
+	    systems.modules.nixos = with inputs; [
+		Solaar.nixosModules.default
+	    ];
 	    snowfall = {
                 namespace = "boerg";
                 meta = {

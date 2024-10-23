@@ -19,6 +19,17 @@ in
 			unzip
 			killall
 			neofetch
+			kdePackages.qtwayland
+			kdePackages.qtsvg
+			kdePackages.kauth
+			kdePackages.kio
+			kdePackages.kio-admin
+			kdePackages.kio-extras
+			kdePackages.kwallet-pam
+			kdePackages.kwallet
+			
+			kdePackages.wayland
+			kdePackages.wayland-protocols
 			nmap
 			btop
 			docker-compose
@@ -92,5 +103,19 @@ in
 		services.tailscale.useRoutingFeatures = "both";
 		networking.firewall.trustedInterfaces = [  "tailscale0" ];
 		networking.firewall.checkReversePath = "loose";
+
+		qt.enable = true;
+
+		xdg.portal.enable = true;
+		xdg.portal.extraPortals = with pkgs; [
+			kdePackages.kwallet
+		];
+
+		security.pam.services = {
+			login.kwallet = {
+				enable = true;
+				package = pkgs.kdePackages.kwallet-pam;
+			};
+		};
 	};
 }

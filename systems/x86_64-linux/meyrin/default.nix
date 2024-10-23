@@ -45,6 +45,15 @@
 # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  hardware.bluetooth = {
+	enable = true;
+	settings = {
+		General = {
+			Experimental = true;
+		};
+	};
+  };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -119,6 +128,7 @@
   environment.systemPackages = with pkgs; [
     wget
   ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
