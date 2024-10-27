@@ -18,6 +18,7 @@ in
 			update = "sudo nixos-rebuild switch";
 			clean = "sudo nix store gc";
 			clean-build = "sudo nix store gc && sudo nixos-rebuild switch";
+			check = "sudo nix flake check";
 		};
 
 		history = {

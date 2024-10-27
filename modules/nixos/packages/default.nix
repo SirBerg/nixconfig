@@ -27,7 +27,7 @@ in
 			kdePackages.kio-extras
 			kdePackages.kwallet-pam
 			kdePackages.kwallet
-			
+			kdePackages.konsole			
 			kdePackages.wayland
 			kdePackages.wayland-protocols
 			nmap
@@ -59,6 +59,10 @@ in
 			kdePackages.kwalletmanager
 			nodejs
 			traceroute
+			# Mason dependencies
+			go
+			python3
+
 		];
 		fonts.packages = with pkgs; [
 			  noto-fonts
@@ -73,7 +77,7 @@ in
 			  jetbrains-mono
 			  nerdfonts
 		];
-
+		programs.nix-ld.enable = true;
 		programs.neovim = {
 			enable = true;
 			defaultEditor = true;
@@ -92,6 +96,15 @@ in
 						vim-gitgutter
 						nvim-tree-lua
 						(nvim-treesitter.withPlugins (p: with p; [ tree-sitter-nix typescript ]))
+						tokyonight-nvim
+						lsp-zero-nvim
+						nvim-lspconfig
+						nvim-cmp
+						cmp-nvim-lsp
+						mason-lspconfig-nvim
+						mason-tool-installer-nvim
+						# Mason dependencies
+
 					];
 				};
 			};
@@ -119,3 +132,6 @@ in
 		};
 	};
 }
+
+
+

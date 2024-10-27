@@ -4,14 +4,23 @@ let
 	cfg = config.boerg.dotfiles;
 in
 {
-  options.boerg.doftiles.enable = lib.mkOption{
+  options.boerg.dotfiles.enable = lib.mkOption{
 	default = false;
 	type = lib.types.bool;
   };
+
   config = lib.mkIf cfg.enable {
 	  home.file.".config/swaylock/config" = {
 		enable = true;
-		source = builtins.readFile ./dotfiles/swaylock.conf;
+		source = ./dotfiles/swaylock.conf;
+	  };
+	  home.file.".config/hypr/hyprland.conf" = {
+	  	enable = true;
+		source = ./dotfiles/hypr/hyprland.conf;
+	  };
+	  home.file.".config/hypr/hyprpaper.conf" = {
+		enable = true;
+		source = ./dotfiles/hypr/hyprpaper.conf;
 	  };
   };
 }

@@ -128,8 +128,10 @@
   environment.systemPackages = with pkgs; [
     wget
   ];
-
-
+security.pam.loginLimits = [
+    { domain = "*"; item = "nofile"; type = "-"; value = "32768"; }
+    { domain = "*"; item = "memlock"; type = "-"; value = "32768"; }
+  ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

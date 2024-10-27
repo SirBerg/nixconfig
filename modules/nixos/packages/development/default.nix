@@ -3,22 +3,25 @@
 with lib;
 with lib.types;
 let
-	cfg = config.boerg.packages.laptop;
+	cfg = config.boerg.packages.development;
 in
 {
-	options.boerg.packages.laptop.enable = mkOption {
+	options.boerg.packages.development.enable = mkOption {
 		type = bool;
 		default = false;
 	};
 	config = mkIf cfg.enable {
-        boerg.packages.development.enable = true;
+
 		environment.systemPackages = with pkgs;
 		[
-			obsidian
-			anki-bin
-			spotify
-			chromium
-			bluetuith
+			jetbrains.webstorm
+			jetbrains.clion
+			jetbrains.rust-rover
+			jetbrains.jdk
+			jetbrains.datagrip
+			gcc
+			rustup
+			postman
 		];
 
 		services.solaar = {
