@@ -13,7 +13,6 @@
     ];
 
   boerg = {
-  	packages.enable = true;
 	packages = {
 		laptop.enable = true;
 	};

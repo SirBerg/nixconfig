@@ -10,7 +10,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  boerg.packages.enable = true;
   boerg.packages.nebula.enable = true;
   boerg.display.laptop.enable = true;
   # Bootloader.

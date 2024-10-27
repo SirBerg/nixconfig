@@ -11,7 +11,6 @@ in
 		default = false;
 	};
 	config = mkIf cfg.enable {
-        boerg.packages.development.enable = true;
 		environment.systemPackages = with pkgs;
 		[
 			obsidian
@@ -20,7 +19,12 @@ in
 			chromium
 			bluetuith
 		];
-
+        boerg.packages.hyprpanel.enable = true;
+        boerg.packages.neovim.enable = true;
+        boerg.packages.utils.enable = true;
+        boerg.packages.development.enable = true;
+        boerg.packages.tailscale.enable = true;
+        boerg.packages.kdewallet.enable = true;
 		services.solaar = {
 			enable = true;
 			window = "hide";
