@@ -21,6 +21,7 @@ in
         			nmap
         			btop
         			docker-compose
+
         			dig
         			rclone
         			xsel
@@ -34,6 +35,10 @@ in
         			networkmanagerapplet
         			nodejs
         			traceroute
+
+				wine64
+				winetricks
+				wineWowPackages.waylandFull
 		];
 	};
 }

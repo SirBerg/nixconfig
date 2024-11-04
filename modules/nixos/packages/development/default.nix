@@ -19,9 +19,12 @@ in
 			jetbrains.rust-rover
 			jetbrains.jdk
 			jetbrains.datagrip
+			jetbrains.goland
 			gcc
 			rustup
 			postman
+			libcap
+			go
 		];
 
 		services.solaar = {
