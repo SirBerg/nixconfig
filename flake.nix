@@ -31,6 +31,7 @@
             src = ./.;
 	    systems.hosts.meyrin.specialArgs = {inherit (inputs) self;};
 	    systems.hosts.vmware.specialArgs = {inherit (inputs) self;};
+	    systems.hosts.izanami.specialArgs =  {inherit (inputs) self;};
 	    systems.modules.nixos = with inputs; [
 		Solaar.nixosModules.default
 	    ];
