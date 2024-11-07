@@ -27,6 +27,7 @@
 	};
   	display.nvidia.enable = true;
   };
+  services.flatpak.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 # Bootloader.

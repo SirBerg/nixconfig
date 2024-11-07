@@ -13,7 +13,6 @@ in
 	config = mkIf cfg.enable {
 		environment.systemPackages = with pkgs;[
 				git
-				discord
         			wget
         			tree
         			unzip
