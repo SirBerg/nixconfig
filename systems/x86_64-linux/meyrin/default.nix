@@ -15,6 +15,7 @@
   boerg = {
 	packages = {
 		laptop.enable = true;
+		samba.enable = true;
 	};
 	display = {
 		laptop.enable = true;

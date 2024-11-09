@@ -22,9 +22,9 @@ in
         			btop
         			docker-compose
         			dig
-				coolercontrol.coolercontrol-gui
-				coolercontrol.coolercontrol-ui-data
-				rclone
+              coolercontrol.coolercontrol-gui
+              coolercontrol.coolercontrol-ui-data
+              rclone
         			xsel
         			pciutils
         			clinfo
@@ -36,9 +36,11 @@ in
         			networkmanagerapplet
         			nodejs
         			traceroute
-				coolercontrol.coolercontrol-liqctld
-				coolercontrol.coolercontrold
-
+              wine64
+              winetricks
+              wineWowPackages.waylandFull
+              coolercontrol.coolercontrol-liqctld
+              coolercontrol.coolercontrold
 		];
 		programs.coolercontrol.nvidiaSupport = true;
 		programs.coolercontrol.enable = true;
