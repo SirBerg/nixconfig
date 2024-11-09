@@ -12,7 +12,7 @@ in
 	};
 	config = mkIf cfg.enable {
 		environment.systemPackages = with pkgs;[
-					git
+				git
         			wget
         			tree
         			unzip
@@ -21,9 +21,10 @@ in
         			nmap
         			btop
         			docker-compose
-
         			dig
-        			rclone
+              coolercontrol.coolercontrol-gui
+              coolercontrol.coolercontrol-ui-data
+              rclone
         			xsel
         			pciutils
         			clinfo
@@ -35,10 +36,13 @@ in
         			networkmanagerapplet
         			nodejs
         			traceroute
-
-				wine64
-				winetricks
-				wineWowPackages.waylandFull
+              wine64
+              winetricks
+              wineWowPackages.waylandFull
+              coolercontrol.coolercontrol-liqctld
+              coolercontrol.coolercontrold
 		];
-	};
+		programs.coolercontrol.nvidiaSupport = true;
+		programs.coolercontrol.enable = true;
+		};
 }
