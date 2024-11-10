@@ -27,13 +27,13 @@
 	};
   	display.nvidia.enable = true;
   };
+  virtualisation.docker.enable = true;
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   fonts.fontconfig.enable = true;
   # Configure network proxy if necessary

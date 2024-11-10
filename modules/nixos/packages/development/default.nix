@@ -25,6 +25,7 @@ in
 			postman
 			libcap
 			go
+			hoppscotch
 		];
 
 		services.solaar = {
