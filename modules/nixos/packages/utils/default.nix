@@ -43,6 +43,7 @@ in
             coolercontrol.coolercontrold
             mangohud
             mplayer
+            gitbutler
 		];
 		programs.coolercontrol.nvidiaSupport = true;
 		programs.coolercontrol.enable = true;

@@ -27,11 +27,12 @@
 	};
   	display.nvidia.enable = true;
   };
+  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   virtualisation.docker.enable = true;
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-# Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
