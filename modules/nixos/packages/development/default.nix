@@ -26,6 +26,7 @@ in
 			libcap
 			go
 			hoppscotch
+			air
 		];
 
 		services.solaar = {
