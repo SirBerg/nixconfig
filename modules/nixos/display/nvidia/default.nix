@@ -15,9 +15,13 @@ in
 	config = mkIf cfg.enable {
 		hardware.graphics = {
 			enable = true;
-		};
-		hardware.opengl = {
-			enable = true;
+            extraPackages = with pkgs; [
+              vaapiVdpau
+              libvdpau-va-gl
+            ];
+            extraPackages32 = with pkgs.pkgsi686Linux; [
+              vaapiVdpau
+            ];
 		};
 		services.xserver.videoDrivers = ["nvidia"];
 		hardware.nvidia = {
