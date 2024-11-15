@@ -12,11 +12,39 @@ in
 	};
 	config = mkIf cfg.enable {
 	    environment.systemPackages = with pkgs; [
-
+	    #... and then Hyprpanel dependencies
+        			pipewire
+        			libgtop
+        			bluez
+        			grimblast
+        			gpu-screen-recorder
+        			hyprpicker
+        			btop
+        			networkmanager
+        			wl-clipboard
+        			swww
+        			dart-sass
+        			brightnessctl
+        			gnome-bluetooth
+        			hyprpanel
+        			bun
+        			gtop
+        			fzf
+        			hyprpicker
+        			slurp
+        			wf-recorder
+        			wl-clipboard
+        			wayshot
+        			swappy
+        			supergfxctl
+        			fd
+        			#matugen
+        			ags
+        			gtk3
 	    ];
 		fonts.packages = with pkgs; [
 			  noto-fonts
-			  noto-fonts-cjk
+			  noto-fonts-cjk-sans
 			  noto-fonts-emoji
 			  liberation_ttf
 			  fira-code

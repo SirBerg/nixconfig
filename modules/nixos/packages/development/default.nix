@@ -27,6 +27,8 @@ in
 			go
 			hoppscotch
 			air
+			ninja
+			cmake
 		];
 
 		services.solaar = {

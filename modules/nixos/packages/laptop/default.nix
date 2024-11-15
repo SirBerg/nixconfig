@@ -19,7 +19,7 @@ in
 			chromium
 			bluetuith
 		];
-        boerg.packages.hyprpanel.enable = true;
+        boerg.packages.hyprpanel.enable = false;
         boerg.packages.neovim.enable = true;
         boerg.packages.utils.enable = true;
         boerg.packages.development.enable = true;

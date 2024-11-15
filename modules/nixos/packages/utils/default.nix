@@ -43,7 +43,7 @@ in
             coolercontrol.coolercontrold
             mangohud
             mplayer
-            gitbutler
+            #gitbutler
             audacity
 		];
 		programs.coolercontrol.nvidiaSupport = true;
