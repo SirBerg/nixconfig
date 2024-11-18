@@ -14,6 +14,8 @@ jobs:
       - run: export HOME="$TMP"
       - run: rm -rf /homeless-shelter
       - run: curl -L https://nixos.org/nix/install | sh -s -- --daemon
+      - run: while read -r env; do export "$env"; done
+      - run: export HOME="$TMP"
       
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
