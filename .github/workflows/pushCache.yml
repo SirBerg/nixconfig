@@ -15,7 +15,8 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: rm -rf /homeless-shelter
       - run: ls -la /
-      - run: ls -la /home
+      - run: ls -la /home/runner
+      - run: echo $HOME
       - run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       - run: rm -rf /homeless-shelter
       - uses: SirBerg/attic-builder@main
