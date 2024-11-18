@@ -11,7 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ls -la /
+      - run: export HOME="$TMP"
+      - run: rm -rf /homeless-shelter
       - run: curl -L https://nixos.org/nix/install | sh -s -- --daemon
+      
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
       - uses: SirBerg/attic-builder@main
