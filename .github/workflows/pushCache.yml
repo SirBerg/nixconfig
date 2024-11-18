@@ -17,6 +17,7 @@ jobs:
       - run: ls -la /
       - run: ls -la /home/runner
       - run: echo $HOME
+      - run: export HOME=/home/runner
       - run: cat /etc/passwd
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
