@@ -13,6 +13,7 @@ jobs:
       - run: ls -la /
       - run: export HOME="$TMP"
       - run: rm /etc/bash.bashrc.backup-before-nix
+      - run: rm /etc/bashrc.backup-before-nix
       - run: rm -rf /homeless-shelter
       - run: curl -L https://nixos.org/nix/install | sh -s -- --daemon
       - run: while read -r env; do export "$env"; done
