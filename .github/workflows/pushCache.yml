@@ -25,6 +25,7 @@ jobs:
       - uses: SirBerg/attic-builder@main
         with:
           build_systems: true
+          build_packages: false
           attic_url: "https://cache.naibu.boerg.co"
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
