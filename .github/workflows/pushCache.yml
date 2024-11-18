@@ -19,6 +19,7 @@ jobs:
       - run: chmod -R +1777 ./*
       - run: useradd temp
       - run: su temp
+      - run: whoami
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
       - uses: SirBerg/attic-builder@main
