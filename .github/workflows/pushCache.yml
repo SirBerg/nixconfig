@@ -13,6 +13,7 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix-build
       - uses: SirBerg/attic-builder@main
         with:
           build_systems: true
