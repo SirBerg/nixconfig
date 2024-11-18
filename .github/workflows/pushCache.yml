@@ -20,3 +20,4 @@ jobs:
           attic_url: "https://cache.naibu.boerg.co"
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
+          install_deps: true
