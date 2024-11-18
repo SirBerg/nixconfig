@@ -10,14 +10,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - run: ls -la /
       - run: export HOME="$TMP"
-      - run: rm -f /etc/bash.bashrc.backup-before-nix
-      - run: rm -f /etc/bashrc.backup-before-nix
       - run: rm -rf /homeless-shelter
-      - run: curl -L https://nixos.org/nix/install | sh -s -- --daemon
-      - run: while read -r env; do export "$env"; done
-      - run: export HOME="$TMP"
+      - uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
       
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
