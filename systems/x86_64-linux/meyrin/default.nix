@@ -17,6 +17,7 @@
 		laptop.enable = true;
 		samba.enable = true;
 	};
+	cache.enable = true;
 	display = {
 		laptop.enable = true;
 	};

@@ -45,6 +45,7 @@ in
             mplayer
             #gitbutler
             audacity
+            attic-client
 		];
 		programs.coolercontrol.nvidiaSupport = true;
 		programs.coolercontrol.enable = true;

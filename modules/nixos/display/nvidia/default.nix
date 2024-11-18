@@ -7,7 +7,6 @@ let
 	cfg = config.boerg.display.nvidia;
 in
 {
-
 	options.boerg.display.nvidia.enable = mkOption {
 		type = bool;
 		default = false;
