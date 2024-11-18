@@ -10,6 +10,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
+      - run: ls -la /
       - run: curl -L https://nixos.org/nix/install | sh -s -- --daemon
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
