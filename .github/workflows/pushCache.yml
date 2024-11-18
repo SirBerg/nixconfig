@@ -21,3 +21,4 @@ jobs:
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
           show_trace: true
+          disable_nix_sandbox: true
