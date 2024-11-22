@@ -33,7 +33,7 @@
 	    systems.hosts.vmware.specialArgs = {inherit (inputs) self;};
 	    systems.hosts.izanami.specialArgs =  {inherit (inputs) self;};
 	    systems.modules.nixos = with inputs; [
-		Solaar.nixosModules.default
+		    Solaar.nixosModules.default
 	    ];
 	    snowfall = {
                 namespace = "boerg";
@@ -47,7 +47,7 @@
 	    };
 
 	    overlays = with inputs; [
-		hyprpanel.overlay
+		    hyprpanel.overlay
 	    ];
         };
 }

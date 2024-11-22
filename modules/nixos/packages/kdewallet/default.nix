@@ -33,11 +33,11 @@ in
             kdePackages.kwallet
         ];
 
-        security.pam.services = {
-            login.kwallet = {
-                enable = true;
-                package = pkgs.kdePackages.kwallet-pam;
-            };
-        };
+        #security.pam.services = {
+        #    login.kwallet = {
+        #        enable = true;
+        #        package = pkgs.kdePackages.kwallet-pam;
+        #    };
+        #};
 	};
 }

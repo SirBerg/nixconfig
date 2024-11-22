@@ -45,8 +45,9 @@ in
             mplayer
             #gitbutler
             audacity
-            #multiviewer-for-f1
+            multiviewer-for-f1
             attic-client
+            jdk21
 		];
 		programs.coolercontrol.nvidiaSupport = true;
 		programs.coolercontrol.enable = true;
