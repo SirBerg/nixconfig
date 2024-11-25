@@ -17,6 +17,7 @@ jobs:
       #- run: nix build --accept-flake-config .\#nixosConfigurations.izanami.config.system.build.toplevel --max-jobs 2
       #- run: rm -rf /homeless-shelter
       - run: rm -rf ~/.config/attic
+      - run: whoami
       - run: NIXPKGS_ALLOW_UNFREE=1 nix-shell -p multiviewer-for-f1
       - uses: SirBerg/attic-builder@main
         with:
