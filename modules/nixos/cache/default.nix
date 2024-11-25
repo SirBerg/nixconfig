@@ -23,7 +23,7 @@
               "https://attic.holypenguin.net/holynix"
 
              # Boerg
-             "https://cache.boerg.co/config"
+             "https://cache.boerg.co/boerg"
             ];
             trusted-substituters = [
               # nix community's cache server
@@ -33,7 +33,7 @@
               "https://attic.holypenguin.net/holynix"
 
              # Boerg
-             "https://cache.boerg.co/config"
+             "https://cache.boerg.co/boerg"
             ];
             trusted-public-keys = [
               # nix community's cache server public key
