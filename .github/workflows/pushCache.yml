@@ -26,3 +26,4 @@ jobs:
           attic_token: ${{ secrets.ATTIC_TOKEN }}
           show_trace: true
           disable_nix_sandbox: true
+      - run: nix log /nix/store/wl6h6gc4np4c2f6hym0y5fk3yyap40sn-multiviewer-for-f1-1.35.2.drv
