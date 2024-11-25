@@ -18,6 +18,7 @@ jobs:
       #- run: rm -rf /homeless-shelter
       - run: rm -rf ~/.config/attic
       - run: whoami
+      - run: chown -R root ./*
       - run: NIXPKGS_ALLOW_UNFREE=1 nix-shell -p multiviewer-for-f1
       - uses: SirBerg/attic-builder@main
         with:
