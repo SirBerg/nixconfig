@@ -29,6 +29,8 @@ in
 			air
 			ninja
 			cmake
+			gnumake42
+			bun
 		];
 
 		services.solaar = {
