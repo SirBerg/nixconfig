@@ -22,15 +22,17 @@ in
               vaapiVdpau
             ];
 		};
+		environment.systemPackages = with pkgs;[
+		    nvtopPackages.nvidia
+		];
 		services.xserver.videoDrivers = ["nvidia"];
 		hardware.nvidia = {
 			#Sets the Nvidia Driver thing 
-			package = config.boot.kernelPackages.nvidiaPackages.stable;
+			package = config.boot.kernelPackages.nvidiaPackages.beta;
 			#Required as per https://nixos.wiki/wiki/Nvidia
 			modesetting.enable = true;
 			powerManagement.enable = false;
 			open = true;
-
 			nvidiaSettings = true;
 		};
 	};
