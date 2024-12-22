@@ -54,6 +54,7 @@ in
             protontricks
             lutris
 		obs-studio
+		vesktop
 		];
 		programs.coolercontrol.nvidiaSupport = true;
 		programs.coolercontrol.enable = true;

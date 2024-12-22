@@ -54,6 +54,7 @@ in
 			  proggyfonts
 			  jetbrains-mono
 			  nerdfonts
+			  notonoto
 		];
 		qt.enable = true;
 	};
