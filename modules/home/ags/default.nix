@@ -8,14 +8,14 @@ in
 	type = lib.types.bool;
   };
   config = lib.mkIf cfg.enable {
-	  programs.ags = {
-	    enable = true;
-	    # additional packages to add to gjs's runtime
-	    extraPackages = with pkgs; [
-	      gtksourceview
-	      webkitgtk
-	      accountsservice
-	    ];
-	  };
+	  #programs.ags = {
+	  #  enable = true;
+	  #  # additional packages to add to gjs's runtime
+	  #  extraPackages = with pkgs; [
+	  #    gtksourceview
+	  #    webkitgtk
+	  #    accountsservice
+	  #  ];
+	  #};
   };
 }

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, self, ... }:
 
 {
   imports =
@@ -13,6 +13,7 @@
   boerg = {
 	packages = {
 		laptop.enable = true;
+		fonts.enable = true;
 	};
 	users = {
 		berg = {
@@ -25,22 +26,33 @@
 			};
 		};
 	};
+	virt.libvirt.enable = true;
   	display.nvidia.enable = true;
   };
-  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
-  virtualisation.docker.enable = true;
+  #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      "log-driver" = "json-file";
+      "log-opts" = {
+        "tag" = "{{.Name}}";
+      };
+    };
+  };
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   fonts.fontconfig.enable = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+  # Enable Waydroid
+  virtualisation.waydroid.enable = true;
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -67,7 +79,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

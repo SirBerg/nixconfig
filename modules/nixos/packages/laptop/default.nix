@@ -19,7 +19,7 @@ in
 			chromium
 			bluetuith
 		];
-        boerg.packages.hyprpanel.enable = true;
+        boerg.packages.hyprpanel.enable = false;
         boerg.packages.neovim.enable = true;
         boerg.packages.utils.enable = true;
         boerg.packages.development.enable = true;
@@ -30,12 +30,5 @@ in
 			window = "hide";
 			extraArgs = "--restart-on-wake-up";
 		};
-		programs.steam = {
-		  enable = true;
-		  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-		  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-		  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-		};
-
 	};
 }

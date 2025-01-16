@@ -26,6 +26,12 @@ in
 			libcap
 			go
 			hoppscotch
+			air
+			ninja
+			cmake
+			gnumake42
+			bun
+			jetbrains.goland
 		];
 
 		services.solaar = {
@@ -33,12 +39,5 @@ in
 			window = "hide";
 			extraArgs = "--restart-on-wake-up";
 		};
-		programs.steam = {
-		  enable = true;
-		  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-		  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-		  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-		};
-
 	};
 }

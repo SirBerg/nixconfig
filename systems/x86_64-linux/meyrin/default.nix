@@ -17,8 +17,9 @@
 		laptop.enable = true;
 		samba.enable = true;
 	};
+	cache.enable = true;
 	display = {
-		laptop.enable = true;
+		plasma.enable = true;
 	};
 	users = {
 		berg = {
@@ -37,9 +38,10 @@
 	};
   };
   virtualisation.docker.enable = true;
-  
+  services.flatpak.enable = true;
+  system.nixos.label = "test";
   services.resolved.enable = true;
-  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
+  #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   # Bootloader.

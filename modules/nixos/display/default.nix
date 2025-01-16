@@ -20,49 +20,14 @@ in
 			hyprland
 			
 			# Some stuff to make hyprland look nice and make it usable
-			waybar
 			wofi
 			swaylock
 			hyprpaper
 
-			#... and then Hyprpanel dependencies
-			pipewire
-			libgtop
-			bluez
-			grimblast
-			gpu-screen-recorder
-			hyprpicker
-			btop
-			networkmanager
-			matugen
-			wl-clipboard
-			swww
-			dart-sass
-			brightnessctl
-			gnome-bluetooth
-			hyprpanel
-			bun
-			gtop
-			fzf
-			hyprpicker
-			slurp
-			wf-recorder
-			wl-clipboard
-			wayshot
-			swappy
-			supergfxctl
-			fd
-			matugen
-			ags
-			gtk3
 		];
 		programs.hyprland.enable = true;
 		# Enable the xwayland support in hyprland
 		programs.hyprland.xwayland.enable = true;
-		# Enable the additional programs
-		programs.waybar.enable = true;
-		
-
 
 		# Enable the gpu acceleration (Idk why but this wasn't set)
 		hardware.graphics = {
