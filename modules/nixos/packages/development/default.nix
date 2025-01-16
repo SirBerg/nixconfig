@@ -31,6 +31,7 @@ in
 			cmake
 			gnumake42
 			bun
+			jetbrains.goland
 		];
 
 		services.solaar = {

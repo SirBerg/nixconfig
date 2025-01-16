@@ -31,7 +31,6 @@ in
             cifs-utils
             tmux
             lnav
-            kitty
             rclone
             networkmanagerapplet
             nodejs
@@ -42,7 +41,7 @@ in
             coolercontrol.coolercontrol-liqctld
             coolercontrol.coolercontrold
             mangohud
-            mplayer
+            #mplayer
             #gitbutler
             audacity
             multiviewer-for-f1
@@ -53,8 +52,8 @@ in
             vscode-fhs
             protontricks
             lutris
-		obs-studio
-		vesktop
+		    obs-studio
+		    vesktop
 		];
 		programs.coolercontrol.nvidiaSupport = true;
 		programs.coolercontrol.enable = true;
