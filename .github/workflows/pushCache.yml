@@ -13,9 +13,6 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
       - run: nix --version
       - run: which nix
       - uses: Svenum/attic-builder@ts-rewrite
