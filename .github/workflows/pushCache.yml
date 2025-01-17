@@ -16,7 +16,8 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: whoami
+      - run: nix --version
+      - run: which nix
       - uses: Svenum/attic-builder@ts-rewrite
         with:
           build_systems: true
