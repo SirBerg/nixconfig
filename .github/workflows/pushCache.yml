@@ -20,12 +20,13 @@ jobs:
       - run: whoami
       #- run: chown -R root ./*
       #- run: NIXPKGS_ALLOW_UNFREE=1 nix-shell -v -p multiviewer-for-f1
-      - uses: SirBerg/attic-builder@main
+      - uses: Svenum/attic-builder@ts-rewrite
         with:
           build_systems: true
           build_packages: false
           attic_url: "http://attic:8080"
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
-          show_trace: true
-          disable_nix_sandbox: true
+          dont_fail: false
+          max_jobs: 2
+          only_build_systems: nebula
