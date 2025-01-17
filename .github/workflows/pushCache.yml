@@ -28,4 +28,4 @@ jobs:
           dont_fail: false
           max_jobs: 2
           only_build_systems: nebula
-          log_level: debug
+          log_level: DEBUG
