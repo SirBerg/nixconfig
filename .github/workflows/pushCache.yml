@@ -17,7 +17,7 @@ jobs:
         with:
           build_systems: true
           build_packages: false
-          attic_url: "http://attic:8080"
+          attic_url: "http://attic:8081"
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
           show_trace: true
