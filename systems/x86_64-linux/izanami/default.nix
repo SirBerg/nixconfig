@@ -16,6 +16,7 @@
       fonts.enable = true;
       steam.enable = true;
       development.enable = true;
+      utils.extended.enable = true;
     };
     users = {
       berg = {

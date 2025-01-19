@@ -11,7 +11,7 @@ in
     default = false;
   };
   config = mkIf cfg.enable {
-		environment.systemPackages = with pkgs;[
+	environment.systemPackages = with pkgs;[
       neofetch
       nmap
       coolercontrol.coolercontrol-gui
@@ -39,7 +39,7 @@ in
       lutris
       obs-studio
       vesktop
-		];
+    ];
     programs.coolercontrol.nvidiaSupport = true;
     programs.coolercontrol.enable = true;
     programs.steam = {
