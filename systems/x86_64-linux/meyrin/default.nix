@@ -17,6 +17,8 @@
       common.enable = true;
       samba.enable = true;
       utils.extended.enable = true;
+      development.enable = true;
+      steam.enable = true;
     };
     hardware.bluetooth.enable = true;
     virt.docker.enable = true;

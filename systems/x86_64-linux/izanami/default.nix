@@ -14,6 +14,8 @@
     packages = {
       common.enable = true;
       fonts.enable = true;
+      steam.enable = true;
+      development.enable = true;
     };
     users = {
       berg = {
