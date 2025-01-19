@@ -11,34 +11,30 @@
     ];
 
   boerg = {
-	packages = {
-		laptop.enable = true;
-		fonts.enable = true;
-	};
-	users = {
-		berg = {
-			isGuiUser = true;
-			isSudoUser = true;
-			isKvmUser = true;
-			git = {
-				userName = "SirBerg";
-				userEmail = "benno@boerg.co";
-			};
-		};
-	};
-	virt.libvirt.enable = true;
-  	display.nvidia.enable = true;
-  };
-  #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-      "log-driver" = "json-file";
-      "log-opts" = {
-        "tag" = "{{.Name}}";
+    packages = {
+      common.enable = true;
+      fonts.enable = true;
+      steam.enable = true;
+      development.enable = true;
+      utils.extended.enable = true;
+    };
+    users = {
+      berg = {
+        isGuiUser = true;
+        isSudoUser = true;
+        isKvmUser = true;
+        git = {
+          userName = "SirBerg";
+          userEmail = "benno@boerg.co";
+        };
       };
     };
+    virt.libvirt.enable = true;
+    virt.docker.enable = true;
+    virt.waydroid.enable = true;
+    display.nvidia.enable = true;
   };
+  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -51,8 +47,6 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  # Enable Waydroid
-  virtualisation.waydroid.enable = true;
   # Enable networking
   networking.networkmanager.enable = true;
 

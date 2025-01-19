@@ -13,49 +13,43 @@
     ];
 
   boerg = {
-	packages = {
-		laptop.enable = true;
-		samba.enable = true;
-	};
-	cache.enable = true;
-	display = {
-		plasma.enable = true;
-	};
-	users = {
-		berg = {
-			isGuiUser = true;
-			isSudoUser = true;
-			isKvmUser = true;
-			git = {
-				userName = "SirBerg";
-				userEmail = "benno@boerg.co";
-			};
-		};
-		svenum = {
-			isGuiUser = false;
-			isSudoUser = false;
-		};
-	};
+    packages = {
+      common.enable = true;
+      samba.enable = true;
+      utils.extended.enable = true;
+      development.enable = true;
+      steam.enable = true;
+    };
+    hardware.bluetooth.enable = true;
+    virt.docker.enable = true;
+    cache.enable = true;
+    display = {
+      plasma.enable = true;
+    };
+    users = {
+      berg = {
+        isGuiUser = true;
+        isSudoUser = true;
+        isKvmUser = true;
+        git = {
+          userName = "SirBerg";
+          userEmail = "benno@boerg.co";
+        };
+      };
+      svenum = {
+        isGuiUser = false;
+        isSudoUser = false;
+      };
+    };
   };
-  virtualisation.docker.enable = true;
   services.flatpak.enable = true;
-  system.nixos.label = "test";
+  system.nixos.label = "voyager";
   services.resolved.enable = true;
   #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
-  hardware.bluetooth = {
-	enable = true;
-	settings = {
-		General = {
-			Experimental = true;
-		};
-	};
-  };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -118,19 +112,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-  ];
-security.pam.loginLimits = [
+  security.pam.loginLimits = [
     { domain = "*"; item = "nofile"; type = "-"; value = "32768"; }
     { domain = "*"; item = "memlock"; type = "-"; value = "32768"; }
   ];

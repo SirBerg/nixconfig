@@ -32,6 +32,7 @@ in
 			gnumake42
 			bun
 			jetbrains.goland
+			vscode
 		];
 
 		services.solaar = {

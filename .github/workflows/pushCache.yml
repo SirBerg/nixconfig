@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v27
@@ -20,5 +20,7 @@ jobs:
           attic_url: "http://attic:8081"
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
-          show_trace: true
-          disable_nix_sandbox: true
+          dont_fail: false
+          max_jobs: 2
+          only_build_systems: nebula
+          log_level: DEBUG
