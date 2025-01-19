@@ -13,13 +13,11 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix --version
-      - run: which nix
-      - uses: Svenum/attic-builder@ts-rewrite
+      - uses: Svenum/attic-builder@main
         with:
           build_systems: true
           build_packages: false
-          attic_url: "http://attic:8080"
+          attic_url: "http://attic:8081"
           attic_cache: "boerg"
           attic_token: ${{ secrets.ATTIC_TOKEN }}
           dont_fail: false
