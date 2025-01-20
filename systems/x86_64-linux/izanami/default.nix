@@ -30,7 +30,6 @@
       };
     };
     cache.enable = true;
-
     virt.libvirt.enable = true;
     virt.docker.enable = true;
     virt.waydroid.enable = true;
