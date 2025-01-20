@@ -27,6 +27,7 @@ in
       cifs-utils
       xsel
       tmux
+      zsh
     ];
     services.solaar = {
 			enable = true;
