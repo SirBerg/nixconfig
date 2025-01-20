@@ -38,7 +38,7 @@
   system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   services.flatpak.enable = true;
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;

@@ -29,6 +29,7 @@ in
       tmux
       zsh
     ];
+    users.defaultUserShell = pkgs.zsh;
     services.solaar = {
 			enable = true;
 			window = "hide";
