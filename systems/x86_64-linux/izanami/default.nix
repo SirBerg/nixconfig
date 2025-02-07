@@ -34,6 +34,7 @@
     virt.docker.enable = true;
     virt.waydroid.enable = true;
     display.nvidia.enable = true;
+    sound.enable = true;
   };
   system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   services.flatpak.enable = true;
