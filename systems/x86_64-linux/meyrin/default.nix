@@ -41,9 +41,10 @@
         isSudoUser = false;
       };
     };
+    standard.config.enable = true;
   };
   services.flatpak.enable = true;
-  system.nixos.label = "voyager";
+  #system.nixos.label = "voyager";
   services.resolved.enable = true;
   #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   

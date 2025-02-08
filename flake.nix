@@ -32,6 +32,8 @@
 	    systems.hosts.meyrin.specialArgs = {inherit (inputs) self;};
 	    systems.hosts.vmware.specialArgs = {inherit (inputs) self;};
 	    systems.hosts.izanami.specialArgs =  {inherit (inputs) self;};
+	    systems.hosts.malahayati.specialArgs = {inherit (inputs) self;};
+	    systems.hosts.nebula.specialArgs = {inherit (inputs) self;};
 	    systems.modules.nixos = with inputs; [
 		    Solaar.nixosModules.default
 	    ];
