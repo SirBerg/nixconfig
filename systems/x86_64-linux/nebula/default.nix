@@ -37,6 +37,10 @@
     # Sets system labels and other basic configurations
     config.standard.enable = true;
   };
+  services.resolved.enable = true;
 
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   system.stateVersion = "24.05"; # Did you read the comment?
 }
