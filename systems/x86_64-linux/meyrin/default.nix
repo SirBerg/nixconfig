@@ -19,6 +19,7 @@
       utils.extended.enable = true;
       development.enable = true;
       steam.enable = true;
+      utils.gui.enable = true;
     };
     hardware.bluetooth.enable = true;
     virt.docker.enable = true;

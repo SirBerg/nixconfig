@@ -17,6 +17,7 @@
       steam.enable = true;
       development.enable = true;
       utils.extended.enable = true;
+      utils.gui.enable = true;
     };
     users = {
       berg = {

@@ -7,10 +7,9 @@
   ];
 
   boerg = {
-    shell.zsh.enable = true;
-    locale.name = "en_DE";
+    config.standard.enable = true;
     services = {
-
+        ssh.enable = true;
     };
     users = {
       "boerg" = {
@@ -23,11 +22,8 @@
         ];
       };
     };
-    tools = {
-      nvim.enable = true;
-      tmux.enable = true;
-      cliTools.enable = true;
+    packages = {
+        common.enable = true;
     };
-    network.enable = true;
   };
 }
