@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -18,9 +18,10 @@
       fsType = "ext4";
     };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/4de1e3b7-0352-4d8c-8248-117fc49a47c4";
-      fsType = "btrfs";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/CE2A-2745";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/home" =
@@ -28,15 +29,9 @@
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/CE2A-2745";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  fileSystems."/home/berg/games" =
-    { device = "/dev/disk/by-uuid/180f6cd5-aa0d-4b9f-9cc8-75cb6d05498c";
-      fsType = "ext4";
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/8b86c4d9-cbf1-4053-99e7-d4c98755e7f7";
+      fsType = "btrfs";
     };
 
   swapDevices = [ ];
@@ -47,7 +42,6 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp10s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

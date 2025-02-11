@@ -21,7 +21,7 @@ in
 			jetbrains.datagrip
 			jetbrains.goland
 			jetbrains.phpstorm
-			jetbrains.idea-ultimate
+			#jetbrains.idea-ultimate
 			gcc
 			rustup
 			postman
