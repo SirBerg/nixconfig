@@ -42,6 +42,7 @@
         isSudoUser = false;
       };
     };
+    standard.config.enable = true;
   };
   services.flatpak.enable = true;
   #system.nixos.label = "voyager";

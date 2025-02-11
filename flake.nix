@@ -14,30 +14,28 @@
             url = "github:snowfallorg/lib";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        nur = {
-          url = "github:nix-community/NUR";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
+
     };
 
     # We will handle this in the next section.
     outputs = inputs:
 	inputs.snowfall-lib.mkFlake {
             # You must provide our flake inputs to Snowfall Lib.
-        inherit inputs;
+            inherit inputs;
 		#homes.modules = with inputs; [
 	    #		ags.homeManagerModules.default
 		#];
             # The `src` must be the root of the flake. See configuration
             # in the next section for information on how you can move your
             # Nix files to a separate directory.
-        src = ./.;
-	    systems.hosts.meyrin.specialArgs = {inherit (inputs) self; inherit (inputs) nur;};
-	    systems.hosts.vmware.specialArgs = {inherit (inputs) self; inherit (inputs) nur;};
-	    systems.hosts.izanami.specialArgs =  {inherit (inputs) self; inherit (inputs) nur;};
+            src = ./.;
+	    systems.hosts.meyrin.specialArgs = {inherit (inputs) self;};
+	    systems.hosts.vmware.specialArgs = {inherit (inputs) self;};
+	    systems.hosts.izanami.specialArgs =  {inherit (inputs) self;};
+	    systems.hosts.malahayati.specialArgs = {inherit (inputs) self;};
+	    systems.hosts.nebula.specialArgs = {inherit (inputs) self;};
 	    systems.modules.nixos = with inputs; [
 		    Solaar.nixosModules.default
-		    nur.modules.nixos.default
 	    ];
 	    snowfall = {
                 namespace = "boerg";
@@ -52,7 +50,6 @@
 
 	    overlays = with inputs; [
 		    hyprpanel.overlay
-		    nur.overlays.default
 	    ];
         };
 }

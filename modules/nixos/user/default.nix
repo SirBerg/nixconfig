@@ -84,6 +84,10 @@ in
               type = bool;
               default = false;
             };
+            isDockerUser = mkOption {
+              type = bool;
+              default = false;
+            };
             shell = mkOption {
               type = nullOr (shellPackage);
               default = null;
