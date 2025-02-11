@@ -4,15 +4,19 @@
         extra-substituters = [
             # Community cache
             "https://nix-community.cachix.org"
-            # Own cache
             "https://attic.holypenguin.net/holynix"
+            #Own cache
+            "https://cache.boerg.co"
+            #Own cache internal
+            "https://attic.naibu.boerg.co"
         ];
         extra-trusted-public-keys = [
             # nix community's cache server public key
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
 
-            # own cache
             "holynix:Ucr2JJ5xLEy4hElI/SToX5klNe4I3wKgVIa2+b3lmYo="
+
+            "boerg:YGQg7krTwrl7UO77lLoWevtV5Cq9F4pubjoGmDEoqo0="
         ];
     };
     inputs = {
