@@ -43,13 +43,14 @@
         isSudoUser = false;
       };
     };
-    standard.config.enable = true;
+    config.standard.enable = true;
+    virt.libvirt.enable = true;
   };
   services.flatpak.enable = true;
   #system.nixos.label = "voyager";
   services.resolved.enable = true;
   programs.zsh.enable = true;
-  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
+  #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

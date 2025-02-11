@@ -40,11 +40,6 @@
 
   services.flatpak.enable = true;
   programs.zsh.enable = true;
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.efi.canTouchEfiVariables = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   fonts.fontconfig.enable = true;
   # Configure network proxy if necessary
