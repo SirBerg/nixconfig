@@ -1,14 +1,13 @@
 {
-
     nixConfig = {
         extra-substituters = [
             # Community cache
             "https://nix-community.cachix.org"
             "https://attic.holypenguin.net/holynix"
             #Own cache
-            "https://cache.boerg.co"
+            "https://cache.boerg.co/boerg"
             #Own cache internal
-            "https://attic.naibu.boerg.co"
+            "https://attic.naibu.boerg.co/boerg"
         ];
         extra-trusted-public-keys = [
             # nix community's cache server public key
