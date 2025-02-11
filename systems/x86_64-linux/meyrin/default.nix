@@ -22,6 +22,7 @@
     };
     hardware.bluetooth.enable = true;
     virt.docker.enable = true;
+    virt.waydroid.enable = true;
     cache.enable = true;
     display = {
       plasma.enable = true;
@@ -43,9 +44,10 @@
     };
   };
   services.flatpak.enable = true;
-  system.nixos.label = "voyager";
+  #system.nixos.label = "voyager";
   services.resolved.enable = true;
-  #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
+  programs.zsh.enable = true;
+  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
   
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

@@ -19,6 +19,7 @@ in
 			spotify
 			bluetuith
 			zsh
+			ausweisapp
 		];
 		boerg.packages.browser.firefox.enable = true;
 		boerg.packages.browser.chromium.enable = true;

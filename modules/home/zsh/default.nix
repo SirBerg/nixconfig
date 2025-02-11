@@ -13,7 +13,6 @@ in
 		enableCompletion = true;
 		autosuggestion.enable = true;
 		syntaxHighlighting.enable = true;
-
 		shellAliases = {
 			update = "sudo nixos-rebuild switch";
 			clean = "sudo nix store gc";
@@ -32,5 +31,8 @@ in
 			theme = "robbyrussell";
 		};
 	  };
+	  home.sessionPath = [
+	    "/home/berg/.bun/bin:$PATH"
+	  ];
   };
 }

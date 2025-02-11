@@ -20,6 +20,8 @@ in
 			jetbrains.jdk
 			jetbrains.datagrip
 			jetbrains.goland
+			jetbrains.phpstorm
+			jetbrains.idea-ultimate
 			gcc
 			rustup
 			postman
@@ -33,6 +35,8 @@ in
 			bun
 			jetbrains.goland
 			vscode
+			netbeans
+			bluej
 		];
 
 		services.solaar = {

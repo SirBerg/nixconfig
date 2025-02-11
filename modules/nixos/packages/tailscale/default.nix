@@ -21,7 +21,5 @@ in
 		services.tailscale.useRoutingFeatures = "both";
 		networking.firewall.trustedInterfaces = [  "tailscale0" ];
 		networking.firewall.checkReversePath = "loose";
-
-
 	};
 }
