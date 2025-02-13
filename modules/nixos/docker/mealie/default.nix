@@ -39,9 +39,9 @@ in
     ];
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.traefik.entryPoints" = "https";
-      "traefik.http.routers.traefik.rule" = "Host(`meals.naibu.boerg.co`)";
-      "traefik.http.services.traefik.loadbalancer.server.port" = "9000";
+      "traefik.http.routers.mealie.entryPoints" = "https";
+      "traefik.http.routers.mealie.rule" = "Host(`meals.naibu.boerg.co`)";
+      "traefik.http.services.mealie.loadbalancer.server.port" = "9000";
     };
     dependsOn = [
       "mealie-postgres"
