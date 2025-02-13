@@ -7,7 +7,7 @@
             #Own cache
             "https://cache.boerg.co/boerg"
             #Own cache internal
-            "https://attic.naibu.boerg.co/boerg"
+            #"https://attic.naibu.boerg.co/boerg"
         ];
         extra-trusted-public-keys = [
             # nix community's cache server public key
