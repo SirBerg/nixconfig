@@ -68,6 +68,7 @@
             systems.hosts.malahayati.specialArgs = {inherit (inputs) self;};
             systems.hosts.nebula.specialArgs = {inherit (inputs) self;};
             systems.hosts.sundance.specialArgs = {inherit (inputs) self;};
+
             # To build sundance use this command:
             # nix build .#systems.hosts.sundance.config.system.build.qcow-efi
             systems.hosts.sundance.modules = with inputs; [

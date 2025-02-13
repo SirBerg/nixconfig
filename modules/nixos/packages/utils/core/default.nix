@@ -28,6 +28,7 @@ in
       xsel
       tmux
       zsh
+      compose2nix
     ];
 
     users.defaultUserShell = pkgs.zsh;

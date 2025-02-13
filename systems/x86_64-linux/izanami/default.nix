@@ -36,6 +36,16 @@
     virt.waydroid.enable = true;
     display.nvidia.enable = true;
     config.standard.enable = true;
+    docker = {
+        containers = {
+            traefik = {
+                enable = true;
+            };
+            mealie = {
+                enable = true;
+            };
+        };
+    };
   };
 
   services.flatpak.enable = true;

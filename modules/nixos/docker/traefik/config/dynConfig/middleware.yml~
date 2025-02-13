@@ -1,0 +1,73 @@
+http:
+  middlewares:
+    securityHeaders:
+      headers:
+        customResponseHeaders:
+          X-Robots-Tag: "noindex,nofollow"
+          server: ""
+          X-Forwarded-Proto: "https"
+        sslProxyHeaders:
+          X-Forwarded-Proto: https
+        referrerPolicy: "strict-origin-when-cross-origin"
+        hostsProxyHeaders:
+          - "X-Forwarded-Host"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        accessControlAllowMethods:
+          - OPTION
+          - POST
+          - GET
+          - PUT
+          - DELETE
+        accessControlAllowHeaders:
+          - "*"
+        accessControlAllowOriginList:
+          - "*"
+        accessControlMaxAge: 100
+        addVaryHeader: true
+        contentTypeNosniff: true
+        browserXssFilter: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsSeconds: 63072000
+        stsPreload: true
+
+    pdf-sablier:
+      plugin:
+        sablier:
+          group: pdf
+          dynamic:
+            displayName: StirlingPDF
+            showDetails: "true"
+          sablierUrl: http://sablier:10000
+          sessionDuration: 15m
+
+    hb-handbrake:
+      plugin:
+        sablier:
+          group: hb
+          dynamic:
+            displayName: Handbrake
+            showDetails: "true"
+          sablierUrl: http://sablier:10000
+          sessionDuration: 12h
+
+    gm-sablier:
+      plugin:
+        sablier:
+          group: gm
+          dynamic:
+            displayName: Guacamole
+            showDetails: "true"
+          sablierUrl: http://sablier:10000
+          sessionDuration: 60m
+
+    jf-sablier:
+      plugin:
+        sablier:
+          group: jf
+          dynamic:
+            displayName: Jellyseerr
+            showDetails: "true"
+          sablierUrl: http://sablier:10000
+          sessionDuration: 10m
