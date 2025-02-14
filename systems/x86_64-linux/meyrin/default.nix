@@ -22,7 +22,6 @@
       utils.gui.enable = true;
     };
     hardware.bluetooth.enable = true;
-    virt.docker.enable = true;
     virt.waydroid.enable = true;
     cache.enable = true;
     display = {
@@ -46,6 +45,7 @@
     config.standard.enable = true;
     virt.libvirt.enable = true;
     docker = {
+        enable = true;
         containers = {
             traefik = {
                 enable = true;

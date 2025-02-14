@@ -1,0 +1,30 @@
+services:
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+    env_file: .env
+    networks:
+      proxy_default:
+    labels:
+      traefik.enable: true
+      traefik.http.routers.traefik.entryPoints: https
+      traefik.http.services.traefik.loadbalancer.server.port: 9100
+      traefik.http.routers.traefik.rule: Host(`stats.${HOST}.naibu.boerg.co`)
+  promtail:
+    image: grafana/promtail:2.9.2
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/log:/var/log:ro
+      - ./promtail:/etc/promtail
+    command: -config.file=/etc/promtail/config.yml
+    env_file: .env
+
+networks:
+  proxy_default:
+    external: true

@@ -34,8 +34,22 @@
         };
     };
     cache.enable = true;
-    virt.docker.enable = true;
     # Sets system labels and other basic configurations
+    docker={
+        enable = true;
+        traefik = {
+            enable = true;
+        };
+        monitoring = {
+            enable = true;
+        };
+        grafana = {
+            enable = true;
+        };
+        adguard = {
+            enable = true;
+        };
+    };
     config.standard.enable = true;
   };
   services.resolved.enable = true;
@@ -43,5 +57,5 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }

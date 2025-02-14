@@ -4,21 +4,21 @@
 with lib;
 with lib.types;
 let
-	cfg = config.boerg.docker.containers.traefik;
+	cfg = config.boerg.docker.containers.monitoring;
 in
 {
-	options.boerg.docker.containers.traefik.enable = mkOption {
-		type = bool;
-		default = false;
+	options.boerg.docker.containers.monitoring.enable = mkOption {
+        type = bool;
+        default = false;
 	};
-
 	config = mkIf cfg.enable {
         boerg.docker.enable = true;
-        systemd.services.traefik = {
+
+        systemd.services.monitoring = {
             enable = true;
             path = [ pkgs.docker-compose pkgs.docker ];
             serviceConfig = {
-                WorkingDirectory = "/etc/nixos/modules/nixos/docker/traefik";
+                WorkingDirectory = "/etc/nixos/modules/nixos/docker/monitoring";
                 Type = "simple";
                 ExecStart = "/run/current-system/sw/bin/docker-compose up";
                 ExecStop = "/run/current-system/sw/bin/docker-compose down";
@@ -37,6 +37,5 @@ in
             # Restart the service if the docker-compose file changes
             restartIfChanged = true;
         };
-
 	};
 }

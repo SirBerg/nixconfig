@@ -4,10 +4,10 @@
 with lib;
 with lib.types;
 let
-	cfg = config.boerg.virt.docker;
+	cfg = config.boerg.docker;
 in
 {
-	options.boerg.virt.docker.enable = mkOption {
+	options.boerg.docker.enable = mkOption {
 		type = bool;
 		default = false;
 	};

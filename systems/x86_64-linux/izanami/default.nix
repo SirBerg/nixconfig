@@ -32,16 +32,19 @@
     };
     cache.enable = true;
     virt.libvirt.enable = true;
-    virt.docker.enable = true;
     virt.waydroid.enable = true;
     display.nvidia.enable = true;
     config.standard.enable = true;
     docker = {
+        enable = true;
         containers = {
             traefik = {
                 enable = true;
             };
-            mealie = {
+            monitoring = {
+                enable = true;
+            };
+            grafana = {
                 enable = true;
             };
         };

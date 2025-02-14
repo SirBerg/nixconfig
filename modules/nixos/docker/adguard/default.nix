@@ -4,21 +4,21 @@
 with lib;
 with lib.types;
 let
-	cfg = config.boerg.docker.containers.traefik;
+	cfg = config.boerg.docker.containers.adguard;
 in
 {
-	options.boerg.docker.containers.traefik.enable = mkOption {
+	options.boerg.docker.containers.adguard.enable = mkOption {
 		type = bool;
 		default = false;
 	};
 
 	config = mkIf cfg.enable {
         boerg.docker.enable = true;
-        systemd.services.traefik = {
+        systemd.services.adguard = {
             enable = true;
             path = [ pkgs.docker-compose pkgs.docker ];
             serviceConfig = {
-                WorkingDirectory = "/etc/nixos/modules/nixos/docker/traefik";
+                WorkingDirectory = "/etc/nixos/modules/nixos/docker/adguard";
                 Type = "simple";
                 ExecStart = "/run/current-system/sw/bin/docker-compose up";
                 ExecStop = "/run/current-system/sw/bin/docker-compose down";

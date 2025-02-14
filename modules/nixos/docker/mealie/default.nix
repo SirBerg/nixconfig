@@ -13,7 +13,7 @@ in
 	};
 
 	config = mkIf cfg.enable {
-        boerg.virt.docker.enable = true;
+        boerg.docker.enable = true;
 
 
   # Containers

@@ -1,0 +1,17 @@
+services:
+  adguard:
+    image: adguard/adguardhome
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    labels:
+      traefik.enable: true
+      traefik.http.routers.traefik.entryPoints: https
+      traefik.http.services.traefik.loadbalancer.server.port: 80
+      traefik.http.routers.traefik.rule: Host(`exodus.naibu.boerg.co`)
+    volumes:
+      - ./work:/opt/adguardhome/work
+      - ./confdir:/opt/adguardhome/conf
+networks:
+  proxy_default:
+    external: true
