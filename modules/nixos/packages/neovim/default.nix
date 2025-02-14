@@ -13,7 +13,7 @@ in
 	config = mkIf cfg.enable {
 		environment.systemPackages = with pkgs;
 		[
-			# Mason dependencies
+			# Mason d("/etc/static/docker/traefik/docker-compose.yml")ependencies
 			go
 			python3
 		];

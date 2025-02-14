@@ -5,6 +5,8 @@ with lib;
 with lib.types;
 let
 	cfg = config.boerg.docker.containers.traefik;
+	hashNewDockerFile = builtins.readFile ./docker-compose.yml;
+	hashOldDockerFile = if builtins.pathExists ./docker-compose.yml.back == true then builtins.readFile ./docker-compose.yml.back else "";
 in
 {
 	options.boerg.docker.containers.traefik.enable = mkOption {
@@ -14,7 +16,8 @@ in
 
 	config = mkIf cfg.enable {
         boerg.virt.docker.enable = true;
-        environment.etc."docker/traefik/docker-compose.yml".source = builtins.toFile "docker-compose.yml" (builtins.readFile ./docker-compose.yml);
+        # Check if the hash of the docker-compose.yml file has changed
+        # and restart the traefik service if it has
         systemd.services.traefik = {
             enable = true;
             path = [ pkgs.docker-compose pkgs.docker ];
@@ -29,10 +32,13 @@ in
             wantedBy = [ "multi-user.target" ];
             after = ["docker.service"];
             requires = ["docker.service"];
+
+            reloadIfChanged = true;
+            reloadTriggers = [builtins.hashFile ./docker-compose.yml];
         };
 
         systemd.services.traefik-watcher = {
-            enable = true;
+            enable = false;
             serviceConfig = {
                 WorkingDirectory = "/etc/nixos/modules/nixos/docker/traefik";
                 Type = "oneshot";
@@ -40,13 +46,6 @@ in
             };
             wantedBy = [ "multi-user.target" ];
         };
-
-#        systemd.paths.traefik-watcher = {
-#            enable = true;
-#            pathConfig = {
-#                PathModified = "/etc/nixos/modules/nixos/docker/traefik/docker-compose.yml";
-#            };
-#            wantedBy = [ "multi-user.target" ];
-#        };
+        environment.etc."nixos/modules/nixos/docker/traefik/docker-compose.yml.back".source = builtins.toFile "docker-compose.yml" (builtins.readFile ./docker-compose.yml);
 	};
 }
