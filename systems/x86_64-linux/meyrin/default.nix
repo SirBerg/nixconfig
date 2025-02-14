@@ -45,6 +45,13 @@
     };
     config.standard.enable = true;
     virt.libvirt.enable = true;
+    docker = {
+        containers = {
+            traefik = {
+                enable = true;
+            };
+        };
+    };
   };
   services.flatpak.enable = true;
   #system.nixos.label = "voyager";
