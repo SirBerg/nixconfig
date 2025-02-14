@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 10s
+  scrape_timeout: 9s
+
+scrape_configs:
+- job_name: malahayati
+  static_configs:
+    - targets: ['stats.malahayati.naibu.boerg.co']
+  tls_config:
+    insecure_skip_verify: true
+- job_name: huygens
+  static_configs:
+    - targets: ['stats.huygens.naibu.boerg.co']
+  tls_config:
+    insecure_skip_verify: true
+- job_name: proxy
+  static_configs:
+    - targets: ["mc-proxy:9100"]
+- job_name: 'blackbox'
+  metrics_path: /probe
+  params:
+    module: [http_2xx] # Look for a HTTP 200 response.
+  static_configs:
+    - targets:
+      - "https://n.vault.naibu.boerg.co"
+      - "https://jelly.naibu.boerg.co"
+      - "http://10.255.0.2:8872"
+      - "https://paper.naibu.boerg.co"
+      - "https://pdf.naibu.boerg.co"
+      - "https://airtrail.naibu.boerg.co"
+      - "https://nextcloud.naibu.boerg.co"
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: blackbox:9115
