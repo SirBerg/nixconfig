@@ -37,18 +37,21 @@
     # Sets system labels and other basic configurations
     docker={
         enable = true;
-        traefik = {
-            enable = true;
+        containers = {
+           traefik = {
+               enable = true;
+           };
+           monitoring = {
+               enable = true;
+           };
+           grafana = {
+               enable = true;
+           };
+           adguard = {
+               enable = true;
+           };
         };
-        monitoring = {
-            enable = true;
-        };
-        grafana = {
-            enable = true;
-        };
-        adguard = {
-            enable = true;
-        };
+
     };
     config.standard.enable = true;
   };
