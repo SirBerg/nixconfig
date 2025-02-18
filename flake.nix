@@ -5,7 +5,7 @@
             "https://nix-community.cachix.org"
             "https://attic.holypenguin.net/holynix"
             #Own cache
-            "https://cache.boerg.co/boerg"
+#            "https://cache.boerg.co/boerg"
             #Own cache internal
             #"https://attic.naibu.boerg.co/boerg"
         ];

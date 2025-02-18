@@ -37,17 +37,6 @@
     config.standard.enable = true;
     docker = {
         enable = true;
-        containers = {
-            traefik = {
-                enable = true;
-            };
-            monitoring = {
-                enable = true;
-            };
-            grafana = {
-                enable = true;
-            };
-        };
     };
   };
 

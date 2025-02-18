@@ -22,6 +22,8 @@ in
 			jetbrains.goland
 			jetbrains.phpstorm
 			jetbrains.idea-ultimate
+			jetbrains.gateway
+			coder
 			gcc
 			rustup
 			postman
