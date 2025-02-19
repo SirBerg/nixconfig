@@ -36,13 +36,14 @@ in
 						vim-gitgutter
 						nvim-tree-lua
 						(nvim-treesitter.withPlugins (p: with p; [ tree-sitter-nix typescript ]))
-						tokyonight-nvim
+						#tokyonight-nvim
 						lsp-zero-nvim
 						nvim-lspconfig
 						nvim-cmp
 						cmp-nvim-lsp
 						mason-lspconfig-nvim
 						mason-tool-installer-nvim
+						vim-monokai-pro
 					];
 				};
 			};

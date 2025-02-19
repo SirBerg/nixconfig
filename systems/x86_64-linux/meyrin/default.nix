@@ -20,6 +20,7 @@
       development.enable = true;
       steam.enable = true;
       utils.gui.enable = true;
+      browser.chromium.enable = true;
     };
     hardware.bluetooth.enable = true;
     virt.waydroid.enable = true;
@@ -49,6 +50,11 @@
         containers = {
             traefik = {
                 enable = true;
+                url = "https://traefik.boerg.co";
+            };
+            grafana = {
+                enable = true;
+                url = "https://grafana.boerg.co";
             };
         };
     };

@@ -14,6 +14,7 @@ in
 		environment.systemPackages = with pkgs;
 		[
             tailscale
+            tail-tray
 		];
 		services.tailscale.enable = true;
 		# To fix dns exit-node issue
