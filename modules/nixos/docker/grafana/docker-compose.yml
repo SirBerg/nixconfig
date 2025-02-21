@@ -59,11 +59,6 @@ services:
       - './prom-data:/prom'
       - './prometheus:/prometheus'
     pid: host
-    labels:
-      traefik.enable: true
-      traefik.http.routers.traefik.entryPoints: https
-      traefik.http.services.traefik.loadbalancer.server.port: 9090
-      traefik.http.routers.traefik.rule: Host(`prometheus.collectors.warmind.naibu.boerg.co`)
     networks:
       grafana_default:
       proxy_default:

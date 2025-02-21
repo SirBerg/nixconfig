@@ -11,7 +11,11 @@ in
 		type = bool;
 		default = false;
 	};
-
+    options.boerg.docker.containers.traefik.url = mkOption {
+        type = str;
+        default = "https://traefik.boerg.co";
+        description = "URL where Traefik will be accessible";
+    };
 	config = mkIf cfg.enable {
         boerg.docker.enable = true;
         systemd.services.traefik = {
@@ -37,6 +41,6 @@ in
             # Restart the service if the docker-compose file changes
             restartIfChanged = true;
         };
-
+        environment.etc."traefik/url".text = cfg.url;
 	};
 }

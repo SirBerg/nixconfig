@@ -19,5 +19,10 @@ in
         bluetuith
     ];
 
+    #Ausweisapp firewall ports
+    networking.firewall = {
+      allowedUDPPorts = [ 24727 ];
+      allowedTCPPorts = [ 24727 ];
+    };
   };
 }
