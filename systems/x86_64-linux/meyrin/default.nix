@@ -52,10 +52,6 @@
                 enable = true;
                 url = "https://traefik.boerg.co";
             };
-            grafana = {
-                enable = true;
-                url = "https://grafana.boerg.co";
-            };
         };
     };
   };

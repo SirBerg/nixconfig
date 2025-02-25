@@ -14,6 +14,9 @@ in
 	config = mkIf cfg.enable {
 		environment.systemPackages = with pkgs;
 		[
+		    s3fs
+		    jq
+		    boerg.volanta
 		];
 		boerg.packages.browser.firefox.enable = true;
 		boerg.packages.neovim.enable = true;
