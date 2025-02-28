@@ -1,27 +1,35 @@
-{appimageTools, fetchurl, lib}:
+{ appimageTools, fetchurl, lib, makeWrapper }:
 let
-    pname = "volanta";
-    version = "1.10.10";
-    description = "Volanta is an easy-to-use smart flight tracker that integrates all your flight data across all major sims.";
-    src = builtins.fetchurl {
-        url = "https://cdn.volanta.app/software/volanta-app/1.10.10-a7ebf1c7/volanta-1.10.10.AppImage";
-        sha256 = "a5d30f0b77e527382e458992fb12a2017590e012ac0f7378f12dbb7635c3b6ea";
-    };
-    appImageContents = appimageTools.extractType1 { inherit pname version src; };
-in
-appimageTools.wrapType2 rec{
+  pname = "volanta";
+  version = "1.10.10";
+  src = fetchurl {
+    url =
+      "https://cdn.volanta.app/software/volanta-app/${version}-a7ebf1c7/volanta-${version}.AppImage";
+    hash = "sha256-pdMPC3flJzguRYmS+xKiAXWQ4BKsD3N48S27djXDtuo=";
+  };
+  appImageContents = appimageTools.extract { inherit pname version src; };
+in appimageTools.wrapType2 rec {
   inherit pname version src;
+
+  nativeBuildInputs = [ makeWrapper ];
+  # Installs the .desktop file to the appropriate location so that it can be found by launchers, etc.
+  # Note: Volanta needs the env variable APPIMAGE=true to be set in order to work at all.
   extraInstallCommands = ''
     install -m 444 -D ${appImageContents}/volanta.desktop $out/share/applications/volanta.desktop
     install -m 444 -D ${appImageContents}/volanta.png \
-          $out/share/icons/hicolor/512x512/apps/volanta.png
+      $out/share/icons/hicolor/1024x1024/apps/volanta.png
     substituteInPlace $out/share/applications/volanta.desktop \
-      --replace-fail 'Exec=AppRun' 'Exec=env APPIMAGE=true ${pname}'
+    --replace-fail 'Exec=AppRun' 'Exec=env APPIMAGE=true ${meta.mainProgram}'
+    wrapProgram $out/bin/volanta \
+            --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
   '';
-    meta = {
-        description = "${description}";
-        homepage = "https://volanta.app/";
-        maintainers = with lib.maintainers; [ SirBerg ];
-        platforms = [ "x86_64-linux" ];
-    };
+  meta = {
+    description =
+      "Easy-to-use smart flight tracker that integrates all your flight data across all major flightsims";
+    homepage = "https://volanta.app/";
+    maintainers = with lib.maintainers; [ SirBerg ];
+    mainProgram = "volanta";
+    platforms = [ "x86_64-linux" ];
+    license = lib.licenses.unfree;
+  };
 }

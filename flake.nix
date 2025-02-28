@@ -38,6 +38,11 @@
           url = "github:nix-community/nixos-generators";
           inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        nixpgk-hammering = {
+            url = "github:jtojnar/nixpkgs-hammering";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = inputs:

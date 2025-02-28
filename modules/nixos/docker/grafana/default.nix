@@ -16,6 +16,11 @@ in
 	    default = "https://warmind.naibu.boerg.co";
 	    description = "The Traefik Label URL of the Grafana instance";
 	};
+	options.boerg.docker.containers.env = mkOption {
+	    type = str;
+	    default = "";
+	    description = "The environment Variables of the Grafana Instance";
+	};
 	config = mkIf cfg.enable {
         boerg.docker.enable = true;
         environment.etc."nixos/modules/nixos/docker/grafana/docker-compose.override.yml".text = ''
