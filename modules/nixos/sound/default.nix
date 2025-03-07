@@ -24,9 +24,9 @@ in
           };
 
           services.pipewire.extraConfig.pipewire."20-pulse-properties.conf" = {
-            "pulse.min.req" = "256/48000";
-            "pulse.min.frag" = "256/48000";
-            "pulse.min.quantum" = "256/48000";
+            "pulse.min.req" = "256/44000";
+            "pulse.min.frag" = "256/44000";
+            "pulse.min.quantum" = "256/44000";
           };
 	};
 }

@@ -16,9 +16,10 @@ in
 		[
 		    s3fs
 		    jq
-		    boerg.volanta
+		    volanta
 		];
 		boerg.packages.browser.firefox.enable = true;
+		boerg.packages.browser.brave.enable = true;
 		boerg.packages.neovim.enable = true;
 		boerg.packages.utils.core.enable = true;
 		boerg.packages.tailscale.enable = true;
