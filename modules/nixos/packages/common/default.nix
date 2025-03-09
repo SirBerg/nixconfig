@@ -17,6 +17,7 @@ in
 		    s3fs
 		    jq
 		    volanta
+			doing
 		];
 		boerg.packages.browser.firefox.enable = true;
 		boerg.packages.browser.brave.enable = true;
