@@ -23,6 +23,7 @@ in
 			jetbrains.phpstorm
 			jetbrains.idea-ultimate
 			jetbrains.gateway
+			jetbrains-toolbox
 			coder
 			gcc
 			rustup
