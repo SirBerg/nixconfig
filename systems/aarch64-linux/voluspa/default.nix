@@ -58,12 +58,14 @@
     config.core.enable = true;
     docker = {
         enable = true;
-        adguard = {
-            enable = true;
-        };
-        traefik = {
-            enable = true;
-            url = "https://traefik.boerg.co";
+        containers = {
+            adguard = {
+                enable = true;
+            };
+            traefik = {
+                enable = true;
+                url = "https://traefik.boerg.co";
+            };
         };
     };
   };
