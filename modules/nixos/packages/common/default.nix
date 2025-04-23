@@ -16,7 +16,6 @@ in
 		[
 		    s3fs
 		    jq
-		    volanta
 			doing
 			libreoffice-qt6
 		];

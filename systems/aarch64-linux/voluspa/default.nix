@@ -42,7 +42,6 @@
   boerg = {
     packages = {
       common.enable = true;
-      development.enable = true;
       utils.extended.enable = true;
     };
     users = {
