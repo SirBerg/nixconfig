@@ -34,10 +34,10 @@ in
     ];
 
     users.defaultUserShell = pkgs.zsh;
-    services.solaar = {
-			enable = true;
-			window = "hide";
-			extraArgs = "--restart-on-wake-up";
-		};
+    #services.solaar = {
+#			enable = true;
+#			window = "hide";
+#			extraArgs = "--restart-on-wake-up";
+#		};
   };
 }

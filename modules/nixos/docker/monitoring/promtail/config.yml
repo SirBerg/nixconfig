@@ -4,10 +4,10 @@ server:
 positions:
   filename: /etc/promtail/positions.yaml
 clients:
-  - url: 'https://loki.collectors.warmind.naibu.boerg.co/loki/api/v1/push'
+  - url: 'http://malahayati:3100/loki/api/v1/push'
     batchsize: 1000
 scrape_configs:
-- job_name: system
+- job_name: voluspa_system
   decompression:
     enabled: true
     initial_delay: 10s
@@ -18,7 +18,7 @@ scrape_configs:
     labels:
       job: varlogs
       __path__: /var/log/**.gz
-- job_name: lastlog
+- job_name: voluspa_lastlog
   decompression:
     enabled: false
   static_configs:
@@ -27,14 +27,14 @@ scrape_configs:
       labels:
         job: lastlog
         __path__: /var/log/test.log
-- job_name: system
+- job_name: voluspa_varlog
   static_configs:
   - targets:
       - localhost
     labels:
       job: varlogs
       __path__: /var/log/*log
-- job_name: containers
+- job_name: voluspa_containers
   static_configs:
   - targets:
       - localhost

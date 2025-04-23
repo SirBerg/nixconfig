@@ -38,20 +38,25 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
+        # Enable networking
+        networking.networkmanager.enable = true;
   boerg = {
     packages = {
       common.enable = true;
-      utils.extended.enable = true;
+      utils.core.enable = true;
+    };
+    services = {
+        ssh.enable = true;
     };
     users = {
-      berg = {
+      "berg" = {
+        isGuiUser = true;
         isSudoUser = true;
-        isKvmUser = true;
-        git = {
-          userName = "SirBerg";
-          userEmail = "benno@boerg.co";
-        };
+        uid = 1000;
+        initialPassword = "boerg";
+        authorizedKeys = [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhIrnXyYZ63yo/Y2XqiPiQ5uOviP6pVYLxx+Iyuo5DjiGsjR/FOG6wWdeTtlpMbEinqFBtq5d3wGqDtQBak9IDsqJ/u9khT7fsQiykrxIxemSv8bCzvXeh9rnFuAA6cjvPwL9Ie7g38W7GHP5aJjLMx6vUiRHafD+5T37uYK2VUhVG8XTbygS4C+k3DOQ36R+whHoLeu0okFhTt6nu2IX2qx/j8kllOwCVq7AjbPAQJmDPvEOVZONHRDSM0XFEiwkdnF0qwtHGzmYARYhL1Tpp/SuSq7EsJvu0UrYl+hJpV+4VbU08M7YsEEwHAQkolKxgJZf6x/A8cliAIoMnrAoZ0a15/GBgadmuqUy1RkR0Lfr5ta4xEriqeYt+uiaZ84hCSVq+k6MX1P0b23ytqdOJXrvjsasDfPuTojvg+pyylZRj2Fz+MlVM3SnEzfvpKGuY7wbVxtg7kcKdL3wXqJZoUoIYGgr1buxO6iLa2784xfUdSK5iu1YA+B2tpxSxSz8="
+        ];
       };
     };
     config.core.enable = true;
@@ -65,7 +70,10 @@
                 enable = true;
                 url = "https://traefik.boerg.co";
             };
-        };
+           monitoring = {
+               enable = true;
+           };
+	};
     };
   };
 

@@ -22,6 +22,7 @@ in
             "log-opts" = {
               "tag" = "{{.Name}}";
             };
+#	    "dns" = ["1.1.1.1" "1.0.0.1"];
           };
         };
         virtualisation.oci-containers.backend = "docker";

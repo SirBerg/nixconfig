@@ -9,13 +9,8 @@ services:
     volumes:
       - '/:/host:ro,rslave'
     env_file: .env
-    networks:
-      proxy_default:
-    labels:
-      traefik.enable: true
-      traefik.http.routers.traefik.entryPoints: https
-      traefik.http.services.traefik.loadbalancer.server.port: 9100
-      traefik.http.routers.traefik.rule: Host(`stats.${HOST}.naibu.boerg.co`)
+    ports:
+      - 9100:9100
   promtail:
     image: grafana/promtail:2.9.2
     volumes:
@@ -24,7 +19,3 @@ services:
       - ./promtail:/etc/promtail
     command: -config.file=/etc/promtail/config.yml
     env_file: .env
-
-networks:
-  proxy_default:
-    external: true
