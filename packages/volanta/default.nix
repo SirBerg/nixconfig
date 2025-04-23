@@ -1,27 +1,26 @@
 { appimageTools, fetchurl, lib, makeWrapper }:
 let
   pname = "volanta";
-  version = "1.10.10";
+  version = "1.10.11";
   src = fetchurl {
     url =
-      "https://cdn.volanta.app/software/volanta-app/${version}-a7ebf1c7/volanta-${version}.AppImage";
-    hash = "sha256-pdMPC3flJzguRYmS+xKiAXWQ4BKsD3N48S27djXDtuo=";
+      "https://cdn.volanta.app/software/volanta-app/${version}-5495eec5/volanta-${version}.AppImage";
+    hash = "sha256-DvAtgLe8eWG9sqxPaZGsk0CZWZci124bu2IFDU5Y1BQ=";
   };
   appImageContents = appimageTools.extract { inherit pname version src; };
 in appimageTools.wrapType2 rec {
   inherit pname version src;
 
   nativeBuildInputs = [ makeWrapper ];
-  # Installs the .desktop file to the appropriate location so that it can be found by launchers, etc.
   # Note: Volanta needs the env variable APPIMAGE=true to be set in order to work at all.
   extraInstallCommands = ''
     install -m 444 -D ${appImageContents}/volanta.desktop $out/share/applications/volanta.desktop
     install -m 444 -D ${appImageContents}/volanta.png \
       $out/share/icons/hicolor/1024x1024/apps/volanta.png
     substituteInPlace $out/share/applications/volanta.desktop \
-    --replace-fail 'Exec=AppRun' 'Exec=env APPIMAGE=true ${meta.mainProgram}'
+      --replace-fail 'Exec=AppRun' 'Exec=env APPIMAGE=true volanta'
     wrapProgram $out/bin/volanta \
-            --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
+      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
   '';
   meta = {
     description =

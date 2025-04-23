@@ -29,6 +29,8 @@ in
       tmux
       zsh
       compose2nix
+      restic
+      rclone
     ];
 
     users.defaultUserShell = pkgs.zsh;

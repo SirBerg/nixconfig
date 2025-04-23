@@ -37,9 +37,11 @@ in
 			bun
 			jetbrains.goland
 			vscode
-			netbeans
+			#netbeans
 			bluej
 			ghidra-bin
+			surrealist
+            (pkgs.jdk21.override { enableJavaFX = true; })
 		];
 
 		services.solaar = {

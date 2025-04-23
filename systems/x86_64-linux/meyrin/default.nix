@@ -49,7 +49,7 @@
         enable = true;
         containers = {
             traefik = {
-                enable = true;
+                enable = false;
                 url = "https://traefik.boerg.co";
             };
         };
@@ -60,7 +60,10 @@
   services.resolved.enable = true;
   programs.zsh.enable = true;
   #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
-  
+      environment.systemPackages = with pkgs;
+        [
+          boerg.f1-multiviewer
+        ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

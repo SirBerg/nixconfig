@@ -18,6 +18,7 @@ in
 		    jq
 		    volanta
 			doing
+			libreoffice-qt6
 		];
 		boerg.packages.browser.firefox.enable = true;
 		boerg.packages.browser.brave.enable = true;
