@@ -32,11 +32,35 @@
       };
     };
     config.core.enable = true;
+    config.standard.enable = true;
+    kubernetes = {
+        enable = true;
+        role = "server";
+        address = "10.124.0.2";
+        init = true;
+    };
     docker = {
         enable = true;
 	};
   };
-
+    networking = {
+      interfaces = {
+        end0 = {
+            ipv4.addresses = [{
+                  address = "10.124.0.2";
+                  prefixLength = 24;
+            }];
+            useDHCP = false;
+        };
+      };
+      defaultGateway = {
+        address = "10.124.0.1";
+        interface = "end0";
+      };
+      nameservers = [
+        "1.1.1.1" "1.0.0.1"
+      ];
+    };
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }
