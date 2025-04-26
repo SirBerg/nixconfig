@@ -43,7 +43,18 @@
         enable = true;
 	};
   };
-
+    networking = {
+      interfaces = {
+        enp1s0.ipv4.addresses = [{
+          address = "10.124.0.2";
+          prefixLength = 24;
+        }];
+      };
+      defaultGateway4 = {
+        address = "10.124.0.1";
+        interface = "enp1s0";
+      };
+    };
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }
