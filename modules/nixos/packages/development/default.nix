@@ -43,6 +43,7 @@ in
 			ghidra-bin
 			surrealist
             (pkgs.jdk21.override { enableJavaFX = true; })
+            kubectl
 		];
 
 		services.solaar = {

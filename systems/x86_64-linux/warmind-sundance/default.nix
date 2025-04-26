@@ -45,10 +45,13 @@
   };
     networking = {
       interfaces = {
-        enp1s0.ipv4.addresses = [{
-          address = "10.124.0.2";
-          prefixLength = 24;
-        }];
+        enp1s0 = {
+            ipv4.addresses = [{
+                  address = "10.124.0.2";
+                  prefixLength = 24;
+            }];
+            useDHCP = false;
+        };
       };
       defaultGateway = {
         address = "10.124.0.1";
