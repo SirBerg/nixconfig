@@ -13,7 +13,7 @@ in
 	};
     options.boerg.kubernetes.role = mkOption {
         type = enum ["server" "agent"];
-        default = "node";
+        default = "agent";
     };
 
     options.boerg.kubernetes.init = mkOption {
