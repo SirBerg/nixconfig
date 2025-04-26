@@ -39,9 +39,11 @@ in
             enable = true;
             role = cfg.role;
             token = "SundanceClusterSecret"; #Change this later ;)
-            serverAddr = "https://10.124.0.2:6443";
             clusterInit = cfg.init;
         };
 
+        #mkIf cfg.init != true {
+        #    services.k3s.serverAddr = "https://10.124.0.2:6443";
+        #};
 	};
 }
