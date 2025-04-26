@@ -33,6 +33,11 @@
     };
     config.core.enable = true;
     config.standard.enable = true;
+    kubernetes = {
+        enable = true;
+        role = "server";
+        address = "10.124.0.2";
+    };
     docker = {
         enable = true;
 	};
