@@ -17,7 +17,6 @@ in
     };
     options.boerg.kubernetes.address = mkOption {
         type = str;
-        required = true;
     };
 	config = mkIf cfg.enable {
         networking.firewall.allowedTCPPorts = [
