@@ -50,10 +50,13 @@
           prefixLength = 24;
         }];
       };
-      defaultGateway4 = {
+      defaultGateway = {
         address = "10.124.0.1";
         interface = "enp1s0";
       };
+      nameservers = [
+        "1.1.1.1" "1.0.0.1"
+      ];
     };
 
   system.stateVersion = "24.11"; # Did you read the comment?
