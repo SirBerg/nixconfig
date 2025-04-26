@@ -35,7 +35,7 @@
     config.standard.enable = true;
     kubernetes = {
         enable = true;
-        role = "server";
+        role = "agent";
         address = "10.124.0.3";
         init = false;
     };
