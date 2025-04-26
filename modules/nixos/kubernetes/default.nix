@@ -15,6 +15,11 @@ in
         type = enum ["server" "node"];
         default = "node";
     };
+
+    options.boerg.kubernetes.init = mkOption {
+        type = bool;
+        default = false;
+    };
     options.boerg.kubernetes.address = mkOption {
         type = str;
     };
@@ -35,6 +40,8 @@ in
             role = cfg.role;
             token = "SundanceClusterSecret"; #Change this later ;)
             serverAddr = "https://10.124.0.2:6443";
+            clusterInit = cfg.init;
         };
+
 	};
 }

@@ -37,6 +37,7 @@
         enable = true;
         role = "server";
         address = "10.124.0.2";
+        init = true;
     };
     docker = {
         enable = true;
