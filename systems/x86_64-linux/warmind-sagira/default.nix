@@ -36,7 +36,7 @@
     kubernetes = {
         enable = true;
         role = "node";
-        address = "10.124.0.3";
+        address = "10.124.0.4";
         init = false;
     };
     docker = {
@@ -48,7 +48,7 @@
         interfaces = {
         enp1s0 = {
             ipv4.addresses = [{
-                  address = "10.124.0.3";
+                  address = "10.124.0.4";
                   prefixLength = 24;
             }];
             useDHCP = false;
