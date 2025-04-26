@@ -7,7 +7,7 @@
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = true;
+  #boot.loader.grub.enable = true;
   # Enables the generation of /boot/extlinux/extlinux.conf
   #boot.loader.generic-extlinux-compatible.enable = true;
 
@@ -32,6 +32,7 @@
       };
     };
     config.core.enable = true;
+    config.standard.enable = true;
     docker = {
         enable = true;
 	};
