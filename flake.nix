@@ -74,7 +74,8 @@
             systems.hosts.nebula.specialArgs = {inherit (inputs) self;};
             systems.hosts.sundance.specialArgs = {inherit (inputs) self;};
             systems.hosts.voluspa.specialArgs = {inherit (inputs) self;};
-
+            systems.hosts.warmind-sundance.specialArgs = {inherit (inputs) self;};
+            systems.hosts.warmind-targe.specialArgs = {inherit (inputs) self;};
             # To build warmind-sundance use this command:
             # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
             systems.hosts.sundance.modules = with inputs; [
