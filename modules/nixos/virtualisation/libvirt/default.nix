@@ -13,6 +13,7 @@ in
 	config = mkIf cfg.enable {
         environment.systemPackages = with pkgs;[
             virt-manager
+            qemu
         ];
         virtualisation.libvirtd = {
             enable = true;
@@ -25,12 +26,15 @@ in
                           packages = [(pkgs.OVMF.override {
                             secureBoot = true;
                             tpmSupport = true;
-                          }).fd];
+                          }).fd
+                          pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd
+                          ];
                     };
             };
         };
+        boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
         users.users.berg = {
-            extraGroups = [ "docker" "libvritd" ];
+            extraGroups = [ "docker" "libvirtd" ];
         };
 	};
 }

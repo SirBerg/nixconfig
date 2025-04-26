@@ -1,4 +1,4 @@
-# Enable Hyprland and enable gpu acceleration
+# Enable Hyprland and enable gpu accelerationConnoisseur
 { options, config, lib, pkgs, inputs, self, ...}:
 
 with lib;
@@ -18,6 +18,7 @@ in
         boot.loader.systemd-boot.enable = true;
         boot.kernelPackages = pkgs.linuxPackages_latest;
         boot.loader.efi.canTouchEfiVariables = true;
+
         # Enable networking
         networking.networkmanager.enable = true;
 

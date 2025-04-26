@@ -4,7 +4,7 @@
 with lib;
 with lib.types;
 let
-	cfg = config.boerg.docker.containers.adguard;
+	cfg = config.boerg.kubernetes;
 in
 {
 	options.boerg.kubernetes.enable = mkOption {
@@ -20,20 +20,16 @@ in
         required = true;
     };
 	config = mkIf cfg.enable {
-        networking.firewall.allowedTCPPorts = {
-            mkIf cf.role == "server" [
-                6443
-            ];
+        networking.firewall.allowedTCPPorts = [
+            6443
             2379
             2380
             10250
         ];
-        networking.firewall.allowedUDPPorts = {
+        networking.firewall.allowedUDPPorts = [
             8472
-        };
+        ];
 
-        services.k3s.enable = true;
-        services.k3s.role = cfg.mode;
 
         services.k3s = {
             enable = true;

@@ -75,8 +75,8 @@
             systems.hosts.sundance.specialArgs = {inherit (inputs) self;};
             systems.hosts.voluspa.specialArgs = {inherit (inputs) self;};
 
-            # To build sundance use this command:
-            # nix build .#systems.hosts.sundance.config.system.build.qcow-efi
+            # To build warmind-sundance use this command:
+            # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
             systems.hosts.sundance.modules = with inputs; [
                 nixos-generators.nixosModules.qcow-efi
             ];

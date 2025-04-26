@@ -1,18 +1,27 @@
-{ pkgs, lib, config, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
-    ./hardware.nix
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
+  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+  boot.loader.grub.enable = false;
+  # Enables the generation of /boot/extlinux/extlinux.conf
+  boot.loader.generic-extlinux-compatible.enable = true;
+
+  networking.networkmanager.enable = true;
   boerg = {
-    config.standard.enable = true;
+    packages = {
+      common.enable = true;
+      utils.core.enable = true;
+    };
     services = {
         ssh.enable = true;
     };
     users = {
-      "boerg" = {
+      "berg" = {
         isGuiUser = true;
         isSudoUser = true;
         uid = 1000;
@@ -22,8 +31,12 @@
         ];
       };
     };
-    packages = {
-        common.enable = true;
-    };
+    config.core.enable = true;
+    docker = {
+        enable = true;
+	};
   };
+
+
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
