@@ -42,6 +42,9 @@
         enable = true;
 	};
   };
+  services.k3s.extraFlags = [
+                  "--flannel-backend=host-gw"
+  ];
     networking = {
       interfaces = {
         end0 = {
