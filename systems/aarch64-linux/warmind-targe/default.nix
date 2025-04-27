@@ -43,6 +43,9 @@
 	};
   };
   services.k3s.serverAddr = "https://10.124.0.2:6443";
+    services.k3s.extraFlags = [
+                    "--flannel-backend=host-gw"
+    ];
     networking = {
         interfaces = {
         end0 = {
