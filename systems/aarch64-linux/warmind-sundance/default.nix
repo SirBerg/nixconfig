@@ -32,7 +32,6 @@
       };
     };
     config.core.enable = true;
-    config.standard.enable = true;
     kubernetes = {
         enable = true;
         role = "server";

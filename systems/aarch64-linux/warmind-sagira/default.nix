@@ -32,11 +32,10 @@
       };
     };
     config.core.enable = true;
-    config.standard.enable = true;
     kubernetes = {
         enable = true;
         role = "server";
-        address = "10.124.0.3";
+        address = "10.124.0.4";
         init = false;
     };
     docker = {
@@ -46,9 +45,9 @@
   services.k3s.serverAddr = "https://10.124.0.2:6443";
     networking = {
         interfaces = {
-        enp1s0 = {
+        end0 = {
             ipv4.addresses = [{
-                  address = "10.124.0.3";
+                  address = "10.124.0.4";
                   prefixLength = 24;
             }];
             useDHCP = false;
@@ -56,7 +55,7 @@
         };
         defaultGateway = {
             address = "10.124.0.1";
-            interface = "enp1s0";
+            interface = "end0";
         };
         nameservers = [
             "1.1.1.1" "1.0.0.1"
