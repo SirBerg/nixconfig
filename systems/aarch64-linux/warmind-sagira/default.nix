@@ -7,9 +7,9 @@
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  #boot.loader.grub.enable = true;
+  boot.loader.grub.enable = true;
   # Enables the generation of /boot/extlinux/extlinux.conf
-  #boot.loader.generic-extlinux-compatible.enable = true;
+  boot.loader.generic-extlinux-compatible.enable = true;
 
   networking.networkmanager.enable = true;
   boerg = {
@@ -36,7 +36,7 @@
         enable = true;
         role = "server";
         address = "10.124.0.4";
-        init = false;
+        init = true;
     };
     docker = {
         enable = true;
