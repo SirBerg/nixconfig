@@ -40,6 +40,10 @@ in
             role = cfg.role;
             token = "SundanceClusterSecret"; #Change this later ;)
             clusterInit = cfg.init;
+            extraFlags = [
+                "--flannel-backend=host-gw"
+
+            ];
         };
 
         #mkIf cfg.init != true {
