@@ -36,7 +36,7 @@
         enable = true;
         role = "agent";
         address = "10.124.0.5";
-        init = true;
+        init = false;
     };
     docker = {
         enable = true;
