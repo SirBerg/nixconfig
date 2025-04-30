@@ -77,6 +77,7 @@
             systems.hosts.warmind-sundance.specialArgs = {inherit (inputs) self;};
             systems.hosts.warmind-targe.specialArgs = {inherit (inputs) self;};
             systems.hosts.warmind-sagira.specialArgs = {inherit (inputs) self;};
+            systems.hosts.warmind-glint.specialArgs = {inherit (inputs) self;};
 
             # To build warmind-sundance use this command:
             # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
