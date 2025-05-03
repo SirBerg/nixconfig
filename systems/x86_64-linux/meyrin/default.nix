@@ -63,6 +63,7 @@
       environment.systemPackages = with pkgs;
         [
           boerg.f1-multiviewer
+          boerg.volanta
         ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
