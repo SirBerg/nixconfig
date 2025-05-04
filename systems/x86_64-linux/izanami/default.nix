@@ -35,6 +35,7 @@
     virt.waydroid.enable = true;
     display.nvidia.enable = true;
     config.standard.enable = true;
+    services.hydra.enable = true;
     docker = {
         enable = true;
     };
