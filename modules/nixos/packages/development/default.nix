@@ -44,6 +44,7 @@ in
 			surrealist
             (pkgs.jdk21.override { enableJavaFX = true; })
             kubectl
+            scenebuilder
 		];
 
 		services.solaar = {
