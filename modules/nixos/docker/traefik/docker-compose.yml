@@ -1,0 +1,26 @@
+services:
+  overlord:
+    restart: unless-stopped
+    image: traefik:latest
+    volumes:
+      - ./config:/etc/traefik/
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      proxy_default:
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    env_file: .env
+    labels:
+      traefik.enable: true
+      traefik.http.routers.traefik.entryPoints: https
+      traefik.http.services.traefik.loadbalancer.server.port: 8080
+      traefik.http.routers.traefik.rule: Host(`traefik.dublin.rodehack.net`)
+networks:
+  proxy_default:
+    name: proxy_default
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.123.0.0/24

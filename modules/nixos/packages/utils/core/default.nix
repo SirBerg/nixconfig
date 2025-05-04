@@ -27,11 +27,17 @@ in
       cifs-utils
       xsel
       tmux
+      zsh
+      compose2nix
+      restic
+      rclone
     ];
-    services.solaar = {
-			enable = true;
-			window = "hide";
-			extraArgs = "--restart-on-wake-up";
-		};
+
+    users.defaultUserShell = pkgs.zsh;
+    #services.solaar = {
+#			enable = true;
+#			window = "hide";
+#			extraArgs = "--restart-on-wake-up";
+#		};
   };
 }

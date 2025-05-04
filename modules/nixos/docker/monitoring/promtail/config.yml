@@ -1,0 +1,62 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+positions:
+  filename: /etc/promtail/positions.yaml
+clients:
+  - url: 'http://malahayati:3100/loki/api/v1/push'
+    batchsize: 1000
+scrape_configs:
+- job_name: voluspa_system
+  decompression:
+    enabled: true
+    initial_delay: 10s
+    format: gz
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: varlogs
+      __path__: /var/log/**.gz
+- job_name: voluspa_lastlog
+  decompression:
+    enabled: false
+  static_configs:
+    - targets:
+      - localhost
+      labels:
+        job: lastlog
+        __path__: /var/log/test.log
+- job_name: voluspa_varlog
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: varlogs
+      __path__: /var/log/*log
+- job_name: voluspa_containers
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: containerlogs
+      cluster: multipass-cluster
+      __path__: /var/lib/docker/containers/*/*log
+
+  # --log-opt tag="{{.Name}}"
+  pipeline_stages:
+
+  - json:
+      expressions:
+        stream: stream
+        attrs: attrs
+        tag: attrs.tag
+
+  - regex:
+      expression: (?P<container_name>(?:[^|]*[^|]))
+      source: "tag"
+
+  - labels:
+      #tag:
+      stream:
+      container_name:

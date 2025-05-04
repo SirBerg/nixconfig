@@ -17,6 +17,7 @@
       steam.enable = true;
       development.enable = true;
       utils.extended.enable = true;
+      utils.gui.enable = true;
     };
     users = {
       berg = {
@@ -29,19 +30,19 @@
         };
       };
     };
+    cache.enable = true;
     virt.libvirt.enable = true;
-    virt.docker.enable = true;
     virt.waydroid.enable = true;
     display.nvidia.enable = true;
+    config.standard.enable = true;
+    services.hydra.enable = true;
+    docker = {
+        enable = true;
+    };
   };
-  system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
+
   services.flatpak.enable = true;
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.efi.canTouchEfiVariables = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   fonts.fontconfig.enable = true;
   # Configure network proxy if necessary
@@ -53,20 +54,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
   ### Move to nixos option!!!
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -88,7 +76,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  #hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -105,17 +93,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.berg = {
-    isNormalUser = true;
-    description = "berg";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kate
-    #  thunderbird
-    ];
-  };
 
   # Install firefox.
   programs.firefox.enable = true;

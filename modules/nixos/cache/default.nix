@@ -20,7 +20,6 @@
               "https://nix-community.cachix.org"
 
               # own cache
-              "https://attic.holypenguin.net/holynix"
 
              # Boerg
              "https://cache.boerg.co/boerg"
@@ -30,7 +29,6 @@
               "https://nix-community.cachix.org"
 
               # own cache
-              "https://attic.holypenguin.net/holynix"
 
              # Boerg
              "https://cache.boerg.co/boerg"
@@ -40,9 +38,8 @@
               "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
 
               # own cache
-              "holynix:Ucr2JJ5xLEy4hElI/SToX5klNe4I3wKgVIa2+b3lmYo="
              # Boerg
-             "boerg:lB5q12LbdsiDdUgG6erYt6WkMHnqeDUiC3WBTFV8Asc="
+             "boerg:HWon/EZ25oRtGkW5WLIHcJOs2RxcW+TVKyy1LaYJFrY="
             ];
           };
       	};

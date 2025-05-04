@@ -14,6 +14,7 @@ in
 		environment.systemPackages = with pkgs;
 		[
             tailscale
+            tail-tray
 		];
 		services.tailscale.enable = true;
 		# To fix dns exit-node issue
@@ -21,7 +22,5 @@ in
 		services.tailscale.useRoutingFeatures = "both";
 		networking.firewall.trustedInterfaces = [  "tailscale0" ];
 		networking.firewall.checkReversePath = "loose";
-
-
 	};
 }

@@ -20,6 +20,11 @@ in
 			jetbrains.jdk
 			jetbrains.datagrip
 			jetbrains.goland
+			jetbrains.phpstorm
+			jetbrains.idea-ultimate
+			jetbrains.gateway
+			jetbrains-toolbox
+			coder
 			gcc
 			rustup
 			postman
@@ -33,6 +38,13 @@ in
 			bun
 			jetbrains.goland
 			vscode
+			#netbeans
+			bluej
+			ghidra-bin
+			surrealist
+            (pkgs.jdk21.override { enableJavaFX = true; })
+            kubectl
+            scenebuilder
 		];
 
 		services.solaar = {

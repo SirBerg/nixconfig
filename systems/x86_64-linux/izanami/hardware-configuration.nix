@@ -8,35 +8,30 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/28dd4c26-5a2d-4222-b8c4-6c2112a7de25";
-      fsType = "ext4";
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/4de1e3b7-0352-4d8c-8248-117fc49a47c4";
+    { device = "/dev/disk/by-uuid/64935ec4-b07d-4d38-a096-20e4e34077bd";
       fsType = "btrfs";
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/69de5b27-15bf-4b68-856b-9cb687ae7c17";
-      fsType = "ext4";
-    };
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/CE2A-2745";
+    { device = "/dev/disk/by-uuid/A9C1-E58A";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/home/berg/games" =
-    { device = "/dev/disk/by-uuid/180f6cd5-aa0d-4b9f-9cc8-75cb6d05498c";
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/c79b975d-48f4-4a31-af2d-a30ebfe6c956";
       fsType = "ext4";
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/212203a9-f11f-4337-bfc0-e8f7a6592587";
+      fsType = "btrfs";
     };
 
   swapDevices = [ ];
@@ -47,7 +42,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp10s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp18s0f3u2u3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

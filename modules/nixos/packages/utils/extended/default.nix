@@ -18,7 +18,6 @@ in
       coolercontrol.coolercontrol-ui-data
       rclone
       clinfo
-      rclone
       networkmanagerapplet
       nodejs
       wine64

@@ -19,9 +19,11 @@
       utils.extended.enable = true;
       development.enable = true;
       steam.enable = true;
+      utils.gui.enable = true;
+      browser.chromium.enable = true;
     };
     hardware.bluetooth.enable = true;
-    virt.docker.enable = true;
+    virt.waydroid.enable = true;
     cache.enable = true;
     display = {
       plasma.enable = true;
@@ -41,12 +43,28 @@
         isSudoUser = false;
       };
     };
+    config.standard.enable = true;
+    virt.libvirt.enable = true;
+    docker = {
+        enable = true;
+        containers = {
+            traefik = {
+                enable = false;
+                url = "https://traefik.boerg.co";
+            };
+        };
+    };
   };
   services.flatpak.enable = true;
-  system.nixos.label = "voyager";
+  #system.nixos.label = "voyager";
   services.resolved.enable = true;
+  programs.zsh.enable = true;
   #system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
-  
+      environment.systemPackages = with pkgs;
+        [
+          boerg.f1-multiviewer
+          boerg.volanta
+        ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
