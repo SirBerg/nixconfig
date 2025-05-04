@@ -18,6 +18,7 @@ in
             notificationSender = "hydra@localhost";
             buildMachinesFiles = [];
             useSubstitutes = true;
+            package = pkgs.hydra;
         };
 	};
 }
