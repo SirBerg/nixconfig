@@ -13,7 +13,7 @@ in
 		default = false;
 	};
 	config = mkIf cfg.enable {
-        system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
+        system.nixos.label = if (self ? rev) then "master.${self.shortRev}" else "master-dirty.${self.dirtyShortRev}";
         # Bootloader.
         boot.loader.systemd-boot.enable = true;
         boot.kernelPackages = pkgs.linuxPackages_latest;
