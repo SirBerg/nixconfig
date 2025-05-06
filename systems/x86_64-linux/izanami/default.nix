@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -32,12 +33,12 @@
     };
     cache.enable = true;
     virt.libvirt.enable = true;
-    virt.waydroid.enable = true;
+    virt.waydroid.enable = false;
     display.nvidia.enable = true;
     config.standard.enable = true;
     services.hydra.enable = true;
     docker = {
-        enable = true;
+      enable = true;
     };
   };
 

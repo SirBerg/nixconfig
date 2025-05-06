@@ -8,7 +8,8 @@ let
     hash = "sha256-R9HnkrXeWCQwaoca+C/pddSL9pt5eZXsOpv1uMB6sDY=";
   };
   appImageContents = appimageTools.extract { inherit pname version src; };
-in appimageTools.wrapType2 rec {
+in
+appimageTools.wrapType2 rec {
   inherit pname version src;
 
   nativeBuildInputs = [ makeWrapper ];

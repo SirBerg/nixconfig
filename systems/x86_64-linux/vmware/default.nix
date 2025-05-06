@@ -6,32 +6,33 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   boerg = {
-	packages = {
-		laptop.enable = true;
-	};
-	display = {
-		laptop.enable = true;
-	};
-	users = {
-		berg = {
-			isGuiUser = true;
-			isSudoUser = true;
-			isKvmUser = true;
-			git = {
-				userName = "SirBerg";
-				userEmail = "benno@boerg.co";
-			};
-		};
-	};
+    packages = {
+      laptop.enable = true;
+    };
+    display = {
+      laptop.enable = true;
+    };
+    users = {
+      berg = {
+        isGuiUser = true;
+        isSudoUser = true;
+        isKvmUser = true;
+        git = {
+          userName = "SirBerg";
+          userEmail = "benno@boerg.co";
+        };
+      };
+    };
   };
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-# Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -109,7 +110,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 

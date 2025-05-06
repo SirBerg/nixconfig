@@ -65,9 +65,9 @@ let
   };
 in
 {
-  options.boerg= {
+  options.boerg = {
     users = mkOption {
-      default = {};
+      default = { };
       type = attrsOf (submodule (
         { name, config, options, ... }:
         {
@@ -128,7 +128,7 @@ in
     };
   };
 
-  config = mkIf (if cfg != {} then true else false) {
+  config = mkIf (if cfg != { } then true else false) {
     # Create user
     users.users = mkMerge [ (mapAttrs mkUser cfg) { root.hashedPassword = "!"; } ];
 

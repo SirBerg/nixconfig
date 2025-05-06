@@ -1,8 +1,8 @@
-{ options, config, lib, pkgs, ...}:
+{ options, config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;
-let 
+let
   cfg = config.boerg.packages.utils.core;
 in
 {
@@ -35,9 +35,9 @@ in
 
     users.defaultUserShell = pkgs.zsh;
     #services.solaar = {
-#			enable = true;
-#			window = "hide";
-#			extraArgs = "--restart-on-wake-up";
-#		};
+    #			enable = true;
+    #			window = "hide";
+    #			extraArgs = "--restart-on-wake-up";
+    #		};
   };
 }

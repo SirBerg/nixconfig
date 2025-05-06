@@ -1,8 +1,8 @@
-{ options, config, lib, pkgs, ...}:
+{ options, config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;
-let 
+let
   cfg = config.boerg.packages.steam;
 in
 {

@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -38,15 +39,15 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-        # Enable networking
-        networking.networkmanager.enable = true;
+  # Enable networking
+  networking.networkmanager.enable = true;
   boerg = {
     packages = {
       common.enable = true;
       utils.core.enable = true;
     };
     services = {
-        ssh.enable = true;
+      ssh.enable = true;
     };
     users = {
       "berg" = {
@@ -61,19 +62,19 @@
     };
     config.core.enable = true;
     docker = {
-        enable = true;
-        containers = {
-            adguard = {
-                enable = true;
-            };
-            traefik = {
-                enable = true;
-                url = "https://traefik.boerg.co";
-            };
-           monitoring = {
-               enable = true;
-           };
-	};
+      enable = true;
+      containers = {
+        adguard = {
+          enable = true;
+        };
+        traefik = {
+          enable = true;
+          url = "https://traefik.boerg.co";
+        };
+        monitoring = {
+          enable = true;
+        };
+      };
     };
   };
 

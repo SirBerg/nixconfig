@@ -2,7 +2,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -18,7 +19,7 @@
       utils.core.enable = true;
     };
     services = {
-        ssh.enable = true;
+      ssh.enable = true;
     };
     users = {
       "berg" = {
@@ -33,37 +34,38 @@
     };
     config.core.enable = true;
     kubernetes = {
-        enable = true;
-        role = "server";
-        address = "10.124.0.4";
-        init = true;
+      enable = true;
+      role = "server";
+      address = "10.124.0.4";
+      init = true;
     };
     docker = {
-        enable = true;
-	};
+      enable = true;
+    };
   };
   services.k3s.serverAddr = "https://10.124.0.2:6443";
-    services.k3s.extraFlags = [
-                    "--flannel-backend=host-gw"
-    ];
-    networking = {
-        interfaces = {
-        end0 = {
-            ipv4.addresses = [{
-                  address = "10.124.0.4";
-                  prefixLength = 24;
-            }];
-            useDHCP = false;
-        };
-        };
-        defaultGateway = {
-            address = "10.124.0.1";
-            interface = "end0";
-        };
-        nameservers = [
-            "1.1.1.1" "1.0.0.1"
-        ];
+  services.k3s.extraFlags = [
+    "--flannel-backend=host-gw"
+  ];
+  networking = {
+    interfaces = {
+      end0 = {
+        ipv4.addresses = [{
+          address = "10.124.0.4";
+          prefixLength = 24;
+        }];
+        useDHCP = false;
+      };
     };
+    defaultGateway = {
+      address = "10.124.0.1";
+      interface = "end0";
+    };
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
+  };
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }

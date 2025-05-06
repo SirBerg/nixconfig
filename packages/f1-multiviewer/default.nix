@@ -1,27 +1,27 @@
-{
-  stdenvNoCC,
-  fetchurl,
-  lib,
-  makeWrapper,
-  autoPatchelfHook,
-  dpkg,
-  alsa-lib,
-  at-spi2-atk,
-  cairo,
-  cups,
-  dbus,
-  expat,
-  ffmpeg,
-  glib,
-  gtk3,
-  libdrm,
-  libudev0-shim,
-  libxkbcommon,
-  mesa,
-  nspr,
-  nss,
-  pango,
-  xorg,
+{ stdenvNoCC
+, fetchurl
+, lib
+, makeWrapper
+, autoPatchelfHook
+, dpkg
+, alsa-lib
+, at-spi2-atk
+, cairo
+, cups
+, dbus
+, expat
+, ffmpeg
+, glib
+, gtk3
+, libdrm
+, libudev0-shim
+, libxkbcommon
+, mesa
+, nspr
+, nss
+, pango
+, xorg
+,
 }:
 let
   id = "243289393";

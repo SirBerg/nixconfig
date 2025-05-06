@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ...}:
+{ options, config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;
@@ -11,12 +11,12 @@ in
     default = false;
   };
   config = mkIf cfg.enable {
-	environment.systemPackages = with pkgs;[
-        ausweisapp
-        obsidian
-        anki-bin
-        spotify
-        bluetuith
+    environment.systemPackages = with pkgs;[
+      ausweisapp
+      obsidian
+      anki-bin
+      spotify
+      bluetuith
     ];
 
     #Ausweisapp firewall ports
