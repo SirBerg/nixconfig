@@ -78,7 +78,7 @@
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
 
-    darwinConfigurations."satou" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."satou" = darwin.lib.darwinSystem {
         modules = [ darwinConf ];
     };
       darwinPackages = self.darwinConfigurations."satou".pkgs;
