@@ -35,7 +35,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-        url = "github:nix-community/nix-darwin";
+        url = "github:LnL7/nix-darwin";
         inputs.nixpkgs.follows = "nixpkgs";
     };
   };
