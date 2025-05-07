@@ -4,20 +4,27 @@
 
 { config, pkgs, self, ... }:
 {
-    programs.zsh.enable = true;
+      environment.systemPackages =
+        [ pkgs.vim
+        ];
 
-    # Set your time zone.
-    time.timeZone = "Europe/Berlin";
-    # Install firefox.
-    programs.firefox.enable = true;
+      # Auto upgrade nix package
+      # nix.package = pkgs.nix;
 
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
+      # Necessary for using flakes on this system.
+      nix.settings.experimental-features = "nix-command flakes";
 
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    environment.systemPackages = with pkgs; [
-      wget
-    ];
-    system.stateVersion = "24.05"; # Did you read the comment?
+      # Create /etc/zshrc that loads the nix-darwin environment.
+      programs.zsh.enable = true;  # default shell on catalina
+      # programs.fish.enable = true;
+
+      # Set Git commit hash for darwin-version.
+      system.configurationRevision = self.rev or self.dirtyRev or null;
+
+      # Used for backwards compatibility, please read the changelog before changing.
+      # $ darwin-rebuild changelog
+      system.stateVersion = 4;
+
+      # The platform the configuration will be used on.
+      nixpkgs.hostPlatform = "x86_64-darwin";
 }
