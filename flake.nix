@@ -74,6 +74,14 @@
       systems.hosts.warmind-sagira.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
+
+      darwinConfigurations."satou" = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./systems/aarch64-darwin/satou/default.nix
+        ];
+      };
+      darwinPackages = self.darwinConfigurations."satou".pkgs;
+
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
       systems.hosts.sundance.modules = with inputs; [
