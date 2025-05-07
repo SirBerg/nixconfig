@@ -78,11 +78,6 @@
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
 
-    darwinConfigurations."satou" = darwin.lib.darwinSystem {
-        modules = [ darwinConf ];
-    };
-      darwinPackages = self.darwinConfigurations."satou".pkgs;
-
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
       systems.hosts.sundance.modules = with inputs; [
