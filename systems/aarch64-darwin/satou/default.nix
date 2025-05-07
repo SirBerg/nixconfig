@@ -7,19 +7,6 @@
       environment.systemPackages =
         [ pkgs.vim
         ];
-      boerg = {
-            packages = {
-              common.enable = true;
-              fonts.enable = true;
-              steam.enable = true;
-              development.enable = true;
-              utils.extended.enable = true;
-              utils.gui.enable = true;
-            };
-            docker = {
-              enable = true;
-            };
-      };
       # Auto upgrade nix package
       # nix.package = pkgs.nix;
 
