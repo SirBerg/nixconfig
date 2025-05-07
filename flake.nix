@@ -60,6 +60,9 @@
           };
         };
       };
+      darwinConf = {pkgs, ...}:{
+          imports = [./systems/aarch64-darwin/satou/default.nix];
+      };
     in
     lib.mkFlake {
       systems.hosts.meyrin.specialArgs = { inherit (inputs) self; };
@@ -75,11 +78,9 @@
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
 
-      darwinConfigurations."satou" = nix-darwin.lib.darwinSystem {
-        modules = [
-          ./systems/aarch64-darwin/satou/default.nix
-        ];
-      };
+    darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+        modules = [ configuration ];
+    };
       darwinPackages = self.darwinConfigurations."satou".pkgs;
 
       # To build warmind-sundance use this command:
