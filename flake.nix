@@ -40,7 +40,7 @@
     };
   };
 
-  outputs = inputs:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, ... }:
     let
       lib = inputs.snowfall-lib.mkLib {
         # You must provide our flake inputs to Snowfall Lib.
@@ -78,8 +78,8 @@
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
 
-    darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+    darwinConfigurations."satou" = nix-darwin.lib.darwinSystem {
+        modules = [ darwinConf ];
     };
       darwinPackages = self.darwinConfigurations."satou".pkgs;
 
