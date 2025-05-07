@@ -15,17 +15,8 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs;[
       git
-      wget
-      tree
-      unzip
-      killall
       btop
-      dig
-      traceroute
       lnav
-      pciutils
-      cifs-utils
-      xsel
       tmux
       zsh
       compose2nix
@@ -33,7 +24,6 @@ in
       rclone
     ];
 
-    users.defaultUserShell = pkgs.zsh;
     #services.solaar = {
     #			enable = true;
     #			window = "hide";

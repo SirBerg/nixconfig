@@ -7,11 +7,9 @@
     boerg = {
         packages = {
           common.enable = true;
-          fonts.enable = true;
-          steam.enable = true;
           development.enable = true;
           utils.extended.enable = true;
-          utils.gui.enable = true;
+	  utils.gui.enable = true;
         };
     };
       environment.systemPackages =
@@ -37,4 +35,5 @@
       ids.gids.nixbld = 350;
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+nixpkgs.config.allowUnsupportedSystem = true;
 }

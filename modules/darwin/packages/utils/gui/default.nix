@@ -12,17 +12,9 @@ in
   };
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs;[
-      ausweisapp
       obsidian
       anki-bin
       spotify
-      bluetuith
     ];
-
-    #Ausweisapp firewall ports
-    networking.firewall = {
-      allowedUDPPorts = [ 24727 ];
-      allowedTCPPorts = [ 24727 ];
-    };
   };
 }
