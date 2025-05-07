@@ -4,6 +4,16 @@
 
 { config, pkgs, self, ... }:
 {
+    boerg = {
+        packages = {
+          common.enable = true;
+          fonts.enable = true;
+          steam.enable = true;
+          development.enable = true;
+          utils.extended.enable = true;
+          utils.gui.enable = true;
+        };
+    };
       environment.systemPackages =
         [ pkgs.vim
         ];

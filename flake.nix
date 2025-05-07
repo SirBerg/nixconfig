@@ -60,9 +60,6 @@
           };
         };
       };
-      darwinConf = {pkgs, ...}:{
-          imports = [./systems/aarch64-darwin/satou/default.nix];
-      };
     in
     lib.mkFlake {
       systems.hosts.meyrin.specialArgs = { inherit (inputs) self; };
@@ -95,7 +92,9 @@
       overlays = with inputs; [
         hyprpanel.overlay
       ];
+
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     };
 
 }
