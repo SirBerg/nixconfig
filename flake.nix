@@ -34,13 +34,13 @@
       url = "github:jtojnar/nixpkgs-hammering";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-darwin = {
+    darwin = {
         url = "github:LnL7/nix-darwin";
         inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, ... }:
+  outputs = inputs:
     let
       lib = inputs.snowfall-lib.mkLib {
         # You must provide our flake inputs to Snowfall Lib.
