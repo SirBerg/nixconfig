@@ -25,6 +25,7 @@
       # $ darwin-rebuild changelog
       system.stateVersion = 4;
 
+      ids.gids.nixbld = 350;
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "x86_64-darwin";
 }
