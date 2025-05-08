@@ -45,6 +45,7 @@ in
         (pkgs.jdk21.override { enableJavaFX = true; })
         kubectl
         scenebuilder
+        hellwal
       ];
 
     services.solaar = {
