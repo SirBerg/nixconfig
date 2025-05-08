@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;
@@ -13,7 +13,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs;
       [
-        # Mason d("/etc/static/docker/traefik/docker-compose.yml")ependencies
+        # Mason dependencies
         go
         python3
       ];

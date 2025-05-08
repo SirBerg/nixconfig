@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 with lib.types;
@@ -11,6 +11,5 @@ in
     type = bool;
   };
   #Extended utils
-  config = mkIf cfg.enable {
-  };
+  config = mkIf cfg.enable { };
 }

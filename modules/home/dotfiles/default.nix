@@ -1,4 +1,4 @@
-{ pkgs, options, config, lib, ... }:
+{ options, config, lib, ... }:
 let
   cfg = config.boerg.dotfiles;
 in

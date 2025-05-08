@@ -35,8 +35,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
-        url = "github:nix-darwin/nix-darwin";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+      # url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    deadnix = {
+      url = "github:astro/deadnix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -65,9 +75,7 @@
       systems.hosts.meyrin.specialArgs = { inherit (inputs) self; };
       systems.hosts.vmware.specialArgs = { inherit (inputs) self; };
       systems.hosts.izanami.specialArgs = { inherit (inputs) self; };
-      systems.hosts.malahayati.specialArgs = { inherit (inputs) self; };
       systems.hosts.nebula.specialArgs = { inherit (inputs) self; };
-      systems.hosts.sundance.specialArgs = { inherit (inputs) self; };
       systems.hosts.voluspa.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-sundance.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-targe.specialArgs = { inherit (inputs) self; };
@@ -85,6 +93,12 @@
         Solaar.nixosModules.default
       ];
 
+      systems.hosts.satou.modules = with inputs; [
+        nixvim.nixDarwinModules.nixvim
+      ];
+      home-manager.users.boerg = {
+        home.stateVersion = "24.11";
+      };
       channels-config = {
         allowUnfree = true;
       };
@@ -92,7 +106,6 @@
       overlays = with inputs; [
         hyprpanel.overlay
       ];
-
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     };

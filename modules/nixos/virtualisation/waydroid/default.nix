@@ -1,5 +1,5 @@
 #Common Nix Packages
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 with lib.types;

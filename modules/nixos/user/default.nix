@@ -2,7 +2,7 @@
 # Whole file (with minor edits) from: https://github.com/Svenum/holynix/blob/main/modules/nixos/users/default.nix
 #
 
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 with lib.types;
@@ -69,7 +69,7 @@ in
     users = mkOption {
       default = { };
       type = attrsOf (submodule (
-        { name, config, options, ... }:
+        { name, options, ... }:
         {
           options = {
             isGuiUser = mkOption {

@@ -12,12 +12,6 @@
     ];
 
   boerg = {
-    packages = {
-      laptop.enable = true;
-    };
-    display = {
-      laptop.enable = true;
-    };
     users = {
       berg = {
         isGuiUser = true;
@@ -109,7 +103,6 @@
     description = "berg";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kate
       #  thunderbird
     ];
   };

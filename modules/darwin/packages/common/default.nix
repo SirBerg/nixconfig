@@ -1,5 +1,5 @@
 #Common Nix Packages
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;
@@ -17,6 +17,7 @@ in
         s3fs
         jq
         doing
+        deadnix
       ];
     boerg.packages.browser.firefox.enable = true;
     boerg.packages.browser.brave.enable = true;

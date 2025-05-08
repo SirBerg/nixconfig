@@ -1,5 +1,5 @@
 { ... }:
 {
-  boerg.ags.enable = true;
   boerg.zsh.enable = true;
+  home.stateVersion = "24.11";
 }

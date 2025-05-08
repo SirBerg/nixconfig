@@ -1,5 +1,5 @@
 # Enable the Nvidia Drivers 
-{ options, config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;

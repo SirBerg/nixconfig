@@ -1,5 +1,4 @@
-# Enable Hyprland and enable gpu acceleration
-{ options, config, lib, pkgs, inputs, self, ... }:
+{ config, lib, self, ... }:
 
 with lib;
 with lib.types;
