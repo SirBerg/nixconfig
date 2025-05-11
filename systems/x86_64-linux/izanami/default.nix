@@ -36,7 +36,7 @@
     virt.waydroid.enable = false;
     display.nvidia.enable = true;
     config.standard.enable = true;
-    services.hydra.enable = true;
+#    services.hydra.enable = true;
     docker = {
       enable = true;
     };
@@ -105,6 +105,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
+    volanta
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

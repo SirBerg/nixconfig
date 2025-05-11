@@ -3,10 +3,12 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.boerg.co/boerg"
+      "https://nixos-raspberrypi.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "boerg:YGQg7krTwrl7UO77lLoWevtV5Cq9F4pubjoGmDEoqo0="
+      "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
     ];
   };
   inputs = {
@@ -92,7 +94,6 @@
       systems.modules.nixos = with inputs; [
         Solaar.nixosModules.default
       ];
-
       systems.hosts.satou.modules = with inputs; [
         nixvim.nixDarwinModules.nixvim
       ];
@@ -108,7 +109,9 @@
       ];
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
-    };
+	
+    nix.settings.trusted-users = [ "root" "berg" ];
+};
 
 }
 
