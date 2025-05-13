@@ -31,6 +31,8 @@ in
       compose2nix
       restic
       rclone
+      cachix
+
     ];
 
     users.defaultUserShell = pkgs.zsh;

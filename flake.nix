@@ -1,15 +1,27 @@
 {
   nixConfig = {
     extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://cache.boerg.co/boerg"
-      "https://nixos-raspberrypi.cachix.org"
+	"http://localhost:3000/default"
+#	"https://cache.nixos.org"
     ];
     extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "boerg:YGQg7krTwrl7UO77lLoWevtV5Cq9F4pubjoGmDEoqo0="
-      "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
-    ];
+	"default:mK6W8AHbTV7DO5VDMDxe0154tNyyaq21eRvP/wwO1UA="
+	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+	];
+    trusted-users = [ "root" "berg" ];
+	
+     substituters = ["http://localhost:3000/default" 
+     #"https://cache.nixos.org"
+     ];
+     always-allow-substitutes = true;
+     extra-trusted-substsituters = [
+	"http://localhost:3000/default"
+#	"https://cache.nixos.org"
+	];
+     trusted-public-keys = [
+	"default:mK6W8AHbTV7DO5VDMDxe0154tNyyaq21eRvP/wwO1UA="
+	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+     ];
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -109,9 +121,9 @@
       ];
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
-	
-    nix.settings.trusted-users = [ "root" "berg" ];
-};
+
+      nix.settings.trusted-users = [ "root" "berg" ];
+    };
 
 }
 

@@ -36,7 +36,7 @@
     virt.waydroid.enable = false;
     display.nvidia.enable = true;
     config.standard.enable = true;
-#    services.hydra.enable = true;
+    #    services.hydra.enable = true;
     docker = {
       enable = true;
     };
@@ -104,8 +104,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    volanta
+	volanta
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
