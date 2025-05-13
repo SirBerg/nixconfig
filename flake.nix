@@ -1,12 +1,12 @@
 {
   nixConfig = {
     extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://cache.boerg.co/boerg"
+	"http://localhost:3000/default"
     ];
     extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "boerg:YGQg7krTwrl7UO77lLoWevtV5Cq9F4pubjoGmDEoqo0="
+    ];
+    trusted-users = [
+    	"boerg" "root" "berg"
     ];
   };
   inputs = {
