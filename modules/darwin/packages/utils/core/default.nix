@@ -22,7 +22,6 @@ in
       compose2nix
       restic
       rclone
-	wget
 	];
 
     #services.solaar = {
