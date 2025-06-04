@@ -19,7 +19,6 @@ in
         jetbrains.rust-rover
         jetbrains.jdk
         jetbrains.datagrip
-        jetbrains.goland
         jetbrains.phpstorm
         jetbrains.idea-ultimate
         jetbrains.gateway

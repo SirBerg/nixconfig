@@ -1,13 +1,24 @@
 {
   nixConfig = {
     extra-substituters = [
-	"http://localhost:3000/default"
+	"https://cache.nixos.org"
     ];
     extra-trusted-public-keys = [
-    ];
-    trusted-users = [
-    	"boerg" "root" "berg"
-    ];
+	"default:mK6W8AHbTV7DO5VDMDxe0154tNyyaq21eRvP/wwO1UA="
+	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+	];
+    trusted-users = [ "root" "berg" ];
+	
+     substituters = [
+     "https://cache.nixos.org"
+     ];
+     always-allow-substitutes = true;
+     extra-trusted-substsituters = [
+	"https://cache.nixos.org"
+	];
+     trusted-public-keys = [
+	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+     ];
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -92,7 +103,6 @@
       systems.modules.nixos = with inputs; [
         Solaar.nixosModules.default
       ];
-
       systems.hosts.satou.modules = with inputs; [
         nixvim.nixDarwinModules.nixvim
       ];
@@ -108,6 +118,8 @@
       ];
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+
+      nix.settings.trusted-users = [ "root" "berg" ];
     };
 
 }
