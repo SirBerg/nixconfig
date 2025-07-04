@@ -32,6 +32,7 @@ in
         bun
         jetbrains.goland
         vscode
+	php
       ];
 
   };

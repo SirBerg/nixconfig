@@ -1,5 +1,8 @@
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+	automatic_enable=true
+})
+require("vim.lsp.health").check()
 require('nvim-treesitter').setup {
   highlight = {
     enable = true,
@@ -12,6 +15,32 @@ require('nvim-treesitter').setup {
     additional_vim_regex_highlighting = false,
   },
 }
+local cmp = require('cmp')
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+  },
+  mapping = {
+    ['<cr>'] = cmp.mapping.confirm({select = false}),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-k>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+    ['<C-j>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+    ['<C-p>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item({behavior = 'insert'})
+      else
+        cmp.complete()
+      end
+    end),
+    ['<C-n>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_next_item({behavior = 'insert'})
+      else
+        cmp.complete()
+      end
+    end),
+  },
+})
 
 require('mason-tool-installer').setup {
 
@@ -45,6 +74,7 @@ require('mason-tool-installer').setup {
     'staticcheck',
     'vint',
     'clangd',
+    'ts_ls'
   },
 
   -- if set to true this will check each tool for updates. If updates
@@ -84,6 +114,8 @@ require('mason-tool-installer').setup {
     ['mason-lspconfig'] = true,
   },
 }
+--global conf
+vim.g.rainbow_active=1
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -98,6 +130,10 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<leader>ad', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', '<leader>sd', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+-- Nerd tree config
+vim.cmd("nnoremap <leader>pn :NERDTreeFocus<cr>")
+vim.cmd("nnoremap <leader>pf :NERDTreeFind<cr>")
+vim.cmd("nnoremap <leader>pt :NERDTreeToggle<cr>")
 
 -- Lsp keymaps
 local on_attach = function(client, bufnr)
@@ -125,9 +161,9 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
--- LSP Server setups
-require('lspconfig')['clangd'].setup({
-    -- LSP-default-keymaps
-    on_attach = on_attach,
-    flags = lsp_flags,
+
+vim.lsp.enable('ts_ls', {
+	flags = lsp_flags,
+	on_attach = on_attach,
 })
+vim.lsp.enable('lua_ls')

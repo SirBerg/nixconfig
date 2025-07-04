@@ -13,10 +13,6 @@
       neovim.enable = true;
     };
   };
-  environment.systemPackages =
-    [
-      pkgs.vim
-    ];
   # Auto upgrade nix package
   # nix.package = pkgs.nix;
 

@@ -4,7 +4,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-            ./hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   boerg = {
@@ -18,28 +18,28 @@
       {
         sway.enable = true;
       };
-        users = {
-    berg = {
-    isGuiUser = true;
-    isSudoUser = true;
-    git = {
-      userName = "SirBerg";
-      userEmail = "benno@boerg.co";
+    users = {
+      berg = {
+        isGuiUser = true;
+        isSudoUser = true;
+        git = {
+          userName = "SirBerg";
+          userEmail = "benno@boerg.co";
+        };
+        isDockerUser = true;
+        extraGroups = [ "nixbld" "docker" "video" ];
+      };
     };
-    isDockerUser = true;
-    extraGroups = [ "nixbld" "docker" "video" ];
+    cache.enable = true;
+    docker = {
+      enable = true;
+    };
+    config.standard.enable = true;
   };
-};
-cache.enable = true;
-docker = {
-enable = true;
-};
-config.standard.enable = true;
-};
-services.resolved.enable = true;
+  services.resolved.enable = true;
 
-# Bootloader.
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
-system.stateVersion = "25.05";
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  system.stateVersion = "25.05";
 }
