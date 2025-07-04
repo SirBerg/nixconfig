@@ -45,6 +45,8 @@ in
         kubectl
         scenebuilder
         hellwal
+        rustc
+        cargo
       ];
 
     services.solaar = {

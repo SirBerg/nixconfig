@@ -26,7 +26,7 @@ in
       coolercontrol.coolercontrol-liqctld
       coolercontrol.coolercontrold
       mangohud
-      #mplayer
+      mplayer
       audacity
       multiviewer-for-f1
       attic-client
@@ -38,6 +38,7 @@ in
       lutris
       obs-studio
       vesktop
+      davinci-resolve
     ];
     programs.coolercontrol.nvidiaSupport = true;
     programs.coolercontrol.enable = true;

@@ -1,27 +1,23 @@
 {
   nixConfig = {
     extra-substituters = [
-	"http://localhost:3000/default"
-#	"https://cache.nixos.org"
+      "https://cache.nixos.org"
     ];
     extra-trusted-public-keys = [
-	"default:mK6W8AHbTV7DO5VDMDxe0154tNyyaq21eRvP/wwO1UA="
-	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-	];
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
     trusted-users = [ "root" "berg" ];
-	
-     substituters = ["http://localhost:3000/default" 
-     #"https://cache.nixos.org"
-     ];
-     always-allow-substitutes = true;
-     extra-trusted-substsituters = [
-	"http://localhost:3000/default"
-#	"https://cache.nixos.org"
-	];
-     trusted-public-keys = [
-	"default:mK6W8AHbTV7DO5VDMDxe0154tNyyaq21eRvP/wwO1UA="
-	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-     ];
+
+    substituters = [
+      "https://cache.nixos.org"
+    ];
+    always-allow-substitutes = true;
+    extra-trusted-substsituters = [
+      "https://cache.nixos.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -96,7 +92,7 @@
       systems.hosts.warmind-sagira.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
-
+      systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
       systems.hosts.sundance.modules = with inputs; [

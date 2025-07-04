@@ -42,6 +42,12 @@
     };
   };
 
+  services.udev.extraRules = ''
+    		# Steam Controller Support 
+    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="0407", MODE="0666"
+    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b679", MODE="0666"
+    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="040e", MODE="0666"
+  '';
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -104,7 +110,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	volanta
+    volanta
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
