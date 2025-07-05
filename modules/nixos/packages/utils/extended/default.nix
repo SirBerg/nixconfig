@@ -38,7 +38,7 @@ in
       lutris
       obs-studio
       vesktop
-      davinci-resolve
+#      davinci-resolve
     ];
     programs.coolercontrol.nvidiaSupport = true;
     programs.coolercontrol.enable = true;

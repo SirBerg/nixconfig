@@ -21,5 +21,9 @@ in
       enable = true;
       source = ./dotfiles/hypr/hyprpaper.conf;
     };
+    home.file.".config/sway/config" = {
+      enable = true;
+      source = ./sway/config;
+    };       
   };
 }

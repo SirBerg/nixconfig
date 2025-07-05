@@ -16,7 +16,8 @@
     };
     display =
       {
-        sway.enable = true;
+        plasma.enable = true;
+	sway.enable = true;
       };
     users = {
       berg = {
