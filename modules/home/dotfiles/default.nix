@@ -25,5 +25,9 @@ in
       enable = true;
       source = ./sway/config;
     };       
+    home.file.".config/tmux/tmux.conf" = {
+      enable = true;
+      source = ./dotfiles/tmux/tmux.conf;
+    };       
   };
 }

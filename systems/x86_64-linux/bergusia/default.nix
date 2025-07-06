@@ -17,7 +17,7 @@
     display =
       {
         plasma.enable = true;
-	sway.enable = true;
+	hyprland.enable = true;
       };
     users = {
       berg = {

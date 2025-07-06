@@ -22,6 +22,8 @@ in
       xorg.libXi
       kitty
       gsettings-qt
+      dmenu
+      swaylock
     ];
 
     programs.sway =
