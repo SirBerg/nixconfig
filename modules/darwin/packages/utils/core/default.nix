@@ -22,7 +22,7 @@ in
       compose2nix
       restic
       rclone
-	];
+    ];
 
     #services.solaar = {
     #			enable = true;

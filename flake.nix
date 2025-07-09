@@ -20,7 +20,7 @@
     ];
   };
   inputs = {
-	    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     Solaar.url = "github:Svenum/Solaar-Flake";
     home-manager = {

@@ -35,6 +35,7 @@
     virt.libvirt.enable = true;
     virt.waydroid.enable = false;
     display.nvidia.enable = true;
+    display.hyprland.enable = true;
     config.standard.enable = true;
     #    services.hydra.enable = true;
     docker = {

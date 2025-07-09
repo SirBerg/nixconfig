@@ -21,28 +21,28 @@ in
     programs.xwayland.enable = true;
 
     environment.systemPackages = with pkgs; [
-    	kitty
-	hyprpaper
-	waybar
-	wofi
-	swaylock
-	hyprpanel
-	hyprshot
-	wireplumber
-	libgtop
-	bluez
-	networkmanager
-	dart-sass
-	wl-clipboard
-	upower
-	gvfs
-	gtksourceview3
-	libsoup_3
+      kitty
+      hyprpaper
+      waybar
+      wofi
+      swaylock
+      hyprpanel
+      hyprshot
+      wireplumber
+      libgtop
+      bluez
+      networkmanager
+      dart-sass
+      wl-clipboard
+      upower
+      gvfs
+      gtksourceview3
+      libsoup_3
     ];
 
     fonts.packages = with pkgs; [
-	fira-code
-	nerd-fonts.caskaydia-cove
+      fira-code
+      nerd-fonts.caskaydia-cove
     ];
 
     # Configure keymap in X11

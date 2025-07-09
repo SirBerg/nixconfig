@@ -12,9 +12,9 @@ in
   };
 
   config = mkIf cfg.enable {
-  	programs.tmux = {
-		enable = true;
-		clock24 = true;
-	};
+    programs.tmux = {
+      enable = true;
+      clock24 = true;
+    };
   };
 }
