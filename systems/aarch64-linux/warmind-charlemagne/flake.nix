@@ -60,6 +60,25 @@
 	      services.k3s.extraFlags = [
 	      	"--flannel-backend=host-gw"
 	      ];
+	      networking = {
+		      interfaces = {
+			      end0 = {
+				      ipv4.addresses = [{
+				      	address = "10.124.0.2";
+					prefixLength = 24;
+				      }];
+				      useDHCP = false;
+			      };		      	
+		      };
+		      defaultGateway = {
+		      	address = "10.124.0.1";
+			interface = "end0";
+		      };
+		      nameservers = [
+		      	"1.1.1.1"
+			"1.0.0.1"
+		      ];
+	      };
 	      hardware.raspberry-pi.config = {
 		      all = {
 			      options = {
@@ -70,6 +89,7 @@
 			      };
 		      };
 	      };
+	      boot.kernelParams = ["cgroup_enable=memory"];
             })
 
             ({ ... }: {
