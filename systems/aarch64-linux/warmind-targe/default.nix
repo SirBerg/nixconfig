@@ -35,18 +35,15 @@
     config.core.enable = true;
     kubernetes = {
       enable = true;
-      role = "server";
+      role = "agent";
       address = "10.124.0.3";
-      init = true;
+      init = false;
     };
     docker = {
       enable = true;
     };
   };
   services.k3s.serverAddr = "https://10.124.0.2:6443";
-  services.k3s.extraFlags = [
-    "--flannel-backend=host-gw"
-  ];
   networking = {
     interfaces = {
       end0 = {
