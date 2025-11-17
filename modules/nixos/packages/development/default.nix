@@ -14,15 +14,20 @@ in
 
     environment.systemPackages = with pkgs;
       [
-        jetbrains.webstorm
-        jetbrains.clion
-        jetbrains.rust-rover
-        jetbrains.jdk
-        jetbrains.datagrip
-        jetbrains.phpstorm
-        jetbrains.idea-ultimate
-        jetbrains.gateway
+	jetbrains.webstorm
+	jetbrains.clion
+	jetbrains.rust-rover
+	jetbrains.datagrip
+	jetbrains.pycharm-professional
+	jetbrains.phpstorm
+	jetbrains.idea-ultimate
+	jetbrains.gateway
+        jetbrains.goland
         jetbrains-toolbox
+	python314
+	python313Packages.pip
+	python313Packages.notebook
+	virtualenv
         coder
         gcc
         rustup
@@ -35,19 +40,19 @@ in
         cmake
         gnumake42
         bun
-        jetbrains.goland
         vscode
         #netbeans
-        bluej
+        #bluej
         ghidra-bin
         surrealist
-        (pkgs.jdk21.override { enableJavaFX = true; })
+        #(pkgs.jdk21.override { enableJavaFX = true; })
         kubectl
-        scenebuilder
+#        scenebuilder
         hellwal
         rustc
         cargo
       ];
+
 
     services.solaar = {
       enable = true;

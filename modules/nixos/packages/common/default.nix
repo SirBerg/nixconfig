@@ -18,6 +18,7 @@ in
         jq
         doing
         deadnix
+	mixxx
       ];
     boerg.packages.browser.firefox.enable = true;
     boerg.packages.browser.brave.enable = true;

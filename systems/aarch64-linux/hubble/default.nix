@@ -1,26 +1,14 @@
-{
-  lib,
-  modulesPath,
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    ./sd-image.nix
-  ];
+{ config, ... }:
 
-  # Some packages (ahci fail... this bypasses that) https://discourse.nixos.org/t/does-pkgs-linuxpackages-rpi3-build-all-required-kernel-modules/42509
-  nixpkgs.overlays = [
-    (final: super: {
-      makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
-    })
-  ];
+{
+  imports =
+    [
+      # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
-  nixpkgs.hostPlatform = "aarch64-linux";
-  # ! Need a trusted user for deploy-rs.
-  nix.settings.trusted-users = [ "@wheel" ];
   system.stateVersion = "24.05";
-  virtualisation.docker.enable = true;
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";
@@ -49,6 +37,7 @@
     enableRedistributableFirmware = lib.mkForce false;
     firmware = [ pkgs.raspberrypiWirelessFirmware ]; # Keep this to make sure wifi works
     i2c.enable = true;
+
     deviceTree = {
       enable = true;
       kernelPackage = pkgs.linuxKernel.packages.linux_rpi3.kernel;
@@ -63,15 +52,6 @@
           name = "pwm-2chan";
           dtsFile = ./dts/pwm.dts;
         }
-	      {
-		name = "bcm2835-v4l2-camera";
-		dtsText = ''
-		  /dts-v1/;
-		  /plugin/;
-		  / { compatible = "brcm,bcm2835"; };
-		  &camera { status = "okay"; };
-		'';
-	      }
       ];
     };
   };
@@ -79,17 +59,14 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_rpi02w;
 
-    kernelModules = [ "bcm2835-v4l2" ];
     initrd.availableKernelModules = [
       "xhci_pci"
       "usbhid"
       "usb_storage"
-      "bcm2835-v4l2"
     ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
-          
     };
 
     # Avoids warning: mdadm: Neither MAILADDR nor PROGRAM has been set. This will cause the `mdmon` service to crash.
@@ -98,28 +75,14 @@
   };
 
   networking = {
-    interfaces."wlan0" = {
-	    ipv4.addresses = [{
-	    	address = "192.168.178.2";
-		prefixLength = 24;
-	    }];
-	    useDHCP=false;
-    };
-    defaultGateway = {
-    	address = "192.168.178.1";
-	interface = "wlan0";
-    };
-    nameservers = [
-    	"1.1.1.1"
-	"1.0.0.1"
-    ];
+    interfaces."wlan0".useDHCP = true;
     wireless = {
       enable = true;
       interfaces = [ "wlan0" ];
       # ! Change the following to connect to your own network
       networks = {
-        "Boerg, Inc." = {
-          psk = "YmiUSYiQAco78mpRyHsyT2k62bCZxt9mvPrdtz7dsX8npYsaFTQ8kv5Yz6qaPEC";
+        "<ssid>" = {
+          psk = "<ssid-key>";
         };
       };
     };
@@ -131,23 +94,24 @@
   # NTP time sync.
   services.timesyncd.enable = true;
 
-  # ! Change the following configuration
-  users.users.berg = {
-    isNormalUser = true;
-    home = "/home/berg";
-    description = "Me, myself and I";
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-    # ! Be sure to put your own public key here
-    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhIrnXyYZ63yo/Y2XqiPiQ5uOviP6pVYLxx+Iyuo5DjiGsjR/FOG6wWdeTtlpMbEinqFBtq5d3wGqDtQBak9IDsqJ/u9khT7fsQiykrxIxemSv8bCzvXeh9rnFuAA6cjvPwL9Ie7g38W7GHP5aJjLMx6vUiRHafD+5T37uYK2VUhVG8XTbygS4C+k3DOQ36R+whHoLeu0okFhTt6nu2IX2qx/j8kllOwCVq7AjbPAQJmDPvEOVZONHRDSM0XFEiwkdnF0qwtHGzmYARYhL1Tpp/SuSq7EsJvu0UrYl+hJpV+4VbU08M7YsEEwHAQkolKxgJZf6x/A8cliAIoMnrAoZ0a15/GBgadmuqUy1RkR0Lfr5ta4xEriqeYt+uiaZ84hCSVq+k6MX1P0b23ytqdOJXrvjsasDfPuTojvg+pyylZRj2Fz+MlVM3SnEzfvpKGuY7wbVxtg7kcKdL3wXqJZoUoIYGgr1buxO6iLa2784xfUdSK5iu1YA+B2tpxSxSz8= sirberg@Izanami" ];
+  boerg = {
+    users = {
+      "berg" = {
+        isGuiUser = true;
+        isSudoUser = true;
+        uid = 1000;
+        initialPassword = "boerg";
+        authorizedKeys = [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhIrnXyYZ63yo/Y2XqiPiQ5uOviP6pVYLxx+Iyuo5DjiGsjR/FOG6wWdeTtlpMbEinqFBtq5d3wGqDtQBak9IDsqJ/u9khT7fsQiykrxIxemSv8bCzvXeh9rnFuAA6cjvPwL9Ie7g38W7GHP5aJjLMx6vUiRHafD+5T37uYK2VUhVG8XTbygS4C+k3DOQ36R+whHoLeu0okFhTt6nu2IX2qx/j8kllOwCVq7AjbPAQJmDPvEOVZONHRDSM0XFEiwkdnF0qwtHGzmYARYhL1Tpp/SuSq7EsJvu0UrYl+hJpV+4VbU08M7YsEEwHAQkolKxgJZf6x/A8cliAIoMnrAoZ0a15/GBgadmuqUy1RkR0Lfr5ta4xEriqeYt+uiaZ84hCSVq+k6MX1P0b23ytqdOJXrvjsasDfPuTojvg+pyylZRj2Fz+MlVM3SnEzfvpKGuY7wbVxtg7kcKdL3wXqJZoUoIYGgr1buxO6iLa2784xfUdSK5iu1YA+B2tpxSxSz8="
+        ];
+      };
+    };
   };
-
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
   };
   # ! Be sure to change the autologinUser.
-  services.getty.autologinUser = "berg";
+  services.getty.autologinUser = "bob";	
+  system.stateVersion = "24.11";
 }

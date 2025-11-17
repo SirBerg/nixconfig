@@ -38,6 +38,7 @@
     config.standard.enable = true;
   };
   services.resolved.enable = true;
+  hardware.fw-fanctrl.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

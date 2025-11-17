@@ -14,14 +14,14 @@ in
     fonts.packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       liberation_ttf
       #mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
       jetbrains-mono
       #nerdfonts
-      notonoto
+#      notonoto
     ];
   };
 }

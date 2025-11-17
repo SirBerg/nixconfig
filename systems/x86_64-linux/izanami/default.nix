@@ -37,6 +37,8 @@
     display.nvidia.enable = true;
     display.hyprland.enable = true;
     config.standard.enable = true;
+    services.ssh.enable = true;
+    services.rdp.enable = true;
     #    services.hydra.enable = true;
     docker = {
       enable = true;
@@ -112,6 +114,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     volanta
+    nfs-utils
+    prismlauncher
+    jdk25_headless
+    ocl-icd
+    clinfo
+    nvidia-container-toolkit
+    cudaPackages.cudatoolkit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -128,7 +137,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 3001 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

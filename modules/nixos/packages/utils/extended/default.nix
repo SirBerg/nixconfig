@@ -19,14 +19,17 @@ in
       rclone
       clinfo
       networkmanagerapplet
+      nexusmods-app
+      vlc
       nodejs
       wine64
       winetricks
       wineWowPackages.waylandFull
-      coolercontrol.coolercontrol-liqctld
+#      coolercontrol.coolercontrol-liqctld
       coolercontrol.coolercontrold
       mangohud
-      mplayer
+      legendary-gl
+      #mplayer
       audacity
       multiviewer-for-f1
       attic-client
@@ -40,7 +43,6 @@ in
       vesktop
       #      davinci-resolve
     ];
-    programs.coolercontrol.nvidiaSupport = true;
     programs.coolercontrol.enable = true;
     programs.steam = {
       enable = true;
