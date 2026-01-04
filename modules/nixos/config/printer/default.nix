@@ -13,7 +13,7 @@ let
   };
 in
 {
-  options.holynix.printer = {
+  options.boerg.config.printer = {
     enable = mkOption {
       type = bool;
       default = false;

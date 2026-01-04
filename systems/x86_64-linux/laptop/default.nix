@@ -36,6 +36,19 @@
   };
 
   services.flatpak.enable = true;
+    services = {
+      # enable solaar
+      solaar = {
+        enable = true;
+        window = "hide";
+        extraArgs = "--restart-on-wake-up";
+      };
+      # Enable ssh
+      openssh.enable = true;
+
+      # Enable fwupd
+      fwupd.enable = true;
+    };
   programs.zsh.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   fonts.fontconfig.enable = true;
