@@ -21,6 +21,18 @@
     };
     display.hyprland.enable = true;
     config.standard.enable = true;
+    config.printer = {
+        enable = true;
+        defaultPrinter = "Samsung_M2070";
+        printers = [
+            {
+                name = "Samsung_M2070";
+                deviceUri = "http://192.168.178.1";
+                description = "Samsung M2070 Series";
+                model = "drv:///sample.drv/generic.ppd";
+            }
+        ];
+    };
   };
 
   services.flatpak.enable = true;
