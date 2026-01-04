@@ -14,7 +14,8 @@ in
     environment.systemPackages = with pkgs;[
       ausweisapp
       obsidian
-      anki-bin
+#      anki-bin
+	anki
       spotify
       bluetuith
     ];

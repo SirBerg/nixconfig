@@ -93,6 +93,8 @@
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
       systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
+      systems.hosts.laptop.specialArgs = { inherit (inputs) self; };
+
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
       systems.hosts.sundance.modules = with inputs; [

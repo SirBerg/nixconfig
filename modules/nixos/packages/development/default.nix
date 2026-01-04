@@ -24,6 +24,7 @@ in
 	jetbrains.gateway
         jetbrains.goland
         jetbrains-toolbox
+	android-studio
 	python314
 	python313Packages.pip
 	python313Packages.notebook
@@ -45,7 +46,7 @@ in
         #bluej
         ghidra-bin
         surrealist
-        #(pkgs.jdk21.override { enableJavaFX = true; })
+        (pkgs.jdk21.override { enableJavaFX = true; })
         kubectl
 #        scenebuilder
         hellwal

@@ -33,7 +33,7 @@ in
       audacity
       multiviewer-for-f1
       attic-client
-      jdk21
+      #jdk21
       gimp
       icu
       vscode-fhs
