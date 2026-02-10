@@ -14,8 +14,6 @@
   boerg = {
     packages = {
       common.enable = true;
-      utils.extended.enable = true;
-      utils.gui.enable = true;
     };
     users = {
       berg = {
@@ -86,16 +84,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    volanta
-    nfs-utils
-    prismlauncher
-    jdk25_headless
-    ocl-icd
-    clinfo
-    nvidia-container-toolkit
-    cudaPackages.cudatoolkit
-    onboard
-    protonvpn-gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
