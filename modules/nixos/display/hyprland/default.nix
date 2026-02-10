@@ -23,6 +23,7 @@ in
     environment.systemPackages = with pkgs; [
       kitty
       hyprpaper
+      swww
       waybar
       wofi
       swaylock

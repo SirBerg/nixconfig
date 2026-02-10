@@ -19,7 +19,6 @@ in
       rclone
       clinfo
       networkmanagerapplet
-      nexusmods-app
       vlc
       nodejs
       wine64

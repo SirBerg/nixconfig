@@ -23,5 +23,9 @@ in
       enable = true;
       source = if cfg.variant == "izanami" then ./configs/izanami/hyprpaper.conf else ./configs/generic/hyprpaper.conf;
     };
+    home.file.".config/hypr/bg.jpg" = {
+    	enable = true;
+	source = ./bg.jpg;
+    };
   };
 }
