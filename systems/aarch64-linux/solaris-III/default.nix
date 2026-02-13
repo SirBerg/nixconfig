@@ -14,43 +14,29 @@
   boerg = {
     packages = {
       common.enable = true;
-      fonts.enable = true;
-      steam.enable = true;
-      development.enable = true;
-      utils.extended.enable = true;
-      utils.gui.enable = true;
     };
     users = {
       berg = {
         isGuiUser = true;
         isSudoUser = true;
         isKvmUser = true;
+        initialPassword = "boerg";
+        authorizedKeys = [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhIrnXyYZ63yo/Y2XqiPiQ5uOviP6pVYLxx+Iyuo5DjiGsjR/FOG6wWdeTtlpMbEinqFBtq5d3wGqDtQBak9IDsqJ/u9khT7fsQiykrxIxemSv8bCzvXeh9rnFuAA6cjvPwL9Ie7g38W7GHP5aJjLMx6vUiRHafD+5T37uYK2VUhVG8XTbygS4C+k3DOQ36R+whHoLeu0okFhTt6nu2IX2qx/j8kllOwCVq7AjbPAQJmDPvEOVZONHRDSM0XFEiwkdnF0qwtHGzmYARYhL1Tpp/SuSq7EsJvu0UrYl+hJpV+4VbU08M7YsEEwHAQkolKxgJZf6x/A8cliAIoMnrAoZ0a15/GBgadmuqUy1RkR0Lfr5ta4xEriqeYt+uiaZ84hCSVq+k6MX1P0b23ytqdOJXrvjsasDfPuTojvg+pyylZRj2Fz+MlVM3SnEzfvpKGuY7wbVxtg7kcKdL3wXqJZoUoIYGgr1buxO6iLa2784xfUdSK5iu1YA+B2tpxSxSz8="
+        ];
         git = {
           userName = "SirBerg";
           userEmail = "benno@boerg.co";
         };
       };
     };
-    cache.enable = true;
-    virt.libvirt.enable = true;
-    virt.waydroid.enable = false;
-    display.nvidia.enable = true;
-    display.hyprland.enable = true;
     config.standard.enable = true;
     services.ssh.enable = true;
-    services.rdp.enable = true;
-    #    services.hydra.enable = true;
     docker = {
       enable = true;
     };
   };
 
-  services.udev.extraRules = ''
-    		# Steam Controller Support 
-    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="0407", MODE="0666"
-    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b679", MODE="0666"
-    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="040e", MODE="0666"
-  '';
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -64,21 +50,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-
-  ### Move to nixos option!!!
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
-  ### --- End nixos option!!!
   # Configure console keymap
   console.keyMap = "de";
 
@@ -113,19 +84,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    volanta
-    nfs-utils
-    prismlauncher
-    jdk25_headless
-    ocl-icd
-    clinfo
-    nvidia-container-toolkit
-    cudaPackages.cudatoolkit
-    onboard
-    protonvpn-gui
-    ckan
-    teamspeak6-client
-    cinny-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -141,8 +99,6 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 3001 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -153,5 +109,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
