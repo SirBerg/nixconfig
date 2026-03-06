@@ -125,7 +125,9 @@
     protonvpn-gui
     ckan
     teamspeak6-client
-    cinny-desktop
+    element-desktop
+    r2modman
+    boerg.vanta
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

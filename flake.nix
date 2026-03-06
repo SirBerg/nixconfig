@@ -21,7 +21,6 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     Solaar.url = "github:Svenum/Solaar-Flake";
     home-manager = {
@@ -96,6 +95,7 @@
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
       systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
       systems.hosts.laptop.specialArgs = { inherit (inputs) self; };
+      nixpkgs.config.allowUnfree = true;	
 
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi

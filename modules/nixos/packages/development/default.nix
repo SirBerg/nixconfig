@@ -18,9 +18,9 @@ in
 	jetbrains.clion
 	jetbrains.rust-rover
 	jetbrains.datagrip
-	jetbrains.pycharm-professional
+	jetbrains.pycharm
 	jetbrains.phpstorm
-	jetbrains.idea-ultimate
+	jetbrains.idea
 	jetbrains.gateway
         jetbrains.goland
         jetbrains-toolbox
