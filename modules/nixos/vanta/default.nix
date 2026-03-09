@@ -27,14 +27,13 @@ in
 		serviceConfig = {
 			TimeoutStartSec = "0";
 			User = "root";
-			ExecStart = "/var/vanta/metalauncher"
+			ExecStart = "/var/vanta/metalauncher";
 			RemainAfterExit = false;
 			WorkingDirectory = "/var/vanta";
 			StateDirectory = "vanta-agent";
 			KillMode = "control-group";
 			KillSignal = "SIGTERM";
 			Restart = "on-failure";
-			TimeoutStartSec = "5";
 			ExecStartPre = [
 				"${pkgs.bash}/bin/bash -c 'cp ${pkgs.boerg.vanta}/var/vanta/* /var/vanta'"
 			];

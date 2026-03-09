@@ -23,7 +23,7 @@ in
       nodejs
       wine64
       winetricks
-      wineWowPackages.waylandFull
+#      wineWowPackages.waylandFull
 #      coolercontrol.coolercontrol-liqctld
       coolercontrol.coolercontrold
       mangohud
