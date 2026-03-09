@@ -32,6 +32,7 @@
       };
     };
     cache.enable = true;
+    vanta.enable = true;
     virt.libvirt.enable = true;
     virt.waydroid.enable = false;
     display.nvidia.enable = true;
@@ -127,7 +128,6 @@
     teamspeak6-client
     element-desktop
     r2modman
-    boerg.vanta
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

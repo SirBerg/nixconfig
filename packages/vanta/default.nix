@@ -4,6 +4,9 @@
 , makeWrapper
 , dpkg
 , autoPatchelfHook
+, pkgs
+, osquery
+,
 }:
 let
   pname = "vanta";
@@ -17,40 +20,41 @@ in
 stdenv.mkDerivation rec {
   inherit pname version src;
 
-  nativeBuildInputs = [ 
-  	dpkg
-        autoPatchelfHook
-	makeWrapper
+  nativeBuildInputs = [
+    dpkg
+    autoPatchelfHook
   ];
 
   unpackPhase = ''
-  	runHook preUnpack
-	dpkg-deb -x "$src" pkg
-	runHook postUnpack
+    runHook preUnpack
+
+    dpkg-deb -x $src .
+
+    runHook postUnpack
   '';
+
   installPhase = ''
     runHook preInstall
 
-    # Copy all agent binaries and assets to libexec
-    mkdir -p "$out/libexec/vanta" "$out/bin"
-    cp -r pkg/var/vanta/* "$out/libexec/vanta/"
-    chmod +x \
-      "$out/libexec/vanta/vanta-cli" \
-      "$out/libexec/vanta/launcher" \
-      "$out/libexec/vanta/metalauncher" \
-      "$out/libexec/vanta/osqueryd" \
-      "$out/libexec/vanta/osquery-vanta.ext"
+    # binaries + certificate
+    mkdir -p $out
+    cp -r var $out/
 
-    # Expose vanta-cli on PATH
-    makeWrapper "$out/libexec/vanta/vanta-cli" "$out/bin/vanta-cli"
+    # systemd service
+    mkdir -p $out/lib
+    cp -r usr/lib/systemd $out/lib
+
+    # mainProgram
+    mkdir -p $out/bin
+    cp -r var/vanta/vanta-cli $out/bin/
 
     runHook postInstall
-  '';
+  '';  
   meta = {
     description = "Vanta security monitoring agent";
     homepage = "https://www.vanta.com";
     maintainers = with lib.maintainers; [ SirBerg ];
-    mainProgram = "vanta";
+    mainProgram = "vanta-cli";
     platforms = [ "x86_64-linux" ];
     license = lib.licenses.unfree;
   };
