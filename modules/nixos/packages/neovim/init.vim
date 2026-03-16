@@ -26,7 +26,6 @@ require('mason-tool-installer').setup {
     -- you can turn off/on auto_update per tool
     { 'bash-language-server', auto_update = true },
 
-    'lua-language-server',
     'vim-language-server',
     'gopls',
     'stylua',
@@ -90,7 +89,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.cmd[[colorscheme monokai_pro]]
+vim.cmd[[colorscheme gruvbox]]
 vim.opt.relativenumber = true
 
 
@@ -127,11 +126,11 @@ local lsp_flags = {
 }
 
 -- LSP Server setups
-require('lspconfig')['clangd'].setup({
+-- require('lspconfig')['clangd'].setup({
     -- LSP-default-keymaps
-    on_attach = on_attach,
-    flags = lsp_flags,
-})
+--    on_attach = on_attach,
+--    flags = lsp_flags,
+--})
 EOF
 
 let g:rainbow_active=1
