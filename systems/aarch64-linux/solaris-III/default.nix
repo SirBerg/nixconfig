@@ -53,9 +53,10 @@
 	    #!/usr/bin/env bash
 	    set -euo pipefail
 
-	    DB_FILE=YEAR=$(date +%Y)
+	    DB_FILE="/var/lib/geoip/dbip-country.csv"
+	    YEAR=$(date +%Y)
 		MONTH=$(date +%m)
-		DB_URL="https://download.db-ip.com/free/dbip-country-lite-${YEAR}-${MONTH}.csv.gz""/var/lib/geoip/dbip-country.csv"
+		DB_URL="https://download.db-ip.com/free/dbip-country-lite-${YEAR}-${MONTH}.csv.gz"
 	    COUNTRIES=("DE" "AT" "CH")
 
 	    mkdir -p /var/lib/geoip
