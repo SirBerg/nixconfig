@@ -90,6 +90,7 @@
       systems.hosts.warmind-targe.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-sagira.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
+      systems.hosts.solaris-III.specialArgs = {inherit (inputs) self;};
       systems.hosts.solaris-prime.specialArgs = { inherit (inputs) self; };
       systems.hosts.solaris-secunda.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
