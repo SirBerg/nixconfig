@@ -110,6 +110,7 @@
 		# Your VPN network - replace with your actual VPN subnet
 		nft add rule inet geoip input ip saddr 100.0.0.0/8 accept
 
+
 	    echo "GeoIP update complete."
 	  '';
 	};
@@ -137,7 +138,6 @@
 	};
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
   # Configure console keymap
   console.keyMap = "de";
 
@@ -162,7 +162,9 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
+  networking.firewall.extraInputRules = ''
+	INPUT -s 46.128.11.17 -j DROP
+  '';
   # Install firefox.
   programs.firefox.enable = true;
 
