@@ -163,7 +163,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   networking.firewall.extraInputRules = ''
-	INPUT 46.128.11.17 DROP
+	INPUT saddr 46.128.11.17 DROP
   '';
   # Install firefox.
   programs.firefox.enable = true;
