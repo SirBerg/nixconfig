@@ -84,7 +84,7 @@
 
 	      # Populate sets from CSV
 	      # CSV format: start_ip,end_ip,country_code
-	      grep ",${CC}$" "$DB_FILE" | while IFS=',' read -r start end cc; do
+	      grep ",''${CC}$" "$DB_FILE" | while IFS=',' read -r start end cc; do
 		if [[ "$start" == *:* ]]; then
 		  nft add element inet geoip "$SET"_v6 "{ $start - $end }" 2>/dev/null || true
 		else
