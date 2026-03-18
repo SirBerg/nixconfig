@@ -118,6 +118,7 @@
 	  description = "Update GeoIP nftables sets";
 	  after = [ "network-online.target" ];
 	  wants = [ "network-online.target" ];
+	  path = with pkgs; [ curl gzip nftables bash ];
 	  serviceConfig = {
 	    Type = "oneshot";
 	    ExecStart = "/bin/sh /etc/geoip-update.sh";
@@ -173,7 +174,6 @@
   environment.systemPackages = with pkgs; [
   curl
   gzip
-  gunzip
   nftables
   ];
 boot.kernelParams = [ "console=tty1" ];
