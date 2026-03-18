@@ -96,6 +96,19 @@
 	      nft add rule inet geoip input ip saddr "@''${SET}_v4" accept
 	      nft add rule inet geoip input ip6 saddr "@''${SET}_v6" accept
 	    done
+	    # Always allow loopback and established/related
+		nft add rule inet geoip input iif lo accept
+		nft add rule inet geoip input ct state established,related accept
+
+		# Allow private/management networks (Hetzner VNC, VPN, etc.)
+		nft add rule inet geoip input ip saddr 10.0.0.0/8 accept
+		nft add rule inet geoip input ip saddr 172.16.0.0/12 accept
+		nft add rule inet geoip input ip saddr 192.168.0.0/16 accept
+		nft add rule inet geoip input ip saddr 169.254.0.0/16 accept
+		nft add rule inet geoip input ip6 saddr fe80::/10 accept
+
+		# Your VPN network - replace with your actual VPN subnet
+		nft add rule inet geoip input ip saddr 10.8.0.0/24 accept
 
 	    echo "GeoIP update complete."
 	  '';
