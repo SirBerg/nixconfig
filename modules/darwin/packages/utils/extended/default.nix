@@ -15,6 +15,7 @@ in
       nmap
       rclone
       nodejs
+      libiconv
       #mplayer
       audacity
       jdk21

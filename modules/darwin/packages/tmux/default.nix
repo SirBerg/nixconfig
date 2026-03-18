@@ -3,10 +3,10 @@
 with lib;
 with lib.types;
 let
-  cfg = config.boerg.packages.neovim;
+  cfg = config.boerg.packages.tmux;
 in
 {
-  options.boerg.packages.neovim.enable = mkOption {
+  options.boerg.packages.tmux.enable = mkOption {
     type = bool;
     default = false;
   };
@@ -14,7 +14,6 @@ in
   config = mkIf cfg.enable {
   	programs.tmux = {
 		enable = true;
-		clock24 = true;
 	};
   };
 }
