@@ -31,7 +31,6 @@
       };
     };
     config.standard.enable = true;
-    services.ssh.enable = true;
     docker = {
       enable = true;
     };
