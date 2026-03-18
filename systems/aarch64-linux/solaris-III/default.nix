@@ -173,6 +173,7 @@
   environment.systemPackages = with pkgs; [
   curl
   gzip
+  gunzip
   nftables
   ];
 boot.kernelParams = [ "console=tty1" ];
