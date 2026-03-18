@@ -108,7 +108,7 @@
 		nft add rule inet geoip input ip6 saddr fe80::/10 accept
 
 		# Your VPN network - replace with your actual VPN subnet
-		nft add rule inet geoip input ip saddr 10.8.0.0/24 accept
+		nft add rule inet geoip input ip saddr 100.0.0.0/8 accept
 
 	    echo "GeoIP update complete."
 	  '';
@@ -134,16 +134,6 @@
 	    Persistent = true;
 	  };
 	};
-	networking.firewall.extraInputRules = ''
-  iif lo accept
-  ct state established,related accept
-  ip saddr 10.0.0.0/8 accept
-  ip saddr 172.16.0.0/12 accept
-  ip saddr 192.168.0.0/16 accept
-  ip saddr 169.254.0.0/16 accept
-  ip saddr 100.0.0.0/8 accept
-  ip6 saddr fe80::/10 accept
-'';
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
