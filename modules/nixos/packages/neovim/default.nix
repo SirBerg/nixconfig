@@ -44,6 +44,7 @@ in
             mason-lspconfig-nvim
             mason-tool-installer-nvim
             vim-monokai-pro
+	    gruvbox
           ];
         };
       };

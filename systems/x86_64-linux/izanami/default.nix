@@ -35,13 +35,22 @@
     virt.libvirt.enable = true;
     virt.waydroid.enable = false;
     display.nvidia.enable = true;
+    display.hyprland.enable = true;
     config.standard.enable = true;
+    services.ssh.enable = true;
+    services.rdp.enable = true;
     #    services.hydra.enable = true;
     docker = {
       enable = true;
     };
   };
 
+  services.udev.extraRules = ''
+    		# Steam Controller Support 
+    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="0407", MODE="0666"
+    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b679", MODE="0666"
+    		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="040e", MODE="0666"
+  '';
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -104,7 +113,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	volanta
+    volanta
+    nfs-utils
+    prismlauncher
+    jdk25_headless
+    ocl-icd
+    clinfo
+    nvidia-container-toolkit
+    cudaPackages.cudatoolkit
+    onboard
+    protonvpn-gui
+    ckan
+    teamspeak6-client
+    element-desktop
+    r2modman
+    handbrake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -121,7 +144,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 3001 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

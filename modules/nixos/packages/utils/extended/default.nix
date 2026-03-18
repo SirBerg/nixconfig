@@ -19,18 +19,20 @@ in
       rclone
       clinfo
       networkmanagerapplet
+      vlc
       nodejs
       wine64
       winetricks
-      wineWowPackages.waylandFull
-      coolercontrol.coolercontrol-liqctld
+#      wineWowPackages.waylandFull
+#      coolercontrol.coolercontrol-liqctld
       coolercontrol.coolercontrold
       mangohud
+      legendary-gl
       #mplayer
       audacity
       multiviewer-for-f1
       attic-client
-      jdk21
+      #jdk21
       gimp
       icu
       vscode-fhs
@@ -38,8 +40,8 @@ in
       lutris
       obs-studio
       vesktop
+      #      davinci-resolve
     ];
-    programs.coolercontrol.nvidiaSupport = true;
     programs.coolercontrol.enable = true;
     programs.steam = {
       enable = true;

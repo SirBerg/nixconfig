@@ -42,10 +42,10 @@ in
         mason-lspconfig-nvim
         mason-tool-installer-nvim
         vim-monokai-pro
-	nerdtree
-	vim-devicons
-	vim-nerdtree-syntax-highlight
-	nvim-cmp
+        nerdtree
+        vim-devicons
+        vim-nerdtree-syntax-highlight
+        nvim-cmp
       ];
     };
   };

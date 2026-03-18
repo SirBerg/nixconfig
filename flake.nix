@@ -1,28 +1,26 @@
 {
   nixConfig = {
     extra-substituters = [
-	"https://cache.nixos.org"
+      "https://cache.nixos.org"
     ];
     extra-trusted-public-keys = [
-	"default:mK6W8AHbTV7DO5VDMDxe0154tNyyaq21eRvP/wwO1UA="
-	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-	];
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
     trusted-users = [ "root" "berg" ];
-	
-     substituters = [
-     "https://cache.nixos.org"
-     ];
-     always-allow-substitutes = true;
-     extra-trusted-substsituters = [
-	"https://cache.nixos.org"
-	];
-     trusted-public-keys = [
-	"cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-     ];
+
+    substituters = [
+      "https://cache.nixos.org"
+    ];
+    always-allow-substitutes = true;
+    extra-trusted-substsituters = [
+      "https://cache.nixos.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #ags.url = "github:Aylur/ags";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     Solaar.url = "github:Svenum/Solaar-Flake";
     home-manager = {
@@ -92,7 +90,12 @@
       systems.hosts.warmind-targe.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-sagira.specialArgs = { inherit (inputs) self; };
       systems.hosts.warmind-glint.specialArgs = { inherit (inputs) self; };
+      systems.hosts.solaris-prime.specialArgs = { inherit (inputs) self; };
+      systems.hosts.solaris-secunda.specialArgs = { inherit (inputs) self; };
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
+      systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
+      systems.hosts.laptop.specialArgs = { inherit (inputs) self; };
+      nixpkgs.config.allowUnfree = true;	
 
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
@@ -112,13 +115,8 @@
       channels-config = {
         allowUnfree = true;
       };
-
-      overlays = with inputs; [
-        hyprpanel.overlay
-      ];
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
-
       nix.settings.trusted-users = [ "root" "berg" ];
     };
 

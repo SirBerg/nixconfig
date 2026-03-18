@@ -13,13 +13,13 @@ in
       enable = true;
       source = ./dotfiles/swaylock.conf;
     };
-    home.file.".config/hypr/hyprland.conf" = {
+    home.file.".config/sway/config" = {
       enable = true;
-      source = ./dotfiles/hypr/hyprland.conf;
+      source = ./sway/config;
     };
-    home.file.".config/hypr/hyprpaper.conf" = {
+    home.file.".config/tmux/tmux.conf" = {
       enable = true;
-      source = ./dotfiles/hypr/hyprpaper.conf;
+      source = ./dotfiles/tmux/tmux.conf;
     };
   };
 }

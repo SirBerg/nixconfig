@@ -20,13 +20,13 @@ in
       alsa.support32Bit = true;
       pulse.enable = true;
       # If you want to use JACK applications, uncomment this
-      jack.enable = true;
+#      jack.enable = true;
     };
 
     services.pipewire.extraConfig.pipewire."20-pulse-properties.conf" = {
       "pulse.min.req" = "256/44000";
       "pulse.min.frag" = "256/44000";
-      "pulse.min.quantum" = "256/44000";
+      "pulse.min.quantum" = "512/48000";
     };
   };
 }

@@ -18,7 +18,7 @@ in
         jq
         doing
         deadnix
-	];
+      ];
     boerg.packages.browser.firefox.enable = true;
     boerg.packages.browser.brave.enable = true;
     boerg.packages.utils.core.enable = true;

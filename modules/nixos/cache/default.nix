@@ -14,7 +14,7 @@ in
     nix.settings = {
       substituters = [
         # nix community's cache server
-	"http://localhost:3000/default"
+        "http://localhost:3000/default"
       ];
     };
   };
