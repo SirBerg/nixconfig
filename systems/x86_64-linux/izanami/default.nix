@@ -127,7 +127,9 @@
     teamspeak6-client
     element-desktop
     r2modman
+    xournalpp
     handbrake
+    gparted
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
