@@ -18,6 +18,7 @@ in
       btop
       lnav
       tmux
+      libiconv
       zsh
       compose2nix
       restic

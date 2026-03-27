@@ -19,8 +19,9 @@ in
         jetbrains.rust-rover
         jetbrains.datagrip
         jetbrains.goland
+	jetbrains.pycharm
         jetbrains.phpstorm
-        jetbrains.idea-ultimate
+        jetbrains.idea
         jetbrains-toolbox
         gcc
         rustup
