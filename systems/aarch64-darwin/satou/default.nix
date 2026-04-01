@@ -24,6 +24,8 @@
   # programs.fish.enable = true;
 	  environment.systemPackages = [
 	  	pkgs.kubernetes-helm
+		pkgs.xournalpp
+		pkgs.helix
 	  ];
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;

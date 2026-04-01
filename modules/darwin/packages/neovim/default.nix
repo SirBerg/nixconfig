@@ -24,30 +24,34 @@ in
 
       enable = true;
       viAlias = true;
+      enableMan = true;
       vimAlias = true;
-      extraConfigLua = (builtins.readFile ./init.lua);
+      extraConfigLua = ''
+	${builtins.readFile ./init.lua}
+      '';
       extraPlugins = with pkgs.vimPlugins; [
-        mason-nvim
-        markdown-preview-nvim
-        rainbow
-        auto-pairs
-        vim-gitgutter
-        nvim-tree-lua
-        (nvim-treesitter.withPlugins (p: with p; [ tree-sitter-nix typescript ]))
-        #tokyonight-nvim
-        lsp-zero-nvim
-        nvim-lspconfig
-        nvim-cmp
-        cmp-nvim-lsp
-        mason-lspconfig-nvim
-        mason-tool-installer-nvim
-        vim-monokai-pro
-        nerdtree
-        vim-devicons
-        vim-nerdtree-syntax-highlight
-        nvim-cmp
+      	telescope-z-nvim
+	nvim-lspconfig
+	mason-nvim
+	mason-lspconfig-nvim
+	mason-tool-installer-nvim
+	nvim-cmp
+	cmp-buffer
+	cmp-nvim-lsp
+	cmp-path
+	luasnip
+	lualine-nvim
+	nvim-treesitter
+	which-key-nvim
+	symbols-outline-nvim
+	vim-illuminate
+	nvim-autopairs
+	gitsigns-nvim
+	indent-blankline-nvim
+	bufferline-nvim
       ];
     };
+
   };
 }
 

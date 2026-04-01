@@ -19,6 +19,7 @@ in
         clean-build = "sudo nix store gc && sudo nixos-rebuild switch";
         check = "sudo nix flake check";
         darwin-rebuild = "sudo darwin-rebuild switch --flake .#satou";
+	nvim = "vim";
       };
 
       history = {

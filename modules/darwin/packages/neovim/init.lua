@@ -1,169 +1,259 @@
-require("mason").setup()
-require("mason-lspconfig").setup({
-	automatic_enable=true
+-- Requires
+local treesitter_configs = require("nvim-treesitter")
+local nvim_lspconfig = require('lspconfig')
+local mason = require('mason').setup()
+local mason_lspconfig = require('mason-lspconfig').setup({
+	automatic_enable = true
 })
-require("vim.lsp.health").check()
-require('nvim-treesitter').setup {
-  highlight = {
-    enable = true,
-
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
+local mason_tool_installer = require('mason-tool-installer')
 local cmp = require('cmp')
-cmp.setup({
-  sources = {
-    {name = 'nvim_lsp'},
-  },
-  mapping = {
-    ['<cr>'] = cmp.mapping.confirm({select = false}),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-k>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-    ['<C-j>'] = cmp.mapping.select_next_item({behavior = 'select'}),
-    ['<C-p>'] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_prev_item({behavior = 'insert'})
-      else
-        cmp.complete()
-      end
-    end),
-    ['<C-n>'] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_next_item({behavior = 'insert'})
-      else
-        cmp.complete()
-      end
-    end),
-  },
+local which_key = require('which-key')
+local telescope_builtin = require('telescope.builtin')
+local illuminate = require('illuminate')
+local autopairs = require('nvim-autopairs')
+local indent_guide = require('ibl')
+local bufferline = require('bufferline')
+
+-- Verify that lsp is working
+--require('vim.lsp.health').check()
+
+--###############################
+--
+--Plugin Setups
+--
+--###############################
+
+--Treesitter
+treesitter_configs.setup({
+	ensure_installed = {
+		"c", "lua", "javascript", "typescript", "html", "python", "java", "go"
+	},
+	sync_install = false,
+	highlight = { enable = true },
+	indent = { enable = true },
 })
 
-require('mason-tool-installer').setup {
+--CMP
+cmp.setup({
+	sources = {
+		{name = 'nvim_lsp'}
+	},
+	mapping = {
+		['<cr>'] = cmp.mapping.confirm({select = false}),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<C-k>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+		['<C-j>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+		['<C-p>'] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item({behavior = 'insert'})
+			else
+				cmp.complete()
+			end
+		end),
+		['<C-n>'] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_next_item({behavior = 'insert'})
+			else
+				cmp.complete()
+			end
+		end),
+	}
+})
 
-  -- a list of all tools you want to ensure are installed upon
-  -- start
-  ensure_installed = {
-
-    -- you can pin a tool to a particular version
-    { 'golangci-lint', version = 'v1.47.0' },
-
-    -- you can turn off/on auto_update per tool
-    { 'bash-language-server', auto_update = true },
-
-    'lua-language-server',
-    'vim-language-server',
-    'gopls',
-    'stylua',
-    'shellcheck',
-    'editorconfig-checker',
-    'gofumpt',
-    'golines',
-    'gomodifytags',
-    'gotests',
-    'impl',
-    'json-to-struct',
-    'luacheck',
-    'misspell',
-    'revive',
-    'shellcheck',
-    'shfmt',
-    'staticcheck',
-    'vint',
-    'clangd',
-    'ts_ls'
-  },
-
-  -- if set to true this will check each tool for updates. If updates
-  -- are available the tool will be updated. This setting does not
-  -- affect :MasonToolsUpdate or :MasonToolsInstall.
-  -- Default: false
-  auto_update = false,
-
-  -- automatically install / update on startup. If set to false nothing
-  -- will happen on startup. You can use :MasonToolsInstall or
-  -- :MasonToolsUpdate to install tools and check for updates.
-  -- Default: true
-  run_on_start = true,
-
-  -- set a delay (in ms) before the installation starts. This is only
-  -- effective if run_on_start is set to true.
-  -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
-  -- Default: 0
-  start_delay = 3000, -- 3 second delay
-
-  -- Only attempt to install if 'debounce_hours' number of hours has
-  -- elapsed since the last time Neovim was started. This stores a
-  -- timestamp in a file named stdpath('data')/mason-tool-installer-debounce.
-  -- This is only relevant when you are using 'run_on_start'. It has no
-  -- effect when running manually via ':MasonToolsInstall' etc....
-  -- Default: nil
-  debounce_hours = 5, -- at least 5 hours between attempts to install/update
-
-  -- By default all integrations are enabled. If you turn on an integration
-  -- and you have the required module(s) installed this means you can use
-  -- alternative names, supplied by the modules, for the thing that you want
-  -- to install. If you turn off the integration (by setting it to false) you
-  -- cannot use these alternative names. It also suppresses loading of those
-  -- module(s) (assuming any are installed) which is sometimes wanted when
-  -- doing lazy loading.
-  integrations = {
-    ['mason-lspconfig'] = true,
-  },
+--Mason
+mason_tool_installer.setup {
+	ensure_installed = {
+		'golangci-lint',
+		'lua-language-server',
+		'vim-language-server',
+		'gopls',
+		'stylua',
+		'shellcheck',
+		'editorconfig-checker',
+		'gofumpt',
+		'golines',
+		'gomodifytags',
+		'gotests',
+		'impl',
+		'json-to-struct',
+		'misspell',
+		'revive',
+		'shellcheck',
+		'shfmt',
+		'staticcheck',
+		'vint',
+		'clangd',
+		'ts_ls'
+  	},
+	auto_update = false,
+	run_on_start = true,
+	start_delay = 0,
+	debounce_houers = 5,
+	integrations = {
+		['mason-lspconfig'] = true,
+	}
 }
---global conf
-vim.g.rainbow_active=1
+
+-- Illuminate
+illuminate.configure({
+	providers = {
+		'lsp',
+		'treesitter',
+		'regex'
+	},
+	delay = 100,
+	under_cursor = true,
+	large_file_cutoff = 10000,
+	large_file_overrides = nil,
+	min_count_to_highlight = 1,
+	case_insensitive_regex = false,
+	disable_keymaps = false,
+})
+
+-- Autopairs
+autopairs.setup({
+	disable_filetype = { "TelescopePrompt", "vim", "spectre_panel", "snacks_picker_input" }
+})
+
+-- Indent blankline Guide
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+indent_guide.setup({indent = {highlight = highlight}})
+
+-- Bufferline
+vim.opt.termguicolors = true
+bufferline.setup()
+
+--###############################
+--
+--KEYBINDS
+--
+--###############################
+-- Leader = Space
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m3000 '<-2<CR>gv=gv")
-vim.cmd[[colorscheme monokai_pro]]
+-- Relative line numbers
 vim.opt.relativenumber = true
-
+-- Load netrw (leader + p + v)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open Netrw"})
+-- Colorscheme
+vim.cmd[[colorscheme retrobox]]
 
 -- LSP Configs
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '<leader>ad', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', '<leader>sd', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts, {desc = "Open Floating LSP Diagnostic Window"})
+vim.keymap.set('n', '<leader>ad', vim.diagnostic.goto_prev, opts, {desc = "Previous Diagnostic"})
+vim.keymap.set('n', '<leader>sd', vim.diagnostic.goto_next, opts, {desc = "Next Diagnostic"})
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts, {desc = "Show LOC List"})
+
+-- Telescope Configs
+vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, { desc = 'Telescope live grep'})
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, { desc = 'Telescope buffers'})
+vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {desc = 'Telescope help tags'})
+
 -- Nerd tree config
-vim.cmd("nnoremap <leader>pn :NERDTreeFocus<cr>")
-vim.cmd("nnoremap <leader>pf :NERDTreeFind<cr>")
-vim.cmd("nnoremap <leader>pt :NERDTreeToggle<cr>")
+vim.cmd("nnoremap <leader>pn :NERDTreeFocus<cr>", {desc = "Focus Nerd Tree"})
+vim.cmd("nnoremap <leader>pf :NERDTreeFind<cr>", {desc = "Find in Nerd Tree"})
+vim.cmd("nnoremap <leader>pt :NERDTreeToggle<cr>", {desc = "Toggle Nerd Tree"})
 
--- Lsp keymaps
-local on_attach = function(client, bufnr)
-    local opts_buffer = { noremap = true, silent = true, buffer = bufnr }
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    -- Mappings: LSP
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts_buffer)
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts_buffer)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts_buffer)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts_buffer)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts_buffer)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts_buffer)
-    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts_buffer)
-    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts_buffer)
-    vim.keymap.set('n', '<space>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts_buffer)
-    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts_buffer)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts_buffer)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts_buffer)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts_buffer)
-    vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts_buffer)
-end
+-- Terminal in vim 
+vim.keymap.set(
+    'n',
+    '<leader>t',
+    [[<cmd>vsplit | term<cr>A]],
+    { desc = 'Open terminal in horizontal split' }
+)
+vim.keymap.set(
+    't',
+    'jk',
+    '<C-\\><C-n>',
+    { desc = 'Use jk to enter in terminal normal mode' }
+)
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', {desc = "Escape from terminal mode"})
 
-local lsp_flags = {
-    debounce_text_changes = 150,
-}
+-- Splits
+vim.keymap.set('n', '<leader>sv', '<C-W>v', {desc = "Split window vertically"})
+vim.keymap.set('n', '<leader>sh', '<C-W>S', {desc = "Split window horizontally"})
+vim.keymap.set('n', '<leader>ml', '<C-W>r', {desc = "Rotate Windows to the right"})
+vim.keymap.set('n', '<leader>mh', '<C-W>R', {desc = "Rotate Windows to the left"})
+vim.keymap.set('n', '<leader>wh', '<C-W>h', {desc = "Move Cursor to the left Window from currently focused"})
+vim.keymap.set('n', '<leader>wl', '<C-W>l', {desc = "Move Cursor to the right Window from currently focused"})
+vim.keymap.set('n', '<leader>wj', '<C-W>j', {desc = "Move Cursor down Window from currently focused"})
+vim.keymap.set('n', '<leader>wk', '<C-W>k', {desc = "Move Cursor up Window from currently focused"})
 
 
-vim.lsp.enable('ts_ls', {
-	flags = lsp_flags,
-	on_attach = on_attach,
+--############################
+--
+--Other
+--
+--############################
+
+-- Red undercurl (wavy underline like IntelliJ) for errors
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {
+	undercurl = true,
+	sp = "#db4b4b",
 })
-vim.lsp.enable('lua_ls')
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", {
+	undercurl = true,
+	sp = "#e0af68",
+})
+
+-- Diagnostic display config
+vim.diagnostic.config({
+	underline = true,          -- enables the underline/undercurl
+	virtual_text = {
+		source = "if_many",      -- show source name if multiple LSPs
+		prefix = "●",
+	},
+	signs = {
+	text = {
+		[vim.diagnostic.severity.ERROR] = " ",
+		[vim.diagnostic.severity.WARN]  = " ",
+		[vim.diagnostic.severity.HINT]  = " ",
+		[vim.diagnostic.severity.INFO]  = " ",
+	},
+	},
+	update_in_insert = true,  -- don't show errors while typing
+	severity_sort = true,
+	float = {
+		border = "rounded",
+		source = "always",
+	},
+})
+
+-- Show diagnostic float automatically when cursor rests on an error
+vim.opt.updatetime = 250  -- faster hover (default is 4000ms)
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = function()
+		vim.diagnostic.open_float(nil, {
+			focusable = false,
+			border = "rounded",
+			source = "always",
+			scope = "cursor",
+			close_events = {
+				"BufLeave", "CursorMoved", "InsertEnter", "FocusLost",
+			},
+		})
+	end,
+})
+
