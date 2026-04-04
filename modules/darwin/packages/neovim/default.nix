@@ -18,6 +18,18 @@ in
         go
         python3
         neovim
+	ripgrep
+	# Only required on MacOS for :Obsidian paste-img
+	pngpaste
+	kitty
+
+	# Photos dependencies
+	imagemagick
+	# Mermaid diagrams
+	mermaid-cli
+	# LaTEX expression renderer
+	tectonic-unwrapped
+
       ];
 
     programs.nixvim = {
@@ -32,6 +44,7 @@ in
       extraPlugins = with pkgs.vimPlugins; [
       	telescope-z-nvim
 	nvim-lspconfig
+	obsidian-nvim
 	mason-nvim
 	mason-lspconfig-nvim
 	mason-tool-installer-nvim
@@ -49,11 +62,9 @@ in
 	gitsigns-nvim
 	indent-blankline-nvim
 	bufferline-nvim
+	snacks-nvim
+	render-markdown
       ];
     };
-
   };
 }
-
-
-

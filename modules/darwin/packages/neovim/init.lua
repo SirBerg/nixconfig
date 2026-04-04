@@ -13,6 +13,9 @@ local illuminate = require('illuminate')
 local autopairs = require('nvim-autopairs')
 local indent_guide = require('ibl')
 local bufferline = require('bufferline')
+local obsidian = require('obsidian')
+local snacks = require('snacks')
+local render_markdown = require('render-markdown')
 
 -- Verify that lsp is working
 --require('vim.lsp.health').check()
@@ -25,9 +28,7 @@ local bufferline = require('bufferline')
 
 --Treesitter
 treesitter_configs.setup({
-	ensure_installed = {
-		"c", "lua", "javascript", "typescript", "html", "python", "java", "go"
-	},
+	ensure_installed = "all",
 	sync_install = false,
 	highlight = { enable = true },
 	indent = { enable = true },
@@ -144,6 +145,42 @@ indent_guide.setup({indent = {highlight = highlight}})
 vim.opt.termguicolors = true
 bufferline.setup()
 
+-- Obsidian
+obsidian.setup({
+	legacy_commands = false,
+	ui = {
+		enable = true
+	},
+	workspaces = {
+		{
+			name = "Main",
+			path = "~/Documents/Main"
+		}
+	},
+	templates = {
+		folder = "Templates"
+	},
+	attachments = {
+		folder = "Assets",
+	},
+})
+-- Obsidian requires vim.opts.conceallevel to be either 1 or 2 so setting it to 2 here
+vim.opt.conceallevel = 2
+
+-- Snacks.nvim (used for image rendering)
+snacks.setup({
+	image = {
+		resolve = function(path, src)			    
+			local api = require "obsidian.api"
+			if api.path_is_note(path) then
+				return api.resolve_attachment_path(src)
+			end
+		end,
+	}
+})
+
+
+
 --###############################
 --
 --KEYBINDS
@@ -153,6 +190,8 @@ bufferline.setup()
 vim.g.mapleader = " "
 -- Relative line numbers
 vim.opt.relativenumber = true
+-- Set unwrap 
+vim.opt.wrap = false
 -- Load netrw (leader + p + v)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open Netrw"})
 -- Colorscheme
@@ -199,6 +238,12 @@ vim.keymap.set('n', '<leader>wh', '<C-W>h', {desc = "Move Cursor to the left Win
 vim.keymap.set('n', '<leader>wl', '<C-W>l', {desc = "Move Cursor to the right Window from currently focused"})
 vim.keymap.set('n', '<leader>wj', '<C-W>j', {desc = "Move Cursor down Window from currently focused"})
 vim.keymap.set('n', '<leader>wk', '<C-W>k', {desc = "Move Cursor up Window from currently focused"})
+
+-- Obsidian.nvim remaps
+vim.cmd("nnoremap <leader>ol :Obsidian link<cr>", {desc = "Link an Obsidian File"})
+vim.cmd("nnoremap <leader>op :Obsidian paste_img<cr>", {desc = "Paste an Image into an obsidian file"})
+vim.cmd("nnoremap <leader>of :Obsidian search<cr>", {desc = "Find an Obsidian note"})
+vim.cmd("nnoremap <leader>on :Obsidian new<cr>", {desc = "Create an Obsidian File"})
 
 
 --############################
@@ -257,3 +302,13 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	end,
 })
 
+
+-- Enable inlay hints globally on LspAttach
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
+  end,
+})
