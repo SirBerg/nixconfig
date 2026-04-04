@@ -29,6 +29,8 @@ in
 	mermaid-cli
 	# LaTEX expression renderer
 	tectonic-unwrapped
+	# PDF renderer for snacks
+	ghostscript_headless
 
 	tree-sitter
 
