@@ -30,6 +30,8 @@ in
 	# LaTEX expression renderer
 	tectonic-unwrapped
 
+	tree-sitter
+
       ];
 
     programs.nixvim = {
