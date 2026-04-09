@@ -130,6 +130,7 @@
     xournalpp
     handbrake
     gparted
+    nextcloud-client
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

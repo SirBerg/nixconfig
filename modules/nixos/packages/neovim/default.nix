@@ -10,47 +10,65 @@ in
     type = bool;
     default = false;
   };
+
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs;
       [
         # Mason dependencies
         go
         python3
-      ];
-    programs.nix-ld.enable = true;
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      withNodeJs = true;
-      configure = {
-        customRC = (builtins.readFile ./init.vim);
+        neovim
+	ripgrep
+	# Only required on MacOS for :Obsidian paste-img
+	pngpaste
+	kitty
 
-        packages.nix = {
-          start = with pkgs.vimPlugins; [
-            mason-nvim
-            markdown-preview-nvim
-            rainbow
-            auto-pairs
-            vim-gitgutter
-            nvim-tree-lua
-            (nvim-treesitter.withPlugins (p: with p; [ tree-sitter-nix typescript ]))
-            #tokyonight-nvim
-            lsp-zero-nvim
-            nvim-lspconfig
-            nvim-cmp
-            cmp-nvim-lsp
-            mason-lspconfig-nvim
-            mason-tool-installer-nvim
-            vim-monokai-pro
-	    gruvbox
-          ];
-        };
-      };
+	# Photos dependencies
+	imagemagick
+	# Mermaid diagrams
+	mermaid-cli
+	# LaTEX expression renderer
+	tectonic-unwrapped
+	# PDF renderer for snacks
+	ghostscript_headless
+
+	tree-sitter
+
+      ];
+
+    programs.nixvim = {
+
+      enable = true;
+      viAlias = true;
+      enableMan = true;
+      vimAlias = true;
+      extraConfigLua = ''
+	${builtins.readFile ./init.lua}
+      '';
+      extraPlugins = with pkgs.vimPlugins; [
+      	telescope-z-nvim
+	nvim-lspconfig
+	obsidian-nvim
+	mason-nvim
+	mason-lspconfig-nvim
+	mason-tool-installer-nvim
+	nvim-cmp
+	cmp-buffer
+	cmp-nvim-lsp
+	cmp-path
+	luasnip
+	lualine-nvim
+	nvim-treesitter
+	which-key-nvim
+	symbols-outline-nvim
+	vim-illuminate
+	nvim-autopairs
+	gitsigns-nvim
+	indent-blankline-nvim
+	bufferline-nvim
+	snacks-nvim
+	render-markdown
+      ];
     };
   };
 }
-
-
-
