@@ -114,6 +114,9 @@
       systems.hosts.izanami.modules = with inputs; [
         nixvim.nixosModules.nixvim
       ];
+      systems.hosts.bergusia.modules = with inputs; [
+        nixvim.nixosModules.nixvim
+      ];
       home-manager.users.boerg = {
         home.stateVersion = "24.11";
       };

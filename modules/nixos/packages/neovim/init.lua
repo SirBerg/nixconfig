@@ -176,24 +176,24 @@ vim.opt.termguicolors = true
 bufferline.setup()
 
 -- Obsidian
-obsidian.setup({
-	legacy_commands = false,
-	ui = {
-		enable = true
-	},
-	workspaces = {
-		{
-			name = "Main",
-			path = "~/Documents/Schule"
-		}
-	},
-	templates = {
-		folder = "Templates"
-	},
-	attachments = {
-		folder = "Assets",
-	},
-})
+--obsidian.setup({
+--	legacy_commands = false,
+--	ui = {
+--		enable = true
+--	},
+--	workspaces = {
+--		{
+--			name = "Main",
+--			path = "~/Documents/Schule"
+--		}
+--	},
+--	templates = {
+--		folder = "Templates"
+--	},
+--	attachments = {
+--		folder = "Assets",
+--	},
+--})
 -- Obsidian requires vim.opts.conceallevel to be either 1 or 2 so setting it to 2 here
 vim.opt.conceallevel = 2
 
