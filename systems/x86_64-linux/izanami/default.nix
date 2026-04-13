@@ -131,6 +131,8 @@
     handbrake
     gparted
     nextcloud-client
+    tidal-hifi
+    davinci-resolve
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

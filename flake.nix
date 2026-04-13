@@ -110,6 +110,10 @@
       systems.hosts.satou.modules = with inputs; [
         nixvim.nixDarwinModules.nixvim
       ];
+      # Required for nixvim to work on a system
+      systems.hosts.izanami.modules = with inputs; [
+        nixvim.nixosModules.nixvim
+      ];
       home-manager.users.boerg = {
         home.stateVersion = "24.11";
       };

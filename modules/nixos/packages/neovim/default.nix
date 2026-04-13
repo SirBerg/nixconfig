@@ -20,7 +20,7 @@ in
         neovim
 	ripgrep
 	# Only required on MacOS for :Obsidian paste-img
-	pngpaste
+	#pngpaste
 	kitty
 
 	# Photos dependencies
@@ -35,6 +35,14 @@ in
 	tree-sitter
 
       ];
+    programs.nix-ld = {
+    	enable = true;
+	libraries = with pkgs; [
+		vimPlugins.mason-nvim
+		vimPlugins.mason-lspconfig-nvim
+		vimPlugins.mason-tool-installer-nvim
+	];
+    };
 
     programs.nixvim = {
 
@@ -68,6 +76,8 @@ in
 	bufferline-nvim
 	snacks-nvim
 	render-markdown
+	gruvbox
+	cord-nvim
       ];
     };
   };

@@ -16,6 +16,7 @@ local bufferline = require('bufferline')
 local obsidian = require('obsidian')
 local snacks = require('snacks')
 local render_markdown = require('render-markdown')
+local cord = require('cord')
 
 -- Verify that lsp is working
 --require('vim.lsp.health').check()
@@ -183,7 +184,7 @@ obsidian.setup({
 	workspaces = {
 		{
 			name = "Main",
-			path = "~/Documents/Main"
+			path = "~/Documents/Schule"
 		}
 	},
 	templates = {
@@ -208,7 +209,7 @@ snacks.setup({
 	}
 })
 
-
+cord.setup()
 
 --###############################
 --
@@ -224,7 +225,7 @@ vim.opt.wrap = false
 -- Load netrw (leader + p + v)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open Netrw"})
 -- Colorscheme
-vim.cmd[[colorscheme retrobox]]
+vim.cmd[[colorscheme gruvbox]]
 
 -- LSP Configs
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts, {desc = "Open Floating LSP Diagnostic Window"})

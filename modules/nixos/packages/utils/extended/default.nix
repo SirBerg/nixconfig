@@ -12,7 +12,7 @@ in
   };
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs;[
-      neofetch
+      fastfetch
       nmap
       coolercontrol.coolercontrol-gui
       coolercontrol.coolercontrol-ui-data
