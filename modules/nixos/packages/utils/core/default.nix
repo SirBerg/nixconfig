@@ -32,8 +32,14 @@ in
       restic
       rclone
       cachix
-
+      gnupg
     ];
+    programs.gnupg.agent = {
+	enable = true;
+	enableSSHSupport = true;
+	pinentryPackage = pkgs.pinentry-curses;
+    };
+    services.pcscd.enable = true;
 
     users.defaultUserShell = pkgs.zsh;
     #services.solaar = {
