@@ -275,6 +275,8 @@ vim.cmd("nnoremap <leader>op :Obsidian paste_img<cr>", {desc = "Paste an Image i
 vim.cmd("nnoremap <leader>of :Obsidian search<cr>", {desc = "Find an Obsidian note"})
 vim.cmd("nnoremap <leader>on :Obsidian new<cr>", {desc = "Create an Obsidian File"})
 
+-- Clear search highlighting
+vim.cmd("nnoremap <leader>sn :nohlsearch<cr>", {desc = "Clear search highlighting"})
 
 --############################
 --
