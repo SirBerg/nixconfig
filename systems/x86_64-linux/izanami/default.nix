@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -131,8 +131,14 @@
     handbrake
     gparted
     nextcloud-client
-    tidal-hifi
     davinci-resolve
+    protonup-rs
+    via
+    inputs.tidaLuna.packages.x86_64-linux.default
+    ffmpeg
+    gnome-podcasts
+    scenebuilder
+    waytrogen
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

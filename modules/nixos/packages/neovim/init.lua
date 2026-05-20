@@ -157,6 +157,13 @@ local highlight = {
     "RainbowCyan",
 }
 
+-- Rest nvim
+require('rest-nvim').setup({
+  result = {
+    formatter = 'jq',
+  },
+})
+
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
@@ -176,24 +183,24 @@ vim.opt.termguicolors = true
 bufferline.setup()
 
 -- Obsidian
---obsidian.setup({
---	legacy_commands = false,
---	ui = {
---		enable = true
---	},
---	workspaces = {
---		{
---			name = "Main",
---			path = "~/Documents/Schule"
---		}
---	},
---	templates = {
---		folder = "Templates"
---	},
---	attachments = {
---		folder = "Assets",
---	},
---})
+obsidian.setup({
+	legacy_commands = false,
+	ui = {
+		enable = true
+	},
+	workspaces = {
+		{
+			name = "Main",
+			path = "~/Documents/Schule"
+		}
+	},
+	templates = {
+		folder = "Templates"
+	},
+	attachments = {
+		folder = "Assets",
+	},
+})
 -- Obsidian requires vim.opts.conceallevel to be either 1 or 2 so setting it to 2 here
 vim.opt.conceallevel = 2
 
@@ -225,7 +232,7 @@ vim.opt.wrap = false
 -- Load netrw (leader + p + v)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open Netrw"})
 -- Colorscheme
-vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[colorscheme retrobox]]
 
 -- LSP Configs
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts, {desc = "Open Floating LSP Diagnostic Window"})
@@ -274,6 +281,9 @@ vim.cmd("nnoremap <leader>ol :Obsidian link<cr>", {desc = "Link an Obsidian File
 vim.cmd("nnoremap <leader>op :Obsidian paste_img<cr>", {desc = "Paste an Image into an obsidian file"})
 vim.cmd("nnoremap <leader>of :Obsidian search<cr>", {desc = "Find an Obsidian note"})
 vim.cmd("nnoremap <leader>on :Obsidian new<cr>", {desc = "Create an Obsidian File"})
+
+-- Rest remaps
+vim.cmd("nnoremap <leader>rr :Rest run<cr>", {desc = "Run the currently higlighted rest request"})
 
 -- Clear search highlighting
 vim.cmd("nnoremap <leader>sn :nohlsearch<cr>", {desc = "Clear search highlighting"})

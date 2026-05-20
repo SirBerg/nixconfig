@@ -37,7 +37,6 @@ in
       icu
       vscode-fhs
       protontricks
-      lutris
       obs-studio
       vesktop
       #      davinci-resolve

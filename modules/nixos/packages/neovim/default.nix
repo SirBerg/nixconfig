@@ -33,6 +33,7 @@ in
 	ghostscript_headless
 
 	tree-sitter
+	jq
 
       ];
     programs.nix-ld = {
@@ -78,6 +79,7 @@ in
 	render-markdown
 	gruvbox
 	cord-nvim
+	rest-nvim
       ];
     };
   };
