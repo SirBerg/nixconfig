@@ -11,12 +11,20 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
+  boot.initrd.luks.devices = {
+	"data-enc" = {
+		device = "/dev/disk/by-uuid/3d8da9b6-a778-4103-8315-5d763c4b542d";
+	};
+	"binary-enc" = {
+		device = "/dev/disk/by-uuid/68497db7-8d9c-41ff-a09f-27c723f53dec"
+	};
+  };
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/3d8da9b6-a778-4103-8315-5d763c4b542d";
+      device = "/dev/mapper/data-enc";
       fsType = "ext4";
     };
 
@@ -29,7 +37,7 @@
 
   fileSystems."/nix" =
     {
-      device = "/dev/disk/by-uuid/68497db7-8d9c-41ff-a09f-27c723f53dec";
+      device = "/dev/mapper/binary-enc";
       fsType = "btrfs";
     };
 
