@@ -2,10 +2,9 @@
 
 {
 	imports = [ ./hardware-configuration.nix];
-
 	boerg = {
-		packages: {
-			utils.core.enable = true
+		packages =  {
+			utils.core.enable = true;
 		};
 		users = {
 			berg = {
@@ -23,15 +22,12 @@
 		docker = {
 			enable = true;
 		};
-	}
+	};
 
-	boot.supportedFilesystems = [ "zfs" ];
-	networking.hostId = "3161faaa"
 	services.zfs.autoScrub.enable = true;
 	services.zfs.autoSnapshot.enable = true;
 
 	time.timeZone = "Europe/Berlin";
-	networking.networkmanager.enable = true;
 
 	console.keyMap = "de";
   	security.rtkit.enable = true;
@@ -43,6 +39,28 @@
 		coolercontrol.coolercontrol-gui
 		coolercontrol.coolercontrol-ui-data
 	];
-
+	programs.zsh.enable = true;
+	networking = {
+		hostId = "3161faaa";
+		networkmanager.enable = true;
+		interfaces = {
+			end0 = {
+				ipv4.addresses = [{
+					address = "10.255.0.2";
+					prefixLength = 24;
+				}];
+				useDHCP = false;
+			};
+		};
+		defaultGateway = {
+			address = "10.255.0.1";
+			interface = "end0";
+		};
+		nameservers = [
+			"9.9.9.9"
+			"149.112.112.112"
+		];
+	};
 	system.stateVersion = "25.11";
+
 }

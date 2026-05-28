@@ -1,0 +1,4 @@
+{ ... }:
+{
+  boerg.zsh.enable = true;
+}

@@ -89,6 +89,7 @@
       systems.hosts.satou.specialArgs = { inherit (inputs) self; };
       systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
       systems.hosts.laptop.specialArgs = { inherit (inputs) self; };
+      systems.hosts.huygens.specialArgs = { inherit (inputs) self; };
       nixpkgs.config.allowUnfree = true;	
 
       # To build warmind-sundance use this command:
@@ -108,6 +109,9 @@
         nixvim.nixosModules.nixvim
       ];
       systems.hosts.bergusia.modules = with inputs; [
+        nixvim.nixosModules.nixvim
+      ];
+      systems.hosts.huygens.modules = with inputs; [
         nixvim.nixosModules.nixvim
       ];
       home-manager.users.boerg = {
