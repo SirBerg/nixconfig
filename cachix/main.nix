@@ -1,11 +1,12 @@
+
 {
   nix = {
     settings = {
       substituters = [
-        "http://0.0.0.0"
+        "https://iglu.naibu.boerg.co/main"
       ];
       trusted-public-keys = [
-        "0.0.0.0-1:CjwLgnUb157vhyNHrmBgaRGUISGIY6Q8rJ9oKK95gA8="
+        "Z6JmDHNNlfVqV3IUDmhAKQL5wF7cADPROuLYUam+5Nk="
       ];
     };
   };

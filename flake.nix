@@ -1,23 +1,15 @@
 {
   nixConfig = {
-    extra-substituters = [
-      "https://cache.nixos.org"
-    ];
-    extra-trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-    trusted-users = [ "root" "berg" ];
-
-    substituters = [
-      "https://cache.nixos.org"
-    ];
-    always-allow-substitutes = true;
-    extra-trusted-substsituters = [
-      "https://cache.nixos.org"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
+	substituters = [
+	"https://iglu.naibu.boerg.co/main"
+        "https://cache.nixos.org"
+	];
+	trusted-public-keys = [
+	"main:Z6JmDHNNlfVqV3IUDmhAKQL5wF7cADPROuLYUam+5Nk="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+	];
+	    trusted-users = [ "root" "berg" ];
+	    always-allow-substitutes = true;
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

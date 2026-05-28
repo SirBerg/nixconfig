@@ -124,7 +124,7 @@
     onboard
     protonvpn-gui
     ckan
-    teamspeak6-client
+    #teamspeak6-client
     element-desktop
     r2modman
     xournalpp
@@ -139,6 +139,7 @@
     gnome-podcasts
     scenebuilder
     waytrogen
+    appimage-run
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
