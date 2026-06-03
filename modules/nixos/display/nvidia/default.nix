@@ -35,6 +35,7 @@ in
       open = true;
       nvidiaSettings = true;
     };
+    hardware.nvidia-container-toolkit.enable = true;
     hardware.opengl.enable = true;
   };
 }

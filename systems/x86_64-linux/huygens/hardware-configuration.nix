@@ -34,6 +34,7 @@
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "zfs" "fuse" ];
   boot.zfs.forceImportRoot = false;
+  boot.zfs.extraPools = [ "solaris" "appdata" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -41,53 +42,36 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   fileSystems = {
-    "/mnt/solaris" = {
-      device = "solaris";
-      fsType = "zfs";
-    };
-    "/mnt/docker" = {
-      device = "/dev/disk/by-uuid/something";
-      fsType = "btrfs";
-    };
-    "/mnt/disks/disk1" = {
-      device = "/dev/disk/by-uuid/unraid_disk_1";
-      fsType = "xfs";
-      options = [ "nofail" ];
-    };
-    "/mnt/disks/disk2" = {
-      device = "/dev/disk/by-uuid/unraid_disk_2";
-      fsType = "xfs";
-      options = [ "nofail" ];
-    };
-    "/mnt/unraid" = {
-      device = "/mnt/disks/disk1:/mnt/disks/disk2";
-      fsType = "fuse.mergerfs";
-      options = [
-        "defaults"
-        "allow_other"
-        "use_ino"
-        "cache.files=partial"      
-        "dropcacheonclose=true"    
-        "category.create=mfs"      
-        "moveonenospc=true"        
-        "minfreespace=20G"         
-        "fsname=mergerfs"          
-        "nofail"
-      ];
-    };
+#    "/mnt/unraid" = {
+#      device = "/mnt/disks/disk1:/mnt/disks/disk2";
+#      fsType = "fuse.mergerfs";
+#      options = [
+#        "defaults"
+#        "allow_other"
+#        "use_ino"
+#        "cache.files=partial"      
+#        "dropcacheonclose=true"    
+#        "category.create=mfs"      
+#        "moveonenospc=true"        
+#        "minfreespace=20G"         
+#        "fsname=mergerfs"          
+#        "nofail"
+#      ];
+#    };
     "/" = {
-      device = "/dev/disk/by-uuid/something";
+      device = "/dev/disk/by-uuid/47b80bdd-2908-485d-9524-1db9ff53fc33";
       fsType = "btrfs";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/something";
+      device = "/dev/disk/by-uuid/2352-A074";
       fsType = "vfat";
     };
     "/nix" = {
-      device = "/dev/disk/by-uuid/something";
+      device = "/dev/disk/by-uuid/7a0f587a-1c1f-4e6b-99b7-f792789883ac";
       fsType = "btrfs";
     };
   };
+
 
   swapDevices = [ ];
 

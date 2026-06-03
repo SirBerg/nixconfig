@@ -23,6 +23,7 @@ in
           "tag" = "{{.Name}}";
         };
         #	    "dns" = ["1.1.1.1" "1.0.0.1"];
+        features.cdi = true;
       };
     };
     virtualisation.oci-containers.backend = "docker";
