@@ -191,7 +191,7 @@ obsidian.setup({
 	workspaces = {
 		{
 			name = "Main",
-			path = "~/Documents/Schule"
+			path = "~/Documents/Main"
 		}
 	},
 	templates = {

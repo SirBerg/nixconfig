@@ -45,12 +45,17 @@
     };
   };
 
+  networking.hostId = "1161daaa";
   services.udev.extraRules = ''
     		# Steam Controller Support 
     		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="0407", MODE="0666"
     		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b679", MODE="0666"
     		KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="040e", MODE="0666"
   '';
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+  programs.seahorse.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
   services.flatpak.enable = true;
   programs.zsh.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -71,7 +76,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
+  #services.xserver.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -140,6 +145,9 @@
     scenebuilder
     waytrogen
     appimage-run
+    signal-desktop
+    steamtinkerlaunch
+    timewarrior
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
