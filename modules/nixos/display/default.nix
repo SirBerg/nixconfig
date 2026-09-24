@@ -24,7 +24,6 @@ in
         hyprpaper
 
       ];
-    programs.hyprland.enable = true;
     # Enable the xwayland support in hyprland
     programs.hyprland.xwayland.enable = true;
 

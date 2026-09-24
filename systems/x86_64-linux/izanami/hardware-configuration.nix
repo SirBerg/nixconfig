@@ -10,10 +10,13 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "sd_mod" "btrfs" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.supportedFilesystems = [ "zfs" "btrfs" ];
   boot.zfs.forceImportRoot = false;
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=10 card_label="Virtual Camera" exclusive_caps=1
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/7b50c290-5c0a-4127-8030-55db7204b4e8";

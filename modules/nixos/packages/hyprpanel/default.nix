@@ -26,7 +26,7 @@ in
       dart-sass
       brightnessctl
       gnome-bluetooth
-      hyprpanel
+      wayle
       bun
       gtop
       fzf
@@ -52,7 +52,6 @@ in
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-      jetbrains-mono
       nerdfonts
 #      notonoto
     ];

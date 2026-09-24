@@ -13,9 +13,6 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    Solaar.url = "github:Svenum/Solaar-Flake";
-    tidaLuna.url = "github:Inrixia/TidaLuna";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -97,10 +94,6 @@
       systems.hosts.sundance.modules = with inputs; [
         nixos-generators.nixosModules.qcow-efi
       ];
-
-      systems.modules.nixos = with inputs; [
-        Solaar.nixosModules.default
-      ];
       systems.hosts.satou.modules = with inputs; [
         nixvim.nixDarwinModules.nixvim
       ];
@@ -110,9 +103,7 @@
       ];
       systems.hosts.bergusia.modules = with inputs; [
         nixvim.nixosModules.nixvim
-      ];
-      systems.hosts.huygens.modules = with inputs; [
-        nixvim.nixosModules.nixvim
+      ]; systems.hosts.huygens.modules = with inputs; [ nixvim.nixosModules.nixvim
       ];
       home-manager.users.boerg = {
         home.stateVersion = "24.11";

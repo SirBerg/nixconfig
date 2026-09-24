@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib,... }:
 
 {
   imports =
@@ -36,6 +36,7 @@
     virt.waydroid.enable = false;
     display.nvidia.enable = true;
     display.hyprland.enable = true;
+    display.plasma.enable = true;
     config.standard.enable = true;
     services.ssh.enable = true;
     services.rdp.enable = true;
@@ -54,7 +55,7 @@
   '';
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
-  programs.seahorse.enable = true;
+#  programs.seahorse.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
   services.flatpak.enable = true;
   programs.zsh.enable = true;
@@ -118,7 +119,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    volanta
     nfs-utils
     prismlauncher
     jdk25_headless
@@ -139,7 +139,6 @@
     davinci-resolve
     protonup-rs
     via
-    inputs.tidaLuna.packages.x86_64-linux.default
     ffmpeg
     gnome-podcasts
     scenebuilder
@@ -148,8 +147,41 @@
     signal-desktop
     steamtinkerlaunch
     timewarrior
+    ranger
+    helvum
+    tidal-hifi
+    gpodder
   ];
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
+    ];
+
+    config.common.default = [ "hyprland" "gtk" "kde" ];
+  };
+
+  systemd.user.services.xdg-desktop-portal = {
+    requisite = lib.mkForce [ ];
+    after = lib.mkForce [ "dbus.socket" ];
+    partOf = lib.mkForce [ ];
+    wantedBy = lib.mkForce [ "default.target" ];
+
+    serviceConfig = {
+      Restart = lib.mkDefault "on-failure";
+    };
+  };
+
+  systemd.user.services.xdg-desktop-portal-hyprland = {
+    after = lib.mkForce [ "dbus.socket" ];
+    partOf = lib.mkForce [ ];
+    wantedBy = lib.mkForce [ "default.target" ];
+  };  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -165,6 +197,7 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 3001 ];
+  networking.nameservers = ["9.9.9.9" "1.1.1.1"];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

@@ -3,7 +3,19 @@
 with lib;
 with lib.types;
 let
+
   cfg = config.boerg.config.standard;
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+  ) pkgs.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
 in
 {
 
@@ -15,7 +27,7 @@ in
     system.nixos.label = if (self ? rev) then "voyager.${self.shortRev}" else "voyager-dirty.${self.dirtyShortRev}";
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
-    boot.kernelPackages = pkgs.linuxPackages_6_12;
+    boot.kernelPackages = latestKernelPackage;
     boot.loader.efi.canTouchEfiVariables = true;
 
     boot.kernelModules = [ "ntsync" ];
