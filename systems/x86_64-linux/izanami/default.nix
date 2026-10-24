@@ -127,7 +127,7 @@
     nvidia-container-toolkit
     cudaPackages.cudatoolkit
     onboard
-    protonvpn-gui
+    proton-vpn
     ckan
     #teamspeak6-client
     element-desktop
@@ -151,6 +151,7 @@
     helvum
     tidal-hifi
     gpodder
+    claude-code
   ];
 
   xdg.portal = {
