@@ -11,7 +11,7 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "sd_mod" "btrfs" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  #boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.supportedFilesystems = [ "zfs" "btrfs" ];
   boot.zfs.forceImportRoot = false;
   boot.extraModprobeConfig = ''

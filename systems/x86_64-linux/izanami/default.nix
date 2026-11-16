@@ -133,13 +133,13 @@
     element-desktop
     r2modman
     xournalpp
-    handbrake
+    #handbrake
     gparted
     nextcloud-client
     davinci-resolve
     protonup-rs
     via
-    ffmpeg
+   # ffmpeg
     gnome-podcasts
     scenebuilder
     waytrogen
@@ -152,6 +152,7 @@
     tidal-hifi
     gpodder
     claude-code
+    eduvpn-client
   ];
 
   xdg.portal = {

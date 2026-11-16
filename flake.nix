@@ -47,6 +47,10 @@
       url = "github:astro/deadnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -87,6 +91,7 @@
       systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
       systems.hosts.laptop.specialArgs = { inherit (inputs) self; };
       systems.hosts.huygens.specialArgs = { inherit (inputs) self; };
+      systems.hosts.nessus.specialArgs = { inherit (inputs) self; };
       nixpkgs.config.allowUnfree = true;	
 
       # To build warmind-sundance use this command:
@@ -103,8 +108,14 @@
       ];
       systems.hosts.bergusia.modules = with inputs; [
         nixvim.nixosModules.nixvim
-      ]; systems.hosts.huygens.modules = with inputs; [ nixvim.nixosModules.nixvim
+      ]; 
+      systems.hosts.huygens.modules = with inputs; [ nixvim.nixosModules.nixvim
       ];
+      systems.hosts.nessus.modules = with inputs; [
+        nixvim.nixosModules.nixvim
+        disko.nixosModules.disko
+      ];
+
       home-manager.users.boerg = {
         home.stateVersion = "24.11";
       };

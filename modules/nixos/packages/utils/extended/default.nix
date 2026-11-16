@@ -29,7 +29,7 @@ in
       mangohud
       legendary-gl
       #mplayer
-      audacity
+      #audacity
       multiviewer-for-f1
       attic-client
       #jdk21
