@@ -8,7 +8,7 @@
 
 	boerg = {
 		packages.utils.core.enable = true;
-		#packages.neovim.enable = true;
+		packages.neovim.enable = true;
 		users.berg = {
 			isSudoUser = true;
 			isKvmUser = true;
@@ -24,6 +24,7 @@
 		services.ssh.enable = true;
 		virt.libvirt.enable = true;
 		docker.enable = true;
+		packages.tailscale.enable = true;
 	};
 
 	nix.settings.trusted-users = [ "root" "@wheel" ];
@@ -74,7 +75,16 @@
 	networking.firewall = {
 		enable = true;
 		allowedTCPPorts = [22 80 443];
-		allowedUDPPorts = [51820];
+		allowedUDPPorts = [21820 51820];
+	};
+
+	services.restic.server = {
+		enable = true;
+		dataDir = "/tank/backups/restic";
+		appendOnly = true;
+		privateRepos = true;
+		prometheus = true;
+		listenAddress = "100.124.0.1:8000";
 	};
 
 	time.timeZone = "Europe/Berlin";
