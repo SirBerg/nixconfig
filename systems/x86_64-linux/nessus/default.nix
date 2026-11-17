@@ -93,5 +93,22 @@
 	programs.zsh.enable = true;
 	hardware.cpu.intel.updateMicrocode = true;
 
+      	services.prometheus.exporters.node = {
+		enable = true;
+		port= 9100;
+		enabledCollectors = [
+		      "ethtool"   
+		      "softirqs"
+		      "systemd"
+		      "tcpstat"
+		      "wifi"
+		      "cpu"
+		      "meminfo"
+		      "diskstats"
+		      "netdev"
+		];
+		openFirewall = true;
+      	};	
+
 	system.stateVersion = "26.05";
 }
