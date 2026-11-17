@@ -25,6 +25,7 @@ let
       "scanner"
       "lp"
       (mkIf (if builtins.hasAttr "isSudoUser" user then user.isSudoUser else false) "wheel")
+      (mkIf (if builtins.hasAttr "isKvmUser" user then user.isKvmUser else false) "libvirt")
     ];
 
     uid = user.uid;

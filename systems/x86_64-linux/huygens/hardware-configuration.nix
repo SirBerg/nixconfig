@@ -35,6 +35,7 @@
   boot.supportedFilesystems = [ "zfs" "fuse" ];
   boot.zfs.forceImportRoot = false;
   boot.zfs.extraPools = [ "solaris" "appdata" ];
+  boot.zfs.requestEncryptionCredentials = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
