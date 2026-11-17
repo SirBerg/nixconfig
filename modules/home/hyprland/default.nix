@@ -23,9 +23,17 @@ in
       enable = true;
       source = if cfg.variant == "izanami" then ./configs/izanami/hyprpaper.conf else ./configs/generic/hyprpaper.conf;
     };
+    home.file.".config/hypr/hyprland.lua" = {
+      enable = true;
+      source = if cfg.variant == "izanami" then ./configs/izanami/hyprland.lua else ./configs/generic/hyprland.lua;
+    };
     home.file.".config/hypr/bg.jpg" = {
     	enable = true;
 	source = ./bg.jpg;
+    };
+    home.file.".config/hypr/bg_earth_2.jpg" = {
+    	enable = true;
+	source = ./bg_earth_2.jpg;
     };
   };
 }

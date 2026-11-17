@@ -1,11 +1,12 @@
+
 {
   nix = {
     settings = {
       substituters = [
-        "http://localhost:3000"
+        "https://default.cachix.org"
       ];
       trusted-public-keys = [
-        "dko2hN/ICCzINLqfEYt80e0/VFnSgxYTu1xOaRSW73Q="
+        "default.cachix.org-1:eB40iz5TB/dAn11vLeoaeYiICu+syfoHhNeUFZ53zcs="
       ];
     };
   };

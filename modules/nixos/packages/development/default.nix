@@ -50,15 +50,10 @@ in
         kubectl
 #        scenebuilder
         hellwal
-        rustc
-        cargo
+        #rustc
+        #cargo
+	git-lfs
       ];
 
-
-    services.solaar = {
-      enable = true;
-      window = "hide";
-      extraArgs = "--restart-on-wake-up";
-    };
   };
 }

@@ -39,7 +39,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.loader.efi.canTouchEfiVariables = true;
 
   fileSystems = {

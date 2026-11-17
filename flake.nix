@@ -13,9 +13,6 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    Solaar.url = "github:Svenum/Solaar-Flake";
-    tidaLuna.url = "github:Inrixia/TidaLuna";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +45,10 @@
     };
     deadnix = {
       url = "github:astro/deadnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -90,16 +91,13 @@
       systems.hosts.bergusia.specialArgs = { inherit (inputs) self; };
       systems.hosts.laptop.specialArgs = { inherit (inputs) self; };
       systems.hosts.huygens.specialArgs = { inherit (inputs) self; };
+      systems.hosts.nessus.specialArgs = { inherit (inputs) self; };
       nixpkgs.config.allowUnfree = true;	
 
       # To build warmind-sundance use this command:
       # nix build .#systems.hosts.warmind-sundance.config.system.build.qcow-efi
       systems.hosts.sundance.modules = with inputs; [
         nixos-generators.nixosModules.qcow-efi
-      ];
-
-      systems.modules.nixos = with inputs; [
-        Solaar.nixosModules.default
       ];
       systems.hosts.satou.modules = with inputs; [
         nixvim.nixDarwinModules.nixvim
@@ -110,10 +108,14 @@
       ];
       systems.hosts.bergusia.modules = with inputs; [
         nixvim.nixosModules.nixvim
+      ]; 
+      systems.hosts.huygens.modules = with inputs; [ nixvim.nixosModules.nixvim
       ];
-      systems.hosts.huygens.modules = with inputs; [
+      systems.hosts.nessus.modules = with inputs; [
         nixvim.nixosModules.nixvim
+        disko.nixosModules.disko
       ];
+
       home-manager.users.boerg = {
         home.stateVersion = "24.11";
       };

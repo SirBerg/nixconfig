@@ -2,7 +2,7 @@
 # Whole file (with minor edits) from: https://github.com/Svenum/holynix/blob/main/modules/nixos/users/default.nix
 #
 
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 with lib.types;
@@ -44,9 +44,12 @@ let
     # Git Config
     programs.git = mkIf (if builtins.hasAttr "git" user then true else false) {
       enable = true;
-      userName = user.git.userName;
-      userEmail = user.git.userEmail;
-      extraConfig = {
+      package = pkgs.gitFull;
+      settings = {
+      	user = {
+	  name = user.git.userName;
+	  email = user.git.userEmail;
+	};
         safe.directory = "/etc/nixos";
         pager.branch = false;
       };

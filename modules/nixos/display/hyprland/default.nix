@@ -19,7 +19,11 @@ in
     services.displayManager.sddm.enable = true;
     programs.hyprland.enable = true;
     programs.xwayland.enable = true;
-
+    security.rtkit.enable = true;
+    services.pipewire = {
+	enable = true;
+	pulse.enable = true;
+    };
     environment.systemPackages = with pkgs; [
       kitty
       hyprpaper
@@ -27,7 +31,7 @@ in
       waybar
       wofi
       swaylock
-      hyprpanel
+      wayle
       hyprshot
       wireplumber
       libgtop
@@ -39,6 +43,8 @@ in
       gvfs
       gtksourceview3
       libsoup_3
+      xdg-desktop-portal-hyprland
+      uwsm
     ];
 
     fonts.packages = with pkgs; [
