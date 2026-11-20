@@ -4,6 +4,7 @@
 	imports = [
 		./disko.nix
 		./hardware-configuration.nix
+		./firewall.nix
 	];
 
 	boerg = {
@@ -24,8 +25,12 @@
 		services.ssh.enable = true;
 		virt.libvirt.enable = true;
 		docker.enable = true;
+		config.standard.enable = true;
 		packages.tailscale.enable = true;
 	};
+
+	services.openssh.openFirewall = false;
+	services.openssh.settings = {KbdInteractiveAuthentication = lib.mkForce false; X11Forwarding = lib.mkForce false; UseDns=lib.mkForce false;};
 
 	nix.settings.trusted-users = [ "root" "@wheel" ];
 
@@ -34,7 +39,7 @@
 		configurationLimit = 20;
 	};
 
-	boot.loader.efi.canTouchEfiVariables = false;
+	boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
 
 	boot.supportedFilesystems = [ "zfs" ];
 	boot.zfs.forceImportRoot = false;
@@ -74,8 +79,6 @@
 
 	networking.firewall = {
 		enable = true;
-		allowedTCPPorts = [22 80 443];
-		allowedUDPPorts = [21820 51820];
 	};
 
 	services.restic.server = {
@@ -85,6 +88,7 @@
 		privateRepos = true;
 		prometheus = true;
 		listenAddress = "100.124.0.1:8000";
+		htpasswd-file = "/var/lib/restic-auth/htpasswd";
 	};
 
 	time.timeZone = "Europe/Berlin";

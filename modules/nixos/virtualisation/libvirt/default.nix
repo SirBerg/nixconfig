@@ -25,7 +25,7 @@ in
     };
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     users.users.berg = {
-      extraGroups = [ "docker" "libvirtd" ];
+      extraGroups = [ "libvirtd" ];
     };
   };
 }

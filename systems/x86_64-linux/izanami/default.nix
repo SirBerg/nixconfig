@@ -46,6 +46,10 @@
     };
   };
 
+  users.users.berg = {
+    extraGroups = ["docker"];
+  };
+
   networking.hostId = "1161daaa";
   services.udev.extraRules = ''
     		# Steam Controller Support 
